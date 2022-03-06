@@ -21,7 +21,7 @@ public class Comment implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="id_Comment")
-	 private Long id;
+     private Long id;
 	 private String reply_id;
 	 private String author;
 	 private String context;
@@ -32,14 +32,7 @@ public class Comment implements Serializable{
 	 @ManyToOne
 	 NoFinancialService nofinancialservices;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = (long) id;
-	}
-
+	
 	public String getReply_id() {
 		return reply_id;
 	}
