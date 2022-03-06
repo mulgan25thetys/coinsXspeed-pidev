@@ -17,12 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 public class User implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -37,7 +34,7 @@ public class User implements Serializable{
 	 private String address;
 	 private int phone;
 	 
-	 @Temporal(TemporalType.DATE)
+     @Temporal(TemporalType.DATE)
 	 private Date date_of_birth;
 	 private int age;
 	 private double salary;
@@ -64,8 +61,7 @@ public class User implements Serializable{
 	 @Enumerated(EnumType.STRING)
 	 private Status status;
 	 
-	 
-	 @Temporal(TemporalType.DATE)
+	  @Temporal(TemporalType.DATE)
 	 private Date join_groupe;
 	 
 	 private Long idle_time;
@@ -270,8 +266,5 @@ public class User implements Serializable{
 
 	public void setStatus(Status status) {
 		this.status = status;
-	}
-	 
-	
-	 
+	}	 
 }

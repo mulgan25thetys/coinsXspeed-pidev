@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.UserRepository;
 
+
+
 @Service
 public class UserServiceImpl implements IUserService {
 	
@@ -19,7 +21,6 @@ public class UserServiceImpl implements IUserService {
 		 return (List<User>) userRepository.findAll();
 		
 	}
-
 	@Override
 	public User addUser(User u) {
 	   userRepository.save(u);
@@ -32,14 +33,7 @@ public class UserServiceImpl implements IUserService {
 	  userRepository.save(u);
 	  return u;
 	}
-
-	@Override
-	public User retreiveUser(Long id) {
-		
-		 User u =userRepository.findById(id).orElse(null);
-		 return u;
-}
-
+ 
 	@Override
 	public void removeUser(Long id) {
 		userRepository.deleteById(id);

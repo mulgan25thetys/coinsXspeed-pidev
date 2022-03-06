@@ -6,16 +6,13 @@ import horizure.micro.finance.entities.User;
 
 public interface IUserService {
 	
-	List<User> retrieveUsers (); /// affichage
+	List<User> retrieveUsers ();     /// affichage de user
 	
-	User addUser(User u);  /// ajout
+	User addUser(User u);            /// ajouter  un  utilisateur 
 	
-	User updateUser(User u);  /// modification
+	User updateUser(User u);         /// modification d'un utilisateur
 	
-	User retreiveUser(Long id );  //: get un account
-	
-
-	void removeUser(Long id);  /// suppression
+	void removeUser(Long id);        /// suppression d'un utilisateur
 	
 	
 	
