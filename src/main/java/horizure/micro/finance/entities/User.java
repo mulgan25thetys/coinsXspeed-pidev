@@ -3,6 +3,7 @@ package horizure.micro.finance.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -71,7 +73,12 @@ public class User implements Serializable{
 	 
 	@OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<Privilege> privileges;
-
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<NoFinancialService> usernoservice;
+	
+	
+ 
 	public Long getId() {
 		return id;
 	}
