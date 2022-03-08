@@ -4,15 +4,25 @@ import java.util.List;
 
 import horizure.micro.finance.entities.Account;
 
+import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
+
 public interface IAccountService {
 
-	List<Account> retrieveAccounts(); //affichage
+	List<Account> retrieveAccounts ();  
 	
-	Account addAccount(Account acc); //ajout
+	public List<Account> findAllAccounts() ;
 	
-	Account updateAccount(Account acc); // modification
+	Account addAccount(Account account);            
 	
-	Account retrieveAccount(Long id); // get un account
+	public Account updateAccount(Long id,Account Account) ;
+
+	public Optional <Account> findAccountById(Long id_account);
 	
-	void removeAccount(Long id); //suppression
+
+	public Account deleteAccount(Long id_account);
+	
+	public Account saveAccount(Account newAccount);
 }
+
+	
+

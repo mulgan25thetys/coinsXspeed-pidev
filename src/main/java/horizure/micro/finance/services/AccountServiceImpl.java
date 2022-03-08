@@ -6,41 +6,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import horizure.micro.finance.entities.Account;
+
 import horizure.micro.finance.repositories.AccountRepository;
+import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 
 @Service
 public class AccountServiceImpl implements IAccountService{
 
 	@Autowired
 	AccountRepository accountRepository;
-	
+
+
 	@Override
 	public List<Account> retrieveAccounts() {
-		return (List<Account>)accountRepository.findAll();
+		 return (List<Account>) accountRepository.findAll();
+		
 	}
-
 	@Override
-	public Account addAccount(Account acc) {
-		accountRepository.save(acc);
-		return acc;
+	public Account addAccount(Account account) {
+	   accountRepository.save(account);
+	   return account;
 	}
-
 	@Override
-	public Account updateAccount(Account acc) {
-		accountRepository.save(acc);
-		return acc;
+	public List<Account> findAllAccounts() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-
 	@Override
-	public Account retrieveAccount(Long id) {
-		Account acc = accountRepository.findById(id).orElse(null);
-		return acc;
+	public Account updateAccount(Long id, Account Account) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-
 	@Override
-	public void removeAccount(Long id) {
-		accountRepository.deleteById(id);
+	public Optional<Account> findAccountById(Long id_account) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-
-	
+	@Override
+	public Account deleteAccount(Long id_account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Account saveAccount(Account newAccount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
