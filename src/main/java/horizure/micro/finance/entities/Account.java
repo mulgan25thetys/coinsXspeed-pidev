@@ -2,14 +2,19 @@ package horizure.micro.finance.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,17 +32,34 @@ public class Account implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_account")
     private Long id_account;
+    
     @Enumerated(EnumType.STRING)
     private AccountType type;
-    private Double account_number;
+    
+    @Column(unique = true)
+    private Long account_number;
+    
     private Double capital;
+    
     private Double score;
+    
     @Enumerated(EnumType.STRING)
     private AccountStatus state;
+    
     @Temporal(TemporalType.DATE)
     private Date updated_at;
+    
     @Temporal(TemporalType.DATE)
     private Date created_at;
+    
+    @OneToOne
+    private User user;
+    
+    @ManyToMany(cascade =CascadeType.ALL,mappedBy = "accounts",fetch = FetchType.EAGER)
+    private List<FinancialService> f_services;
+    
+    
+    
 	public Long getId_account() {
 		return id_account;
 	}
@@ -50,10 +72,10 @@ public class Account implements Serializable{
 	public void setType(AccountType type) {
 		this.type = type;
 	}
-	public Double getAccount_number() {
+	public Long getAccount_number() {
 		return account_number;
 	}
-	public void setAccount_number(Double account_number) {
+	public void setAccount_number(Long account_number) {
 		this.account_number = account_number;
 	}
 	public Double getCapital() {
@@ -85,6 +107,18 @@ public class Account implements Serializable{
 	}
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public List<FinancialService> getF_services() {
+		return f_services;
+	}
+	public void setF_services(List<FinancialService> f_services) {
+		this.f_services = f_services;
 	}
     
     

@@ -9,11 +9,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -73,9 +74,15 @@ public class User implements Serializable{
 	 @Temporal(TemporalType.DATE)
 	 private Date created_at;
 	 
-	@OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL)
 	private List<Privilege> privileges;
-
+	
+	@OneToOne
+	private Account account;
+	
+	@ManyToOne
+	private ScoreForm scoreform;
+	
 	public Long getId() {
 		return id;
 	}
@@ -270,6 +277,30 @@ public class User implements Serializable{
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public List<Privilege> getPrivileges() {
+		return privileges;
+	}
+
+	public void setPrivileges(List<Privilege> privileges) {
+		this.privileges = privileges;
+	}
+
+	public ScoreForm getScoreform() {
+		return scoreform;
+	}
+
+	public void setScoreform(ScoreForm scoreform) {
+		this.scoreform = scoreform;
 	}
 	 
 	
