@@ -7,13 +7,11 @@ import horizure.micro.finance.entities.ScoreProposition;
 
 public interface IScorePropositionService {
 	
-	List<ScoreProposition> retrieveAccounts(); //affichage
+	List<ScoreProposition> retrievePropositions(); //affichage
 	
 	ScoreProposition addScoreProp(ScoreProposition prop); //ajout
 	
-	ScoreProposition updateScoreProp(ScoreProposition prop); // modification
-	
-	ScoreProposition retrieveScoreProp(Long id); // get un account
+	ScoreProposition getScoreProp(Long id); // get un account
 	
 	void removeProposition(Long id); //suppression
 }

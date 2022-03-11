@@ -1,13 +1,16 @@
 package horizure.micro.finance.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,6 +33,10 @@ public class FinancialService {
 	private long createdBy_id ;
 	@Temporal(TemporalType.DATE)
 	private Date created_at ;
+	
+	@ManyToMany(cascade =CascadeType.ALL)
+    private List<Account> accounts;
+	
 	public CategoryFS getCategory() {
 		return category;
 	}
@@ -87,6 +94,25 @@ public class FinancialService {
 	
 	@ManyToOne
 	Payement payement ;
+
+	public long getId_ServiceFinancial() {
+		return id_ServiceFinancial;
+	}
+	public void setId_ServiceFinancial(long id_ServiceFinancial) {
+		this.id_ServiceFinancial = id_ServiceFinancial;
+	}
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+	public Payement getPayement() {
+		return payement;
+	}
+	public void setPayement(Payement payement) {
+		this.payement = payement;
+	}
 	
 	
 

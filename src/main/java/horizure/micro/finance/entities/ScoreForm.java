@@ -32,9 +32,14 @@ public class ScoreForm implements Serializable{
 	private String description;
 	@Temporal(TemporalType.DATE)
 	private Date created_at;
+	@Temporal(TemporalType.DATE)
+	private Date lastUpdated_at;
 	
-	@OneToMany(mappedBy = "questionForm",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "questionForm",cascade = CascadeType.ALL)
 	private List<ScoreQuestion> questions;
+	
+	@OneToMany(mappedBy = "scoreform",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List<User> users;
 
 	public Long getId_scoreForm() {
 		return id_scoreForm;
@@ -74,6 +79,22 @@ public class ScoreForm implements Serializable{
 
 	public void setQuestions(List<ScoreQuestion> questions) {
 		this.questions = questions;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public Date getLastUpdated_at() {
+		return lastUpdated_at;
+	}
+
+	public void setLastUpdated_at(Date lastUpdated_at) {
+		this.lastUpdated_at = lastUpdated_at;
 	}
 	
 	

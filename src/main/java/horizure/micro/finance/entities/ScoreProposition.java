@@ -2,7 +2,7 @@ package horizure.micro.finance.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -11,7 +11,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Column;
 
 @Entity
@@ -31,9 +30,8 @@ public class ScoreProposition implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date created_at;
 	
-	@ManyToMany
-	private List<ScoreQuestion> questions;
-	
+	/*@ManyToMany
+	private List<ScoreQuestion> questions;*/
 	
 	public Long getId_proposition() {
 		return id_proposition;
@@ -53,12 +51,29 @@ public class ScoreProposition implements Serializable{
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
-	public List<ScoreQuestion> getQuestions() {
+	/*public List<ScoreQuestion> getQuestions() {
 		return questions;
 	}
 	public void setQuestions(List<ScoreQuestion> questions) {
 		this.questions = questions;
+	}*/
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, id_proposition);
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ScoreProposition other = (ScoreProposition) obj;
+		return Objects.equals(id_proposition, other.id_proposition);
+	}
+	
+	
 	
 	
 }
