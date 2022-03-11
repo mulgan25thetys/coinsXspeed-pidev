@@ -3,10 +3,9 @@ package horizure.micro.finance.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import horizure.micro.finance.entities.Privilege;
+import horizure.micro.finance.entities.Comment;
 
-
-@Repository
-public interface PrivilegeRepository extends CrudRepository<Privilege,Long> {
+ @Repository
+ public interface CommentRepository extends CrudRepository<Comment,Long>{
 
 }

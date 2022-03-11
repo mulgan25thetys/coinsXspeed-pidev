@@ -23,6 +23,6 @@ public class Privilege implements Serializable{
 	  private Long id;
  	
 	@ManyToOne
-	private User user;
+	private User user; 
 	
 }

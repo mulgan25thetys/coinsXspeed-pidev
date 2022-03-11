@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import horizure.micro.finance.entities.Privilege;
+
 import horizure.micro.finance.repositories.PrivilegeRepository;
 
 
@@ -16,11 +17,10 @@ public class PrivilegeServiceImpl implements IPrivilegeService {
 	PrivilegeRepository privilegeRepository;
 
 	@Override
-	public List<Privilege> retrieveUsers() {
+	public List<Privilege> retrievePrivileges() {
 		 return (List<Privilege>) privilegeRepository.findAll();
 		
 	}
-
 	@Override
 	public Privilege addPrivilege(Privilege p) {
 	   privilegeRepository.save(p);
@@ -33,14 +33,7 @@ public class PrivilegeServiceImpl implements IPrivilegeService {
 	  privilegeRepository.save(p);
 	  return p;
 	}
-
-	@Override
-	public Privilege retreivePrivilege(Long id) {
-		
-		 Privilege p =privilegeRepository.findById(id).orElse(null);
-		 return p;
-}
-
+ 
 	@Override
 	public void removePrivilege(Long id) {
 		privilegeRepository.deleteById(id);
@@ -50,3 +43,4 @@ public class PrivilegeServiceImpl implements IPrivilegeService {
 
 
 }
+

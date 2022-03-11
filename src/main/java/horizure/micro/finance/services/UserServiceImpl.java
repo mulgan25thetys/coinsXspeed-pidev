@@ -1,12 +1,15 @@
 package horizure.micro.finance.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.UserRepository;
+
+
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -19,31 +22,66 @@ public class UserServiceImpl implements IUserService {
 		 return (List<User>) userRepository.findAll();
 		
 	}
-
 	@Override
-	public User addUser(User u) {
-	   userRepository.save(u);
-	   return u;
+	public User addUser(User user) {
+	   userRepository.save(user);
+	   return user;
 		
 	}
 
-	@Override
-	public User updateUser(User u) {
-	  userRepository.save(u);
-	  return u;
-	}
+	
+ 
 
 	@Override
-	public User retreiveUser(Long id) {
+	public User findByUserName(String userName) {
+		User user=userRepository.findByUserName(userName);
+		return user;
+	}
+	
+	@Override
+	public Optional<User> findUserById(int id) {
 		
-		 User u =userRepository.findById(id).orElse(null);
-		 return u;
+		return userRepository.findById(id);
+	}
+	
+	@Override
+	public User saveUser(User newUser) {
+		User user = userRepository.save(newUser);
+		return user;
+	}
+	@Override
+	public User updateUser(int id, User user) {
+		
+		Optional<User> retrievedUser=userRepository.findById(id);
+		if(retrievedUser==null)
+			try {
+				throw new Exception("User not found");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		userRepository.save(user);
+		return userRepository.findById(id).get();
+		
+		
+	}
+	@Override
+	public User deleteUser(int userId) {
+		
+		Optional<User> retrievedUser=userRepository.findById(userId);
+		if(retrievedUser==null)
+			try {
+				throw new Exception("User not found");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		userRepository.deleteById(userId);
+		return retrievedUser.get();
+		
+	}
+	@Override
+	public List<User>findAllUsers() {
+		
+		return userRepository.findAll();
+	
 }
-
-	@Override
-	public void removeUser(Long id) {
-		userRepository.deleteById(id);
-		
-	}
-
 }
