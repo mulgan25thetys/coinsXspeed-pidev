@@ -6,27 +6,15 @@ import horizure.micro.finance.entities.Privilege;
 
 
 public interface IPrivilegeService {
-
 	
-		
-		List<Privilege> retrieveUsers (); /// affichage
-		
-		Privilege addPrivilege(Privilege p);  /// ajout
-		
-		Privilege updatePrivilege(Privilege p);  /// modification
-		
-		Privilege retreivePrivilege(Long id );  //: get 
-		
-
-		void removePrivilege(Long id);  /// suppression
-		
-		
-		
-	}
+	List<Privilege> retrievePrivileges ();     
+	
+	Privilege addPrivilege(Privilege p);            
+	
+	Privilege updatePrivilege(Privilege p);         
+	
+	void removePrivilege(Long id);
 	
 	
 	
-	
-	
-	
-	
+}

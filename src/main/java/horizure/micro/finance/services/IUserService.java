@@ -1,22 +1,28 @@
 package horizure.micro.finance.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import horizure.micro.finance.entities.User;
 
 public interface IUserService {
 	
-	List<User> retrieveUsers (); /// affichage
 	
-	User addUser(User u);  /// ajout
+	List<User> retrieveUsers ();  
 	
-	User updateUser(User u);  /// modification
+	public List<User> findAllUsers() ;
 	
-	User retreiveUser(Long id );  //: get un account
+	User addUser(User user);            
 	
+	public User updateUser(int id,User user) ;
 
-	void removeUser(Long id);  /// suppression
+	public Optional <User> findUserById(int id);
 	
+	public User findByUserName(String userName);
+
+	public User deleteUser(int userId);
+	
+	public User saveUser(User newUser);
 	
 	
 }
