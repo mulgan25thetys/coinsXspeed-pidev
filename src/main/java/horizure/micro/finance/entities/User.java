@@ -3,42 +3,126 @@ package horizure.micro.finance.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
+@Table(name="user")
+
 public class User implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name="id_User")
-	 private Long id;
-	 private String password;
-	 private String first_name;
-	 private String last_name;
-	 private String email;
+	@Column(name="user_id")
+	private int userId;
+	
+	@Column(name="user_name")
+	private String userName;
+		
+	@Column(name="password")
+	private String password;
+	
+	@Column(name="role")
+	private String role;
+	
+		
+	public User(int userId, String userName, String password, String role) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
+	}
+
+	public User() {
+		super();
+	}
+
+
+	public User( int userId,String userName, String password) {
+		super();
+	
+		this.userName = userName;
+		this.password = password;
+		this.userId=userId;
+		
+	}
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
+	public int getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	
+	@Override
+	public int hashCode() {
+		
+		return this.userId;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		
+		
+		if(obj==null || !(obj instanceof User) )
+			return false;
+		return this.userId==((User)obj).getUserId();
+	}
+
+
+	private String email;
 	 private String city;
 	 private String country;
 	 private String address;
 	 private int phone;
 	 
-	 @Temporal(TemporalType.DATE)
+     @Temporal(TemporalType.DATE)
 	 private Date date_of_birth;
 	 private int age;
 	 private double salary;
@@ -55,9 +139,7 @@ public class User implements Serializable{
 	 private int failed_login_attemp;
 	 private int session_per_user;
 	 
-	 
-	 @Enumerated(EnumType.STRING)
-	 private ERole erole;
+	
 	 
 	 @Enumerated(EnumType.STRING)
 	 private Egroup egroup;
@@ -65,8 +147,7 @@ public class User implements Serializable{
 	 @Enumerated(EnumType.STRING)
 	 private Status status;
 	 
-	 
-	 @Temporal(TemporalType.DATE)
+	  @Temporal(TemporalType.DATE)
 	 private Date join_groupe;
 	 
 	 private Long idle_time;
@@ -74,46 +155,16 @@ public class User implements Serializable{
 	 @Temporal(TemporalType.DATE)
 	 private Date created_at;
 	 
-	@OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<Privilege> privileges;
 	
-	@OneToOne
-	private Account account;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<NoFinancialService> usernoservice;
 	
-	@ManyToOne
-	private ScoreForm scoreform;
 	
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public String getPassword() {
-		return password;
-	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFirst_name() {
-		return first_name;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
 
 	public String getEmail() {
 		return email;
@@ -227,14 +278,7 @@ public class User implements Serializable{
 		this.session_per_user = session_per_user;
 	}
 
-	public ERole getErole() {
-		return erole;
-	}
-
-	public void setErole(ERole erole) {
-		this.erole = erole;
-	}
-
+	
 	public Egroup getEgroup() {
 		return egroup;
 	}
@@ -277,32 +321,5 @@ public class User implements Serializable{
 
 	public void setStatus(Status status) {
 		this.status = status;
-	}
-
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	public List<Privilege> getPrivileges() {
-		return privileges;
-	}
-
-	public void setPrivileges(List<Privilege> privileges) {
-		this.privileges = privileges;
-	}
-
-	public ScoreForm getScoreform() {
-		return scoreform;
-	}
-
-	public void setScoreform(ScoreForm scoreform) {
-		this.scoreform = scoreform;
-	}
-	 
-	
-	 
+	}	 
 }
