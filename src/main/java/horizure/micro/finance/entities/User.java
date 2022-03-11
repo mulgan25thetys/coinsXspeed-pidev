@@ -14,7 +14,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,7 +30,7 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="user_id")
-	private int userId;
+	private Long userId;
 	
 	@Column(name="user_name")
 	private String userName;
@@ -40,7 +42,7 @@ public class User implements Serializable{
 	private String role;
 	
 		
-	public User(int userId, String userName, String password, String role) {
+	public User(Long userId, String userName, String password, String role) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -53,7 +55,7 @@ public class User implements Serializable{
 	}
 
 
-	public User( int userId,String userName, String password) {
+	public User( Long userId,String userName, String password) {
 		super();
 	
 		this.userName = userName;
@@ -70,12 +72,12 @@ public class User implements Serializable{
 	}
 
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -100,12 +102,6 @@ public class User implements Serializable{
 	}
 
 
-	
-	@Override
-	public int hashCode() {
-		
-		return this.userId;
-	}
 	@Override
 	public boolean equals(Object obj) {
 		
@@ -161,7 +157,11 @@ public class User implements Serializable{
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<NoFinancialService> usernoservice;
 	
+	@OneToOne
+	private Account account;
 	
+	@ManyToOne
+	private ScoreForm scoreform;
 
 
 
@@ -321,5 +321,39 @@ public class User implements Serializable{
 
 	public void setStatus(Status status) {
 		this.status = status;
-	}	 
+	}
+
+	public List<Privilege> getPrivileges() {
+		return privileges;
+	}
+
+	public void setPrivileges(List<Privilege> privileges) {
+		this.privileges = privileges;
+	}
+
+	public Set<NoFinancialService> getUsernoservice() {
+		return usernoservice;
+	}
+
+	public void setUsernoservice(Set<NoFinancialService> usernoservice) {
+		this.usernoservice = usernoservice;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public ScoreForm getScoreform() {
+		return scoreform;
+	}
+
+	public void setScoreform(ScoreForm scoreform) {
+		this.scoreform = scoreform;
+	}	
+	
+	
 }
