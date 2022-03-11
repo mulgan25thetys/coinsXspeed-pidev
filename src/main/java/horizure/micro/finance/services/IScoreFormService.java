@@ -14,5 +14,6 @@ public interface IScoreFormService {
 	
 	ScoreForm retrieveScoreForm(Long id); // get un account
 	
-	void removeForm(Long id); //suppression
+	String completeScoreForm(Long idUser,ScoreForm forms); //repondre au questionnement
+	
 }
