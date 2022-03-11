@@ -3,26 +3,21 @@ package horizure.micro.finance.services;
 import java.util.List;
 
 import horizure.micro.finance.entities.Account;
-
-import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
+import horizure.micro.finance.entities.User;
 
 public interface IAccountService {
 
-	List<Account> retrieveAccounts ();  
+	List<Account> retrieveAccounts(); //affichage
 	
-	public List<Account> findAllAccounts() ;
+	Account addAccount(Account acc,Long iduser); //ajout
 	
-	Account addAccount(Account account);            
+	Account updateAccount(Account acc); // modification
 	
-	public Account updateAccount(Long id,Account Account) ;
-
-	public Optional <Account> findAccountById(Long id_account);
+	Account retrieveAccount(Long id); // get un account
 	
-
-	public Account deleteAccount(Long id_account);
+	int blockAccount(Long id); //suppression
 	
-	public Account saveAccount(Account newAccount);
+	void assynScoreToAccount(User u);
+	
+	Account getAccountByUser(Long idUser);
 }
-
-	
-
