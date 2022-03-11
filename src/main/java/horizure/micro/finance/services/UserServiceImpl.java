@@ -39,7 +39,7 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public Optional<User> findUserById(int id) {
+	public Optional<User> findUserById(Long id) {
 		
 		return userRepository.findById(id);
 	}
@@ -50,7 +50,7 @@ public class UserServiceImpl implements IUserService {
 		return user;
 	}
 	@Override
-	public User updateUser(int id, User user) {
+	public User updateUser(Long id, User user) {
 		
 		Optional<User> retrievedUser=userRepository.findById(id);
 		if(retrievedUser==null)
@@ -65,7 +65,7 @@ public class UserServiceImpl implements IUserService {
 		
 	}
 	@Override
-	public User deleteUser(int userId) {
+	public User deleteUser(Long userId) {
 		
 		Optional<User> retrievedUser=userRepository.findById(userId);
 		if(retrievedUser==null)

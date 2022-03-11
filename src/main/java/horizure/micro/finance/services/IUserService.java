@@ -14,13 +14,13 @@ public interface IUserService {
 	
 	User addUser(User user);            
 	
-	public User updateUser(int id,User user) ;
+	public User updateUser(Long id,User user) ;
 
-	public Optional <User> findUserById(int id);
+	public Optional <User> findUserById(Long id);
 	
 	public User findByUserName(String userName);
 
-	public User deleteUser(int userId);
+	public User deleteUser(Long userId);
 	
 	public User saveUser(User newUser);
 	
