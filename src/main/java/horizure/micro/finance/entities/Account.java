@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -55,8 +56,11 @@ public class Account implements Serializable{
     @OneToOne
     private User user;
     
-    @ManyToMany(cascade =CascadeType.ALL,mappedBy = "accounts",fetch = FetchType.EAGER)
-    private List<FinancialService> f_services;
+    @ManyToMany(cascade =CascadeType.ALL,mappedBy = "accounts")
+    private List<FinancialService> financialServices;
+    
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "account")
+    private List<Transaction> transactions;
     
     
     
@@ -115,10 +119,19 @@ public class Account implements Serializable{
 		this.user = user;
 	}
 	public List<FinancialService> getF_services() {
-		return f_services;
+		return financialServices;
 	}
-	public void setF_services(List<FinancialService> f_services) {
-		this.f_services = f_services;
+	public void setF_services(List<FinancialService> financialServices) {
+		this.financialServices = financialServices;
+	}
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
     
     

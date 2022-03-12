@@ -51,12 +51,6 @@ public class ScoreProposition implements Serializable{
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
-	/*public List<ScoreQuestion> getQuestions() {
-		return questions;
-	}
-	public void setQuestions(List<ScoreQuestion> questions) {
-		this.questions = questions;
-	}*/
 	@Override
 	public int hashCode() {
 		return Objects.hash(description, id_proposition);
@@ -70,8 +64,9 @@ public class ScoreProposition implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ScoreProposition other = (ScoreProposition) obj;
-		return Objects.equals(id_proposition, other.id_proposition);
+		return Objects.equals(description, other.description);
 	}
+	
 	
 	
 	

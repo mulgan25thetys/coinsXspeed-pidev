@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -151,7 +150,7 @@ public class User implements Serializable{
 	 @Temporal(TemporalType.DATE)
 	 private Date created_at;
 	 
-	@OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL)
 	private List<Privilege> privileges;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -162,6 +161,12 @@ public class User implements Serializable{
 	
 	@ManyToOne
 	private ScoreForm scoreform;
+	
+	@ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
+	private List<Communication> communications;
+	
+	@ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
+	private List<Notification> notifications;
 
 
 
@@ -353,6 +358,22 @@ public class User implements Serializable{
 
 	public void setScoreform(ScoreForm scoreform) {
 		this.scoreform = scoreform;
+	}
+
+	public List<Communication> getCommunications() {
+		return communications;
+	}
+
+	public void setCommunications(List<Communication> communications) {
+		this.communications = communications;
+	}
+
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(List<Notification> notifications) {
+		this.notifications = notifications;
 	}	
 	
 	

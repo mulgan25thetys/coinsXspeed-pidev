@@ -32,16 +32,17 @@ public class AccountServiceImpl implements IAccountService{
 		User user = userRepository.findById(iduser).orElse(null); //récupérer l'utilisateur
 		List<Account> accounts = accountRepository.checkAccount(acc.getAccount_number(), iduser); //verifier si le compte existe ou pas
 		
-		if(accounts.size() == 0 && user.isOnly()) {
+		if(accounts.size() == 0 && user != null && user.isOnly()) {
 				acc.setUser(user);
 				
-				acc.setCapital(0.0);
+				acc.setCapital(user.getSalary());
 				acc.setScore(0.0);
 				acc.setState(AccountStatus.OPENED);
 				acc.setCreated_at(new Date());
 				acc.setUpdated_at(new Date());
 				
 				user.setAccount(acc);
+				user.setUpdated_at(new Date());
 				accountRepository.save(acc);
 		}
 		
