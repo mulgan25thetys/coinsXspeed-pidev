@@ -98,7 +98,7 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 		int score = 0;
 		int totalPoints = 0;
 		
-		if(user != null && user.isOnly() && verifForm) { //rassurer que le user existe et que le questionnaire n'est pas vide
+		if(user != null && user.getAccount() != null && verifForm) { //rassurer que le user existe et que le questionnaire n'est pas vide
 			List<ScoreQuestion> questions = forms.getQuestions(); //recuperer les questions envoyés par user
 			List<ScoreQuestion> baseQuestions = scoreQuestionRepository.getAllQuestionOfThisForm(forms.getId_scoreForm());//recuperer les question de la base de donnée
 			
@@ -106,18 +106,21 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 			if(totalPoints !=0) {
 					for(int i=0;i<questions.size();i++) { //parcourir les questions répondus par l'utilisateur
 					
-						if(questions.get(i).equals(baseQuestions.get(i))) {//comparer les réponses des questions
-							if(questions.get(i).getAnswer().equals(baseQuestions.get(i).getAnswer())) {
+						if(questions.get(i).equals(baseQuestions.get(i))) {
+							if(questions.get(i).getAnswer().equals(baseQuestions.get(i).getAnswer())) {//comparer les réponses des questions
 								score += baseQuestions.get(i).getPoints(); //affecter le score
+							}else {
+								result = "Veuillez vérifier les réponses!";
 							}
 						}else { result = "Veuillez bien répondre aux questions! ou ces questions sont inexistantes!"; }
 				}
 			}else { result = "Ce formulaire est vide!"; }
-		}else { result = "Ce formulaire est inexistant! ou vous n'etes pas connecté(e)!"; }
+		}else { result = "Ce formulaire est inexistant! ou bien vous devez avoir un compte pour pousuivre cette opération!"; }
 		
 		if(score !=0) {
 			result = "Vous avez obtenu : "+score+"/"+totalPoints;
 		    user.setScoreform(forms);//affecter le formulaire à user
+		    scoreFormRepository.updateForm(forms.getId_scoreForm(), new Date());//mettre à jour le formulaire
 			accountRepository.assynScoreToAccount(user.getAccount().getId_account(), score);//affecter le score au compte de user
 		}
 		return result; //retourner le score

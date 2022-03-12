@@ -1,5 +1,7 @@
 package horizure.micro.finance.repositories;
 
+import java.util.Date;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,7 +14,7 @@ import horizure.micro.finance.entities.ScoreForm;
 public interface ScoreFormRepository extends CrudRepository<ScoreForm, Long>{
 
 	@Modifying
-	@Query(value = "UPDATE User u set u.scoreform_id_score_from  =:idform WHERE u.id_user =:iduser",nativeQuery = true)
-	int assynFormToUser(@Param("iduser") Long iduser,@Param("idform") Long idform);
+	@Query(value = "UPDATE score_form f set f.last_updated_at  =:date WHERE f.id_score_from =:idform",nativeQuery = true)
+	int updateForm(@Param("idform") Long idform,@Param("date") Date date);
 	
 }
