@@ -7,11 +7,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -34,9 +36,19 @@ public class FinancialService {
 	@Temporal(TemporalType.DATE)
 	private Date created_at ;
 	
-	@ManyToMany(cascade =CascadeType.ALL)
+	@ManyToMany
     private List<Account> accounts;
 	
+	@OneToMany(mappedBy = "financialService",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List<Claim> claims;
+	
+	
+	public List<Claim> getClaims() {
+		return claims;
+	}
+	public void setClaims(List<Claim> claims) {
+		this.claims = claims;
+	}
 	public CategoryFS getCategory() {
 		return category;
 	}
