@@ -13,6 +13,7 @@ import horizure.micro.finance.entities.ScoreQuestion;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.AccountRepository;
 import horizure.micro.finance.repositories.ScoreFormRepository;
+import horizure.micro.finance.repositories.ScorePropositionRepository;
 import horizure.micro.finance.repositories.ScoreQuestionRepository;
 import horizure.micro.finance.repositories.UserRepository;
 
@@ -30,6 +31,9 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 	
 	@Autowired
 	ScoreQuestionRepository scoreQuestionRepository;
+	
+	@Autowired
+	ScorePropositionRepository scorePropositionRepository;
 	
 	@Override
 	public List<ScoreForm> retrieveForms() {
@@ -124,6 +128,36 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 			accountRepository.assynScoreToAccount(user.getAccount().getId_account(), score);//affecter le score au compte de user
 		}
 		return result; //retourner le score
+	}
+
+	@Transactional
+	public int deleteForm(Long idForm) {
+		// TODO Auto-generated method stub
+		int result=0;
+		ScoreForm form = scoreFormRepository.findById(idForm).orElse(null);
+		if(form != null) {
+			for(User user :form.getUsers()) { //retirer le formulaire des users
+				user.setScoreform(null); 
+				user.getAccount().setScore(null);
+			} 
+			scoreFormRepository.delete(form);
+			result = 1;
+		}else {
+			result = -1;
+		}
+		return result;
+	}
+
+	@Override
+	public List<ScoreForm> sortFormbyMostScoreAccount() {
+		// TODO Auto-generated method stub
+		return (List<ScoreForm>)scoreFormRepository.sortFormByUpdated();
+	}
+
+	@Override
+	public List<ScoreForm> searchAnyForm(String searchValue) {
+		// TODO Auto-generated method stub
+		return (List<ScoreForm>)scoreFormRepository.searchForm(searchValue);
 	}
 
 }

@@ -16,4 +16,10 @@ public interface IScoreFormService {
 	
 	String completeScoreForm(Long idUser,ScoreForm forms); //repondre au questionnement
 	
+	int deleteForm(Long idForm);
+	
+	List<ScoreForm> sortFormbyMostScoreAccount(); //trier les formulaire selon les plus grands score obtenus par les users
+	
+	List<ScoreForm> searchAnyForm(String searchValue); //rechercher un formulaire pour n'importe quelle valueur du champs
+	
 }

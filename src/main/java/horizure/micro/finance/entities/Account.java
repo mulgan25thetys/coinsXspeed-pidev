@@ -20,9 +20,20 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="Account")
+@DynamicUpdate
 public class Account implements Serializable{
 
 	/**
@@ -53,6 +64,7 @@ public class Account implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date created_at;
     
+    @JsonIgnore
     @OneToOne
     private User user;
     
@@ -132,6 +144,15 @@ public class Account implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public Account(Long id_account, AccountType type, Long account_number) {
+		super();
+		this.id_account = id_account;
+		this.type = type;
+		this.account_number = account_number;
+	}
+	public Account() {
+		super();
 	}
     
     

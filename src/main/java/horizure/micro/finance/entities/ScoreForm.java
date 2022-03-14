@@ -38,7 +38,7 @@ public class ScoreForm implements Serializable{
 	@OneToMany(mappedBy = "questionForm",cascade = CascadeType.ALL)
 	private List<ScoreQuestion> questions;
 	
-	@OneToMany(mappedBy = "scoreform",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "scoreform",cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
 	private List<User> users;
 
 	public Long getId_scoreForm() {
