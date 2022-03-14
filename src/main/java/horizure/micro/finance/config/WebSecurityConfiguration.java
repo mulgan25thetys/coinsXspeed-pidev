@@ -17,11 +17,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
        http.csrf().disable().authorizeRequests()
         .antMatchers("/").permitAll()
         .antMatchers(HttpMethod.POST,"/account/add-account/*").permitAll()
+        .antMatchers(HttpMethod.PUT,"/account/edit-account/*").permitAll()
         .antMatchers(HttpMethod.GET,"/account/list-accounts/*").permitAll()
+        .antMatchers(HttpMethod.GET,"/account/sort-accounts/*").permitAll()
+        .antMatchers(HttpMethod.GET,"/account/search-accounts/*").permitAll()
         .antMatchers(HttpMethod.GET,"/account/get-account/*").permitAll()
+        .antMatchers(HttpMethod.GET,"/account/get-user-account/*").permitAll()
+        .antMatchers(HttpMethod.PUT,"/account/change-account-status/*/*").permitAll()
         .antMatchers(HttpMethod.POST,"/scoreform/add-score-form").permitAll()
         .antMatchers(HttpMethod.PUT,"/scoreform/answer-form/*").permitAll()
         .antMatchers(HttpMethod.GET,"/scoreform/list-form").permitAll()
+        .antMatchers(HttpMethod.GET,"/scoreform/get-form/*").permitAll()
+        .antMatchers(HttpMethod.GET,"/scoreform/sort-form/").permitAll()
+        .antMatchers(HttpMethod.GET,"/scoreform/search-form/*").permitAll()
+        .antMatchers(HttpMethod.DELETE,"/scoreform/delete-form/*").permitAll()
+        .antMatchers(HttpMethod.PUT,"/scoreform/edit-form/").permitAll()
         .anyRequest().authenticated(); 
     }
 	

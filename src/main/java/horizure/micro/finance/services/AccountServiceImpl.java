@@ -2,6 +2,7 @@ package horizure.micro.finance.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,12 +31,15 @@ public class AccountServiceImpl implements IAccountService{
 	@Transactional
 	public Account addAccount(Account acc,Long iduser) {
 		User user = userRepository.findById(iduser).orElse(null); //récupérer l'utilisateur
-		List<Account> accounts = accountRepository.checkAccount(acc.getAccount_number(), iduser); //verifier si le compte existe ou pas
+		Random rand =new Random();
+		Long accNumber = Math.abs(rand.nextLong());
+		List<Account> accounts = accountRepository.checkAccount(accNumber, iduser); //verifier si le compte existe ou pas
 		
-		if(accounts.size() == 0 && user != null && user.isOnly()) {
+		if(accounts.size() == 0 && user != null ) {
 				acc.setUser(user);
-				
-				acc.setCapital(user.getSalary());
+		
+				acc.setAccount_number(accNumber);
+				acc.setCapital(0.0);
 				acc.setScore(0.0);
 				acc.setState(AccountStatus.OPENED);
 				acc.setCreated_at(new Date());
@@ -45,14 +49,27 @@ public class AccountServiceImpl implements IAccountService{
 				user.setUpdated_at(new Date());
 				accountRepository.save(acc);
 		}
-		
 		return acc;
 	}
 
-	@Override
-	public Account updateAccount(Account acc) {
-		return accountRepository.save(acc);
+	@Transactional
+	public Account updateAccount(Long id,Account newAccount) {
+		Account account = accountRepository.findById(id).orElse(null);
+		if(account != null) {
+			if(newAccount.getAccount_number() != null) {
+				account.setAccount_number(newAccount.getAccount_number());
+			}else if(newAccount.getType() != null) {
+				account.setType(newAccount.getType());
+			}else if(newAccount.getState() !=null) {
+				account.setState(newAccount.getState());
+			}else if(newAccount.getCapital() !=null) {
+				account.setCapital(newAccount.getCapital());
+			}
+			account.setUpdated_at(new Date());
+			accountRepository.save(account);
+		}	
 		
+		return account;
 	}
 
 	@Override
@@ -62,23 +79,27 @@ public class AccountServiceImpl implements IAccountService{
 	}
 
 	@Override
-	public int blockAccount(Long id) {
+	public int changeAccountStatus(Long id,String value) {
 		int result =0;
 		Account acc = accountRepository.findById(id).orElse(null);
 		if(acc != null) {
-			acc.setState(AccountStatus.LOCKED);
+			switch (value) {
+			case "closed":
+				acc.setState(AccountStatus.CLOSED);		
+				break;
+			case "locked":
+				acc.setState(AccountStatus.LOCKED);
+				break;
+			default:
+				acc.setState(AccountStatus.OPENED);
+				break;
+			}
 			accountRepository.save(acc);
 			result = 1;
 		}else {
 			result = -1;
 		}
 		return result;
-	}
-
-	@Override
-	public void assynScoreToAccount(User u) {
-		// TODO Auto-generated method stub
-		
 	}
 
 
@@ -88,5 +109,29 @@ public class AccountServiceImpl implements IAccountService{
 		return accountRepository.getAccountByUser(idUser);
 	}
 
-	
+
+	@Override
+	public List<Account> sortAccount(String order) {
+		// TODO Auto-generated method stub
+		List<Account> list;
+		switch (order) {
+		case "asc":
+			list=accountRepository.sortAccountAsc();
+			break;
+		case "desc":
+			list=accountRepository.sortAccountDesc();
+			break;
+		default:
+			list=accountRepository.sortAccountDesc();
+			break;
+		}
+		return list;
+	}
+
+
+	@Override
+	public List<Account> searchAccount(String value) {
+		// TODO Auto-generated method stub
+		return accountRepository.searchAccount(value);
+	}
 }

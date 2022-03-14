@@ -36,16 +36,16 @@ public class AccountController {
 		return iAccountService.addAccount(acc, iduser);
 	}
 	
-	@PutMapping("/edit-account")
+	@PutMapping("/edit-account/{id}")
 	@ResponseBody
-	public Account editAccount(@RequestBody Account a) {
-		return iAccountService.updateAccount(a);
+	public Account editAccount(@PathVariable("id") Long id,@RequestBody Account a) {
+		return iAccountService.updateAccount(id,a);
 	}
 	
-	@PutMapping("block-account/{idacc}")
+	@PutMapping("change-account-status/{idacc}/{value}")
 	@ResponseBody
-	public ResponseEntity<String> deleteAccount(@PathVariable("idacc") Long idacc) {
-		String message=iAccountService.blockAccount(idacc) == -1? "Account has not been locked!" :"Account has been locked!";
+	public ResponseEntity<String> deleteAccount(@PathVariable("idacc") Long idacc,@PathVariable("value") String value) {
+		String message=iAccountService.changeAccountStatus(idacc,value) == -1? "Account's status has not been changed!" :"Account's has been changed!";
 		return new ResponseEntity<String> (message,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
@@ -59,5 +59,17 @@ public class AccountController {
 	@ResponseBody
 	public Account getUserAccount(@PathVariable("iduser") Long iduser) {
 		return iAccountService.getAccountByUser(iduser);
+	}
+	
+	@GetMapping("/sort-accounts/{order}")
+	@ResponseBody
+	public List<Account> sortAccounts(@PathVariable("order") String order){
+		return iAccountService.sortAccount(order);
+	}
+	
+	@GetMapping("/search-accounts/{value}")
+	@ResponseBody
+	public List<Account> searchAccounts(@PathVariable("value") String value){
+		return iAccountService.searchAccount(value);
 	}
 }
