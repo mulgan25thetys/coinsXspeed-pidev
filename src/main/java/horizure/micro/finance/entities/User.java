@@ -156,7 +156,7 @@ public class User implements Serializable{
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<NoFinancialService> usernoservice;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REFRESH)
 	private Account account;
 	
 	@ManyToOne
