@@ -14,6 +14,7 @@ public class CommentServiceImpl implements ICommentService {
 	@Autowired
 	CommentRepository commentRepository;
 	
+	
 	@Override
 	public List<Comment> retrieveComments() {
 		 return (List<Comment>) commentRepository.findAll();

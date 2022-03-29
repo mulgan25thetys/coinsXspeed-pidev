@@ -1,121 +1,75 @@
 package horizure.micro.finance.entities;
 
 import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name="Communication")
 public class Communication implements Serializable{
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idCommunication")
-	private Long idCommunication;
-	@Enumerated(EnumType.STRING)
-	private TypeComun type;
-	private String email;
-	private String object;
-	private String message;
-	private String question;
-	private String answer;
-	@Temporal(TemporalType.DATE)
-	private Date date_creation;
-
-	@ManyToMany
-	private List<User> users;
-
-	public Long getIdCommunication() {
-		return idCommunication;
+	public Communication(Set<Message> messages) {
+		super();
+		this.messages = messages;
 	}
-
-	public void setIdCommunication(Long idCommunication) {
-		this.idCommunication = idCommunication;
+	
+	
+	public Communication(Set<User> users, Set<Message> messages) {
+		super();
+		this.users = users;
+		this.messages = messages;
 	}
-
-	public List<User> getUsers() {
+	public Communication() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable( name = "user_conversations", joinColumns = @JoinColumn(name = "communication_id_id"),
+	inverseJoinColumns = @JoinColumn(name = "user_id")) 
+	private Set<User> users;
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy=" communication")
+	private Set<Message> messages;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Set<User> getUsers() {
 		return users;
 	}
-
-	public void setUsers(List<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Set<Message> getMessages() {
+		return messages;
+	}
+	public void setMessages(Set<Message> messages) {
+		this.messages = messages;
 	}
 
-	public TypeComun getType() {
-		return type;
-	}
-
-	public void setType(TypeComun type) {
-		this.type = type;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getObject() {
-		return object;
-	}
-
-	public void setObject(String object) {
-		this.object = object;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-
-	public Date getDate_creation() {
-		return date_creation;
-	}
-
-	public void setDate_creation(Date date_creation) {
-		this.date_creation = date_creation;
-	}
-	
-	
 }
