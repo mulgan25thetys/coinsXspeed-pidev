@@ -138,7 +138,7 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 		if(form != null) {
 			for(User user :form.getUsers()) { //retirer le formulaire des users
 				user.setScoreform(null); 
-				user.getAccount().setScore(null);
+				user.getAccount().setScore(0);
 			} 
 			scoreFormRepository.delete(form);
 			result = 1;

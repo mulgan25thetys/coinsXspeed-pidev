@@ -1,5 +1,6 @@
 package horizure.micro.finance.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +13,7 @@ import horizure.micro.finance.entities.Account;
 import horizure.micro.finance.entities.AccountStatus;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.AccountRepository;
+import horizure.micro.finance.repositories.ScoreQuestionRepository;
 import horizure.micro.finance.repositories.UserRepository;
 
 @Service
@@ -21,6 +23,8 @@ public class AccountServiceImpl implements IAccountService{
 	AccountRepository accountRepository;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	ScoreQuestionRepository scoreQuestionRepository;
 	
 	@Override
 	public List<Account> retrieveAccounts() {
@@ -40,7 +44,7 @@ public class AccountServiceImpl implements IAccountService{
 		
 				acc.setAccount_number(accNumber);
 				acc.setCapital(0.0);
-				acc.setScore(0.0);
+				acc.setScore(0);
 				acc.setState(AccountStatus.OPENED);
 				acc.setCreated_at(new Date());
 				acc.setUpdated_at(new Date());
@@ -63,10 +67,11 @@ public class AccountServiceImpl implements IAccountService{
 			}else if(newAccount.getState() !=null) {
 				account.setState(newAccount.getState());
 			}else if(newAccount.getCapital() !=null) {
-				account.setCapital(newAccount.getCapital());
+					 account.setCapital(newAccount.getCapital());
 			}
 			account.setUpdated_at(new Date());
 			accountRepository.save(account);
+		
 		}	
 		
 		return account;
@@ -133,5 +138,31 @@ public class AccountServiceImpl implements IAccountService{
 	public List<Account> searchAccount(String value) {
 		// TODO Auto-generated method stub
 		return accountRepository.searchAccount(value);
+	}
+
+
+	@Override
+	public List<String> statisticAccount() {
+		List<String> statistic = new ArrayList<>();
+		
+		int allCapital = accountRepository.availableCapital();
+		int borrowedCapital = accountRepository.allBorrowedCapital();
+		float borrowedPercentage = ((float)borrowedCapital / (float)allCapital)*100;
+		String firstStatisticMessage = "about "+borrowedCapital+" (DT) borrowed capital it represents "+borrowedPercentage+" % of available capital";
+		
+		float averageScore = accountRepository.averageScore();
+		int allPoints = scoreQuestionRepository.allPoints();
+		float pointPercentage = (averageScore / (float)(allPoints/scoreQuestionRepository.nbrForm()))*100;
+		String secondtStatisticMessage = "Score Average: "+averageScore+" Total score of Forms answered "+allPoints+" about "+pointPercentage+" % of points obtained";
+		
+		int currentAccountNumber = accountRepository.getCurrentAccountNumber();
+		int closedCurrentAccountNumber = accountRepository.getCurrentAccountStateNumber("closed");
+		String thirdtStatisticMessage = "Current Account ("+currentAccountNumber+") : closed ("+closedCurrentAccountNumber+") opened ("+accountRepository.getCurrentAccountStateNumber("opened")+") locked ("+accountRepository.getCurrentAccountStateNumber("locked")+")";
+		
+		//ajout des chaines de message
+		statistic.add(firstStatisticMessage);
+		statistic.add(secondtStatisticMessage);
+		statistic.add(thirdtStatisticMessage);
+		return statistic;
 	}
 }

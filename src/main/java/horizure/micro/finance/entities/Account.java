@@ -24,13 +24,9 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name="Account")
 @DynamicUpdate
@@ -53,7 +49,7 @@ public class Account implements Serializable{
     
     private Double capital;
     
-    private Double score;
+    private int score;
     
     @Enumerated(EnumType.STRING)
     private AccountStatus state;
@@ -68,9 +64,10 @@ public class Account implements Serializable{
     @OneToOne
     private User user;
     
-    @ManyToMany(cascade =CascadeType.ALL,mappedBy = "accounts")
+    @ManyToMany(cascade =CascadeType.ALL)
     private List<FinancialService> financialServices;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "account")
     private List<Transaction> transactions;
     
@@ -100,10 +97,10 @@ public class Account implements Serializable{
 	public void setCapital(Double capital) {
 		this.capital = capital;
 	}
-	public Double getScore() {
+	public int getScore() {
 		return score;
 	}
-	public void setScore(Double score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 	public AccountStatus getState() {
