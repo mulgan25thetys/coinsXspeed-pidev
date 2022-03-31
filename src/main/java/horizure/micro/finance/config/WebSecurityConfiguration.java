@@ -32,6 +32,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         .antMatchers(HttpMethod.GET,"/scoreform/search-form/*").permitAll()
         .antMatchers(HttpMethod.DELETE,"/scoreform/delete-form/*").permitAll()
         .antMatchers(HttpMethod.PUT,"/scoreform/edit-form/").permitAll()
+        .antMatchers(HttpMethod.GET,"/user/retrieve-users").permitAll()
+        .antMatchers(HttpMethod.POST,"/user/add-user").permitAll()
+        .antMatchers(HttpMethod.PUT,"/user/modify-user").permitAll()
+        .antMatchers(HttpMethod.DELETE,"/user/remove-user/*").permitAll()
+
+
+        
+        
+        
         .anyRequest().authenticated(); 
     }
 	

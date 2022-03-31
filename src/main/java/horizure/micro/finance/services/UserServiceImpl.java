@@ -1,5 +1,8 @@
 package horizure.micro.finance.services;
+
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,17 +38,16 @@ import horizure.micro.finance.repositories.UserRepository;
 	@Override
 	public User retrieveUser(Long userId) {
 		return userRepository.findById(userId).orElse(null);
-	
 	}
-	
 
-  @Override
-   public void removeUser(Long userId) {
+
+@Override
+public void removeUser(Long userId) {
 	userRepository.deleteById(userId);
 	
 }
 
 
 
-}
 	
+}

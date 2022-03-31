@@ -1,6 +1,7 @@
 package horizure.micro.finance.services;
 import java.util.List;
 
+
 import horizure.micro.finance.entities.User;
 
 public interface IUserService {
@@ -15,8 +16,4 @@ public interface IUserService {
 
 		List<User> retrieveAllUsers();
 		
-		
-		
-
 }
-
