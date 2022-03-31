@@ -18,12 +18,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         .antMatchers("/").permitAll()
         .antMatchers(HttpMethod.POST,"/account/add-account/*").permitAll()
         .antMatchers(HttpMethod.PUT,"/account/edit-account/*").permitAll()
-        .antMatchers(HttpMethod.GET,"/account/list-accounts/*").permitAll()
+        .antMatchers(HttpMethod.GET,"/account/list-accounts").permitAll()
         .antMatchers(HttpMethod.GET,"/account/sort-accounts/*").permitAll()
         .antMatchers(HttpMethod.GET,"/account/search-accounts/*").permitAll()
         .antMatchers(HttpMethod.GET,"/account/get-account/*").permitAll()
         .antMatchers(HttpMethod.GET,"/account/get-user-account/*").permitAll()
         .antMatchers(HttpMethod.PUT,"/account/change-account-status/*/*").permitAll()
+        .antMatchers(HttpMethod.GET,"/account/get-statistic").permitAll()
         .antMatchers(HttpMethod.POST,"/scoreform/add-score-form").permitAll()
         .antMatchers(HttpMethod.PUT,"/scoreform/answer-form/*").permitAll()
         .antMatchers(HttpMethod.GET,"/scoreform/list-form").permitAll()
@@ -32,6 +33,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         .antMatchers(HttpMethod.GET,"/scoreform/search-form/*").permitAll()
         .antMatchers(HttpMethod.DELETE,"/scoreform/delete-form/*").permitAll()
         .antMatchers(HttpMethod.PUT,"/scoreform/edit-form/").permitAll()
+        .antMatchers(HttpMethod.GET,"/financial-service/list-financial-service").permitAll()
+        .antMatchers(HttpMethod.POST,"/financial-service/add-financial-service/*").permitAll()
+        .antMatchers(HttpMethod.POST,"/transaction/add-transaction").permitAll()
+        .antMatchers(HttpMethod.GET,"/transaction/list-transactions").permitAll()
+        .antMatchers(HttpMethod.GET,"/user/list-users").permitAll()
         .anyRequest().authenticated(); 
     }
 	

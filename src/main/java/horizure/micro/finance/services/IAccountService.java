@@ -21,4 +21,6 @@ public interface IAccountService {
 	List<Account> sortAccount(String order);
 	
 	List<Account> searchAccount(String value);
+	
+	List<String> statisticAccount(); 
 }
