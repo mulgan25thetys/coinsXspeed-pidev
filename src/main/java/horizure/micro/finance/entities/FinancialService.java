@@ -11,7 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -35,9 +34,6 @@ public class FinancialService {
 	private long createdBy_id ;
 	@Temporal(TemporalType.DATE)
 	private Date created_at ;
-	
-	@ManyToMany
-    private List<Account> accounts;
 	
 	@OneToMany(mappedBy = "financialService",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<Claim> claims;
@@ -112,12 +108,6 @@ public class FinancialService {
 	}
 	public void setId_ServiceFinancial(long id_ServiceFinancial) {
 		this.id_ServiceFinancial = id_ServiceFinancial;
-	}
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
 	}
 	public Payement getPayement() {
 		return payement;
