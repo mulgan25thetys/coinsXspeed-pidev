@@ -72,4 +72,10 @@ public class AccountController {
 	public List<Account> searchAccounts(@PathVariable("value") String value){
 		return iAccountService.searchAccount(value);
 	}
+	
+	@GetMapping("/get-statistic")
+	@ResponseBody
+	public List<String> getStatistic(){
+		return iAccountService.statisticAccount();
+	}
 }
