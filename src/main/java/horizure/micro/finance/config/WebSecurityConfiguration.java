@@ -38,6 +38,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         .antMatchers(HttpMethod.POST,"/transaction/add-transaction").permitAll()
         .antMatchers(HttpMethod.GET,"/transaction/list-transactions").permitAll()
         .antMatchers(HttpMethod.GET,"/user/list-users").permitAll()
+        .antMatchers(HttpMethod.GET,"/user/retrieve-users").permitAll()
+        .antMatchers(HttpMethod.POST,"/user/add-user").permitAll()
+        .antMatchers(HttpMethod.PUT,"/user/modify-user").permitAll()
+        .antMatchers(HttpMethod.DELETE,"/user/remove-user/*").permitAll()
         .anyRequest().authenticated(); 
     }
 	

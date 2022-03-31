@@ -1,87 +1,53 @@
 package horizure.micro.finance.services;
 
+
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import horizure.micro.finance.entities.User;
+import horizure.micro.finance.repositories.AccountRepository;
 import horizure.micro.finance.repositories.UserRepository;
 
-
-
 @Service
-public class UserServiceImpl implements IUserService {
+ public class UserServiceImpl implements IUserService {
 	
 	@Autowired
-	UserRepository userRepository;
-
-	@Override
-	public List<User> retrieveUsers() {
-		 return (List<User>) userRepository.findAll();
-		
-	}
-	@Override
-	public User addUser(User user) {
-	   userRepository.save(user);
-	   return user;
-		
-	}
-
+	 UserRepository userRepository;
+	@Autowired
+	AccountRepository accountRepository;
 	
- 
-
 	@Override
-	public User findByUserName(String userName) {
-		User user=userRepository.findByUserName(userName);
-		return user;
+	public User addUser(User u) {
+		userRepository.save(u);
+		   return u ;
 	}
 	
 	@Override
-	public Optional<User> findUserById(Long id) {
-		
-		return userRepository.findById(id);
+	public User updateUser(User u) {
+		userRepository.save(u);
+		  return u;
 	}
-	
+
 	@Override
-	public User saveUser(User newUser) {
-		User user = userRepository.save(newUser);
-		return user;
-	}
-	@Override
-	public User updateUser(Long id, User user) {
-		
-		Optional<User> retrievedUser=userRepository.findById(id);
-		if(retrievedUser==null)
-			try {
-				throw new Exception("User not found");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		userRepository.save(user);
-		return userRepository.findById(id).get();
-		
-		
+	public List<User> retrieveAllUsers() {
+		return (List<User>) userRepository.findAll();
+
 	}
 	@Override
-	public User deleteUser(Long userId) {
-		
-		Optional<User> retrievedUser=userRepository.findById(userId);
-		if(retrievedUser==null)
-			try {
-				throw new Exception("User not found");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		userRepository.deleteById(userId);
-		return retrievedUser.get();
-		
+	public User retrieveUser(Long userId) {
+		return userRepository.findById(userId).orElse(null);
 	}
-	@Override
-	public List<User>findAllUsers() {
-		
-		return userRepository.findAll();
+
+
+@Override
+public void removeUser(Long userId) {
+	userRepository.deleteById(userId);
 	
 }
+
+
+
+	
 }
