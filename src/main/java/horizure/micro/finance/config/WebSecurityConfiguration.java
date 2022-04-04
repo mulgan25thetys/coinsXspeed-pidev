@@ -50,6 +50,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         .antMatchers(HttpMethod.PUT,"/user/edit-user/*").permitAll()
         .antMatchers(HttpMethod.DELETE,"/user/delete-user/*").permitAll()
         .anyRequest().authenticated(); 
+        //.anyRequest().permitAll();
     }
 	
 }

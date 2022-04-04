@@ -47,7 +47,7 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 					user.getAccount().setUpdated_at(new Date());
 					user.getAccount().getF_services().add(fs);
 					
-					fs.setCreated_at(new Date());
+					fs.setDate_of_creation(new Date());
 					financialServiceRepository.save(fs);
 			}	
 		}
