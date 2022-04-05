@@ -8,11 +8,11 @@ public interface ICommentService {
 	
      List<Comment> retrieveComments ();     
 	
-	Comment addComment(Comment c);            
+	 Comment addComment(Comment c);            
 	
-	Comment updateComment(Comment c);         
+	 Comment updateComment(Comment c);         
 	
-	void removeComment(Long id);
+	  void removeComment(Long id);
 
 
 }
