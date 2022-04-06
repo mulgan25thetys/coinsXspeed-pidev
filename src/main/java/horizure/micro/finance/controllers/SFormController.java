@@ -75,4 +75,10 @@ public class SFormController {
 	public List<ScoreForm> searchForm(@PathVariable("value") String value){
 		return iscoreFormService.searchAnyForm(value);
 	}
+	
+	@GetMapping("/get-statistic")
+	@ResponseBody
+	public List<String> getStatisticForm(){
+		return iscoreFormService.getStatistics();
+	}
 }

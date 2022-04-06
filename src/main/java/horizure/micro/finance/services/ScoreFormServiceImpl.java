@@ -1,5 +1,6 @@
 package horizure.micro.finance.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -159,6 +160,33 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 	public List<ScoreForm> searchAnyForm(String searchValue) {
 		// TODO Auto-generated method stub
 		return (List<ScoreForm>)scoreFormRepository.searchForm(searchValue);
+	}
+
+	@Override
+	public List<String> getStatistics() {
+		// TODO Auto-generated method stub
+		List<String> messageStatistic = new ArrayList<>();
+		String message="";
+		List<ScoreForm> allForms = (List<ScoreForm>)scoreFormRepository.findAll();
+		
+		int nbrUsers =0;
+		int nbrQuestions=0;
+		
+		for (ScoreForm scoreForm : allForms) {
+			//calculer le nombre des users associés
+			nbrUsers = scoreForm.getUsers().size();
+			//calculer le nombre des questions
+			nbrQuestions = scoreForm.getQuestions().size();
+			int nbrpropositions=0;
+			for (ScoreQuestion question : scoreForm.getQuestions()) { //parcourir les questions
+				nbrpropositions +=question.getPropositions().size();
+			}
+			message = "Form "+scoreForm.getTitle()+" Question(s) ("+nbrQuestions+") "
+					+ "Propositions ("+nbrpropositions+")  "
+					+ "Users ("+nbrUsers+") in that form";
+			messageStatistic.add(message);
+		}
+		return messageStatistic;
 	}
 
 }

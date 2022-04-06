@@ -1,6 +1,7 @@
 package horizure.micro.finance.config;
 
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -19,6 +20,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	    return new BCryptPasswordEncoder();
 	}
 	
+	@Bean
+	public ModelMapper modelMapper() {
+	    return new ModelMapper();
+	}
+	
 	@Override
     public void configure(HttpSecurity http) throws Exception {
        http.csrf().disable().authorizeRequests()
@@ -33,6 +39,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         .antMatchers(HttpMethod.PUT,"/account/change-account-status/*/*").permitAll()
         .antMatchers(HttpMethod.GET,"/account/get-statistic-by-date/*/*").permitAll()
         .antMatchers(HttpMethod.GET,"/account/get-statistic").permitAll()
+        .antMatchers(HttpMethod.GET,"/account/export/excel").permitAll()
         .antMatchers(HttpMethod.POST,"/scoreform/add-score-form").permitAll()
         .antMatchers(HttpMethod.PUT,"/scoreform/answer-form/*").permitAll()
         .antMatchers(HttpMethod.GET,"/scoreform/list-form").permitAll()
@@ -41,6 +48,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         .antMatchers(HttpMethod.GET,"/scoreform/search-form/*").permitAll()
         .antMatchers(HttpMethod.DELETE,"/scoreform/delete-form/*").permitAll()
         .antMatchers(HttpMethod.PUT,"/scoreform/edit-form/").permitAll()
+        .antMatchers(HttpMethod.GET,"/scoreform/get-statistic").permitAll()
         .antMatchers(HttpMethod.GET,"/financial-service/list-financial-service").permitAll()
         .antMatchers(HttpMethod.POST,"/financial-service/add-financial-service/*").permitAll()
         .antMatchers(HttpMethod.POST,"/transaction/add-transaction").permitAll()
