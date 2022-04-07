@@ -6,13 +6,17 @@ import horizure.micro.finance.entities.Comment;
 
 public interface ICommentService {
 	
-     List<Comment> retrieveComments ();     
+     List<Comment> retrieveComments ();   
+     
+	   Comment getComment(Long id);
+     
+      Comment addComment(Comment c);            
 	
-	Comment addComment(Comment c);            
+	 Comment updateComment(Comment c);         
 	
-	Comment updateComment(Comment c);         
-	
-	void removeComment(Long id);
+	  void removeComment(Long id);
+	  
+	  int  getNbCommentsByReplyID(Long id );
 
 
 }

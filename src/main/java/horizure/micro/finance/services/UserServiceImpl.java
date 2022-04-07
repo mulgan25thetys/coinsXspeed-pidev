@@ -1,20 +1,20 @@
 package horizure.micro.finance.services;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
-import javax.transaction.Transactional;
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import horizure.micro.finance.entities.Egroup;
+
 import horizure.micro.finance.entities.StLevel;
 import horizure.micro.finance.entities.Status;
+
 import horizure.micro.finance.entities.User;
-import horizure.micro.finance.repositories.AccountRepository;
 import horizure.micro.finance.repositories.UserRepository;
 
 
@@ -24,7 +24,10 @@ public class UserServiceImpl implements IUserService {
 	
 	@Autowired
 	UserRepository userRepository;
-	
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 	@Autowired
 	AccountRepository accountRepository;
 	
@@ -35,31 +38,53 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+
+    @PostConstruct
+    public void initialize(){
+        if(userRepository.findOneByuserName("admin") == null){
+            save(new User(1L,"admin", "admin", "ADMIN"));
+        }
+        if(userRepository.findOneByuserName("agent") == null){
+            save(new User(2L,"agent", "agent", "AGENT"));
+        }
+        if(userRepository.findOneByuserName("client") == null){
+            save(new User(3L,"client", "client", "CLIENT"));
+        }
+    }
+    @Transactional
+    private User save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+    
 	@Override
 	public List<User> retrieveUsers() {
 		 return (List<User>) userRepository.findAll();
 		
 	}
 	@Override
-	public User addUser(User user) {
-	   userRepository.save(user);
-	   return user;
+	public User addUser(User u) {
+	   userRepository.save(u);
+	   return u;
 		
 	}
 
 	@Override
-	public User findByUserName(String userName) {
-		User user=userRepository.findByUserName(userName);
-		return user;
+	public User updateUser(User u) {
+	  userRepository.save(u);
+	  return u;
 	}
-	
+ 
 	@Override
-	public Optional<User> findUserById(Long id) {
+	public void removeUser(Long userId) {
+		userRepository.deleteById(userId);
 		
-		return userRepository.findById(id);
 	}
-	
 	@Override
+
+	public User getUser(Long userId) {
+		return userRepository.getById(userId);
+
 	public User saveUser(User newUser) {
 		List<User> users = userRepository.checkIfUserExist(newUser.getUserName(), newUser.getEmail());
 		User user =null;
@@ -77,22 +102,13 @@ public class UserServiceImpl implements IUserService {
 			user = userRepository.save(newUser);
 		}	
 		return user;
+
 	}
 	@Override
-	public User updateUser(Long id, User user) {
-		
-		Optional<User> retrievedUser=userRepository.findById(id);
-		if(retrievedUser==null)
-			try {
-				throw new Exception("User not found");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		userRepository.save(user);
-		return userRepository.findById(id).get();
-		
-		
+	public float getSumAmountByEGroup(Egroup egroup) {
+		return userRepository.getSumAmountByEGroup(egroup);
 	}
+
 	@Transactional
 	public User deleteUser(Long userId) {
 		
@@ -123,4 +139,5 @@ public class UserServiceImpl implements IUserService {
 		}
 		return useracc;
 	}
+
 }

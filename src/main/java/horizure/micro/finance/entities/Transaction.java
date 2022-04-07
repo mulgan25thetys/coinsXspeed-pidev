@@ -37,9 +37,11 @@ public class Transaction implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date created_at;
 	
+	
 	@JsonIgnore
 	@ManyToOne
 	private Account account;
+
 
 	public Long getIdTransaction() {
 		return idTransaction;
