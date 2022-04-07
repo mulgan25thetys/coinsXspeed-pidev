@@ -189,9 +189,6 @@ public class User implements Serializable{
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<NoFinancialService> usernoservice;
 	
-	@OneToOne(cascade = CascadeType.REFRESH)
-	private Account account;
-	
 	@ManyToOne
 	private ScoreForm scoreform;
 	
@@ -201,7 +198,8 @@ public class User implements Serializable{
 	@ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Notification> notifications;
 
-
+	@OneToOne(cascade = CascadeType.REFRESH)
+	private Account account;
 
 
 	public String getEmail() {

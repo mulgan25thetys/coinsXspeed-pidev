@@ -37,7 +37,7 @@ public class AccountServiceImpl implements IAccountService{
 	private Random rand =new Random();
 	@Override
 	public List<Account> retrieveAccounts() {
-		return (List<Account>)accountRepository.findAll();
+		return (List<Account>)accountRepository.findAllDESC();
 	}
 	
 
@@ -63,6 +63,7 @@ public class AccountServiceImpl implements IAccountService{
 				user.setUpdated_at(new Date());
 				accountRepository.save(acc);
 		}
+		log.trace("Creation de compte : Numero ="+acc.getAccount_number());
 		return acc.getId_account() == null ? null:acc;
 	}
 
@@ -179,10 +180,12 @@ public class AccountServiceImpl implements IAccountService{
 		statistic.add(firstStatisticMessage);
 		statistic.add(secondtStatisticMessage);
 		statistic.add(thirdtStatisticMessage);
+		log.info("Account statistic");
 		return statistic;
 	}
 	
-	@Scheduled(fixedDelay = 5000)
+	//@Scheduled(fixedDelay = 5000)
+	@Scheduled(cron = "0 0 0 * * *")
 	@Transactional
 	public void classifyAccounts() {
 		log.debug("Starting for mining in Account entity!");

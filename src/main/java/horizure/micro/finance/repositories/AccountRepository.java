@@ -16,6 +16,9 @@ import horizure.micro.finance.entities.Account;
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Long>{
 	
+	@Query(value= ("SELECT *FROM Account order by created_at desc"),nativeQuery = true)
+	List<Account> findAllDESC();
+	
 	@Query(value= ("SELECT *FROM Account WHERE account_number =:number or user_user_id =:iduser"),nativeQuery = true)
 	List<Account> checkAccount(@Param("number") Long number,@Param("iduser") Long iduser);
 	
