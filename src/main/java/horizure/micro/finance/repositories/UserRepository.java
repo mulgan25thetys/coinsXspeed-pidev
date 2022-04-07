@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Query(value = "SELECT scoreform_id_score_from FROM user",nativeQuery = true)
     List<Long> getIdForms();
     
-    @Query(value = "SELECT *from user WHERE user_name = :username AND email =:email",nativeQuery = true)
+    @Query(value = "SELECT *from user WHERE user_name = :username AND email =:email OR email=:email",nativeQuery = true)
     List<User> checkIfUserExist(@Param("username") String username,@Param("email") String email);
     
 }

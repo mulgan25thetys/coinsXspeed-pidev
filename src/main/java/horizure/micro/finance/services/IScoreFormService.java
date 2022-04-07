@@ -22,4 +22,5 @@ public interface IScoreFormService {
 	
 	List<ScoreForm> searchAnyForm(String searchValue); //rechercher un formulaire pour n'importe quelle valueur du champs
 	
+	List<String> getStatistics();
 }

@@ -28,6 +28,10 @@ public class UserServiceImpl implements IUserService {
 	AccountRepository accountRepository;
 	
 	@Autowired
+	AccountServiceImpl accountServiceImpl;
+	
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Override
@@ -70,8 +74,7 @@ public class UserServiceImpl implements IUserService {
 			newUser.setCreated_at(new Date());
 			newUser.setUpdated_at(new Date());
 			user = userRepository.save(newUser);
-		}
-		
+		}	
 		return user;
 	}
 	@Override
@@ -110,4 +113,13 @@ public class UserServiceImpl implements IUserService {
 		return userRepository.findAll();
 	
 }
+	@Transactional
+	public User addUserWithAccount(User user) {
+		// TODO Auto-generated method stub
+		User useracc = this.addUser(user);
+		if(useracc.getUserId() != null) {
+			accountServiceImpl.addAccount(user.getAccount(), user.getUserId());
+		}
+		return useracc;
+	}
 }

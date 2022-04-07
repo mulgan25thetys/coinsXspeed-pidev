@@ -12,7 +12,9 @@ public interface IUserService {
 	
 	public List<User> findAllUsers() ;
 	
-	User addUser(User user);            
+	User addUser(User user);     
+	
+	User addUserWithAccount(User user);   
 	
 	public User updateUser(Long id,User user) ;
 

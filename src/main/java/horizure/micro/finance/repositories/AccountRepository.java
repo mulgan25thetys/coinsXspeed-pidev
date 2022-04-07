@@ -3,6 +3,7 @@ package horizure.micro.finance.repositories;
 import java.util.Date;
 import java.util.List;
 
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -31,7 +32,7 @@ public interface AccountRepository extends CrudRepository<Account, Long>{
 	@Query(value ="SELECT * FROM account ORDER BY score,account_number,capital,created_at,state,type,updated_at DESC",nativeQuery = true)
 	List<Account> sortAccountDesc();
 	
-	@Query(value = ("SELECT * FROM account a INNER JOIN user u ON a.user_user_id = u.user_id WHERE account_number LIKE %:value% OR score LIKE %:value% OR type LIKE %:value% OR capital LIKE %:value% OR state LIKE %:value% OR a.created_at LIKE %:value% OR a.updated_at LIKE %:value% GROUP BY state,type"),nativeQuery = true)
+	@Query(value = ("SELECT * FROM account a INNER JOIN user u ON a.user_user_id = u.user_id WHERE u.user_name LIKE %:value% OR account_number LIKE %:value% OR score LIKE %:value% OR type LIKE %:value% OR capital LIKE %:value% OR state LIKE %:value% OR a.created_at LIKE %:value% OR a.updated_at LIKE %:value% GROUP BY state,type"),nativeQuery = true)
 	List<Account> searchAccount(@Param("value") String value);
 	
 	@Query(value = "SELECT id_account,capital FROM account INNER JOIN user ON account.user_user_id = user.user_id WHERE user.role = 'ADMIN' AND account.capital >=:amont ORDER BY account.capital DESC LIMIT 1",nativeQuery = true)
@@ -55,5 +56,11 @@ public interface AccountRepository extends CrudRepository<Account, Long>{
 	@Query(value = "SELECT COUNT(*) nbr FROM account WHERE type = 'current' AND state=:value AND created_at BETWEEN :dated AND :datef",nativeQuery = true)
 	int getCurrentAccountStateNumber(@Param("value") String value,@Param("dated") Date dated,@Param("datef") Date datef);
 	
+	@Query(value = "SELECT * FROM account a "
+			+ "INNER JOIN user u ON a.user_user_id = u.user_id "
+			+ "WHERE u.status != 'bannit' AND u.role = 'client' ",nativeQuery = true)
+	List<Account> getAccountForMining();
+	
+	 
 }
 
