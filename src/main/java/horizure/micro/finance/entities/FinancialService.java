@@ -27,7 +27,6 @@ public class FinancialService implements Serializable {
 	private long id_ServiceFinancial ;
 	@Enumerated(EnumType.STRING)
 	private CategoryFS category ;
-	private long transmitter_id;
 	private double amount ;
 	private float interest_pr ;
 	private int duration ;
@@ -45,7 +44,7 @@ public class FinancialService implements Serializable {
 		super();
 	}
 
-	@OneToMany(mappedBy = "financialService"/*cascade = CascadeType.REFRESH*/)
+	@OneToMany(mappedBy = "financialService",cascade = CascadeType.REFRESH)
 	private List<Payement> payement ;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -56,20 +55,20 @@ public class FinancialService implements Serializable {
 
 
 
+	public long getId_ServiceFinancial() {
+		return id_ServiceFinancial;
+	}
+
+	public void setId_ServiceFinancial(long id_ServiceFinancial) {
+		this.id_ServiceFinancial = id_ServiceFinancial;
+	}
+
 	public CategoryFS getCategory() {
 		return category;
 	}
 
 	public void setCategory(CategoryFS category) {
 		this.category = category;
-	}
-
-	public long getTransmitter_id() {
-		return transmitter_id;
-	}
-
-	public void setTransmitter_id(long transmitter_id) {
-		this.transmitter_id = transmitter_id;
 	}
 
 	public double getAmount() {
@@ -163,6 +162,10 @@ public class FinancialService implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+
+	
 
 
 }

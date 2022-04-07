@@ -7,12 +7,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import horizure.micro.finance.entities.FinancialService;
 import horizure.micro.finance.entities.MethodRB;
 import horizure.micro.finance.entities.Payement;
 import horizure.micro.finance.repositories.FinancialServiceRepository;
 import horizure.micro.finance.repositories.PayementRepository;
+import horizure.micro.finance.repositories.UserRepository;
 
 @Service
 public class PayementServiceImpl implements IPayementService {
@@ -26,7 +28,10 @@ public class PayementServiceImpl implements IPayementService {
 	@Autowired
 	FinancialServiceRepository FSRepository ;
 	
-	 
+	@Autowired
+	UserRepository URepository ;
+	
+	@Transactional
 	public double getMensuality(FinancialService FS) {
 		double E = FS.getAmount();
 		float I = FS.getInterest_pr();
@@ -37,16 +42,17 @@ public class PayementServiceImpl implements IPayementService {
 		return m ;
 	}
 	
-	@Override
+	@Transactional
 	public List<Payement> getPayement_mensuality(Long id_ServiceFinancial){
 		FinancialService FS = FSRepository.findById(id_ServiceFinancial).orElse(null);
 		ArrayList<Payement> paymentList = new ArrayList<>();
 		Payement payement = new Payement();
-		Date creation_date = new Date() ;
 		//Date creation_date = new Date() ;
-		//creation_date = FS.getDate_of_creation() ;
-		//LocalDate DateLimit = creation_date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate() ;
+		Date creation_date = FS.getDate_of_creation() ;
+
+		//LocalDate DateLimit = creation_date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate() ;		
 		LocalDate DateLimit = LocalDate.now();
+
 		double CRD = 0;
 		double A = 0;
 		double A_int = 0;
@@ -80,6 +86,7 @@ public class PayementServiceImpl implements IPayementService {
 			 //payement.setFinancialService(FS) ;
 			 payement.setDateLimit(DateLimit);
 			 payement.setcreation_date(creation_date) ;
+			 payement.setSevice_id(id_ServiceFinancial);
 			 paymentList.add(payement);
 		 }
 		 
@@ -87,14 +94,15 @@ public class PayementServiceImpl implements IPayementService {
 	}
 	
 
-	@Override
+	@Transactional
 	public List<Payement> getPayement_Block(Long id_ServiceFinancial) {
 		
 		FinancialService FS = FSRepository.findById(id_ServiceFinancial).orElse(null);
-		System.out.println("FS" + FS.getAmount());
+		//User u = URepository.findById(idUser).orElse(null);
 		ArrayList<Payement> paymentList = new ArrayList<>();
 		Payement payement = new Payement();
-		Date creation_date = new Date() ;
+		//long client_id = u.getUserId();
+		Date creation_date = FS.getDate_of_creation() ;
 		LocalDate DateLimit = LocalDate.now();
 		
 		double CRD = 0;
@@ -128,13 +136,15 @@ public class PayementServiceImpl implements IPayementService {
 			 //payement.setFinancialService(FS) ;
 			 payement.setDateLimit(DateLimit);
 			 payement.setcreation_date(creation_date) ;
+			 payement.setSevice_id(id_ServiceFinancial);
+			 //payement.setClient_id();
 			 paymentList.add(payement);
 		 }
 		 
 		return paymentList;
 	}
 
-	@Override
+	@Transactional
 	public List<Payement> addPayement(long id_ServiceFinancial) {
 		FinancialService FS = FSRepository.findById(id_ServiceFinancial).orElse(null);
 		List<Payement> paymentList = new ArrayList<>();
@@ -151,6 +161,21 @@ public class PayementServiceImpl implements IPayementService {
 		PRepository.saveAll((List<Payement>) paymentList);
 		
 		return paymentList;
+	}
+
+	@Override
+	public List<Payement> retrieveAllPayement() {
+		return (List<Payement>) PRepository.findAll();
+	}
+
+	@Override
+	public Payement retrievePayement(Long id) {
+		return PRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public Payement updatePayement(Payement P) {
+		return PRepository.save(P);
 	}
 
 

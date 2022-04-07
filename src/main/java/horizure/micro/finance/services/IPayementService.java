@@ -8,6 +8,11 @@ import horizure.micro.finance.entities.Payement;
 public interface IPayementService  {
 	
 	
+    List<Payement> retrieveAllPayement();
+	
+    Payement retrievePayement (Long id);
+	
+    Payement updatePayement (Payement P);
 	
 	public double getMensuality(FinancialService FS);
 	
