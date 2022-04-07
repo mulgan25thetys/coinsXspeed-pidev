@@ -27,8 +27,6 @@ public class UserController {
 	
 	@Autowired
 	IUserService iUserService;
-	
-
 	@GetMapping("/list-users")
 	@ResponseBody
 	public List<User> getAllUsers(){

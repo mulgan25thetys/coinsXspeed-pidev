@@ -41,11 +41,11 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		User user = userRepository.findById(idUser).orElse(null);
 		
 		if(user != null) {
-			if(user.getAccount().getIsApproved() && (int)user.getAccount().getF_services().size() <=2) {
+			if(user.getAccount().getIsApproved() && (int)user.getAccount().getFinancialServices().size() <=2) {
 				
 					user.getAccount().setCapital(user.getAccount().getCapital()+fs.getAmount());
 					user.getAccount().setUpdated_at(new Date());
-					user.getAccount().getF_services().add(fs);
+					user.getAccount().getFinancialServices().add(fs);
 					
 					fs.setCreated_at(new Date());
 					financialServiceRepository.save(fs);

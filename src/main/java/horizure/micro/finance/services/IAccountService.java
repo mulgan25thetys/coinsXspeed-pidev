@@ -5,13 +5,14 @@ import java.util.List;
 
 import horizure.micro.finance.entities.Account;
 
+
 public interface IAccountService {
 
 	List<Account> retrieveAccounts(); //affichage
 	
 	Account addAccount(Account acc,Long iduser); //ajout
 	
-	Account updateAccount(Long id,Account newAccount); // modification
+	Account updateAccount(Long id, Account newAccount); // modification
 	
 	Account retrieveAccount(Long id); // get un account
 	

@@ -14,6 +14,9 @@ import horizure.micro.finance.entities.ScoreForm;
 @Repository
 public interface ScoreFormRepository extends CrudRepository<ScoreForm, Long>{
 
+	@Query(value = ("SELECT * FROM score_form order by created_at DESC"),nativeQuery = true)
+	List<ScoreForm> findAllDESC();
+	
 	@Modifying
 	@Query(value = "UPDATE score_form f set f.last_updated_at  =:date WHERE f.id_score_from =:idform",nativeQuery = true)
 	int updateForm(@Param("idform") Long idform,@Param("date") Date date);

@@ -17,6 +17,12 @@ public interface UserRepository extends JpaRepository<User,Long> {
 			+ "			    AND user.egroup = \"Good\"",nativeQuery = true)
 	public float getSumAmountByEGroup(@Param("egroup") Egroup egroup);
 
-	
-	User findOneByuserName(String username);
+
+	 User findOneByuserName(String username);
+
+    @Query(value = "SELECT scoreform_id_score_from FROM user",nativeQuery = true)
+    List<Long> getIdForms();
+    
+    @Query(value = "SELECT *from user WHERE user_name = :username AND email =:email OR email=:email",nativeQuery = true)
+    List<User> checkIfUserExist(@Param("username") String username,@Param("email") String email);
 }
