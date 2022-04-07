@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import horizure.micro.finance.entities.Egroup;
+import horizure.micro.finance.entities.StLevel;
 import horizure.micro.finance.entities.Status;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.AccountRepository;
@@ -46,9 +47,6 @@ public class UserServiceImpl implements IUserService {
 		
 	}
 
-	
- 
-
 	@Override
 	public User findByUserName(String userName) {
 		User user=userRepository.findByUserName(userName);
@@ -71,6 +69,9 @@ public class UserServiceImpl implements IUserService {
 			}
 			newUser.setStatus(Status.PASCONFIRME);
 			newUser.setEgroup(Egroup.GOOD);
+			if(newUser.getLevel() == null) {
+				newUser.setLevel(StLevel.none);
+			}
 			newUser.setCreated_at(new Date());
 			newUser.setUpdated_at(new Date());
 			user = userRepository.save(newUser);

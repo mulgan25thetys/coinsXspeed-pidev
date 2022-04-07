@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -75,16 +75,16 @@ public class Account implements Serializable{
     @Temporal(TemporalType.DATE)
     Date created_at;
     
-    @JsonIgnore
-    @OneToOne
-    User user;
-    
     @ManyToMany(cascade =CascadeType.ALL)
     List<FinancialService> financialServices;
     
     //@JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "account")
     List<Transaction> transactions;
+    
+    //@JsonIgnore
+    @OneToOne
+    User user;
 
 
     

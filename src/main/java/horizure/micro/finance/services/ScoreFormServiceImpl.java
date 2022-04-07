@@ -39,7 +39,7 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 	@Override
 	public List<ScoreForm> retrieveForms() {
 		// TODO Auto-generated method stub
-		return (List<ScoreForm>)scoreFormRepository.findAll();
+		return (List<ScoreForm>)scoreFormRepository.findAllDESC();
 	}
 
 	@Transactional
