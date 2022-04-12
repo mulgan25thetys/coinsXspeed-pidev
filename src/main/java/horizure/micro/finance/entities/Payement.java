@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Payement implements Serializable {
 	/**
@@ -57,6 +59,15 @@ public class Payement implements Serializable {
 		this.financialService = financialService;
 	}
 
+
+	public long getId_Payement() {
+		return id_Payement;
+	}
+
+
+	public void setId_Payement(long id_Payement) {
+		this.id_Payement = id_Payement;
+	}
 
 	public long getClient_id() {
 		return Client_id;
