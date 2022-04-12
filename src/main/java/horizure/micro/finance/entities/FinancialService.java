@@ -38,9 +38,7 @@ public class FinancialService implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date date_of_creation ;
 	private Boolean isAccepted ;
-	
-	
-	
+
 	public FinancialService() {
 		super();
 	}
@@ -104,8 +102,8 @@ public class FinancialService implements Serializable {
 
 	public double getCeiling() {
 		return ceiling;
-	}
-
+  }
+  
 	public void setCeiling(double ceiling) {
 		this.ceiling = ceiling;
 	}
@@ -149,7 +147,6 @@ public class FinancialService implements Serializable {
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

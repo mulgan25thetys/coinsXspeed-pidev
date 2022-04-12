@@ -13,13 +13,13 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-
 import horizure.micro.finance.entities.Claim;
 import horizure.micro.finance.entities.Topic;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.ClaimRepository;
 import horizure.micro.finance.repositories.UserRepository;
 
+@Service
 public class ClaimService implements IClaimService {
 	
 	@Autowired
@@ -98,12 +98,16 @@ public class ClaimService implements IClaimService {
 	public Long nbr_Claim_recieved_each_week(Long id_user) {
 		User u = userRepository.findById(id_user).get();
 
-        if (claimRepository.existsClaimByUser(u) )
+        return  u.getClaim().stream().filter(e->e.getCreated_at().before(new Date())).filter(e->e.getCreated_at().
+                after(addDays(new Date(), -7))).count();
+
+       /* if (claimRepository.existsClaimByUser(u) )
 
         return  u.getClaim().stream().filter(e->e.getCreated_at().before(new Date())).filter(e->e.getCreated_at().
                 after(addDays(new Date(), -7))).count();
         else
-            return  Long.valueOf(0);
+            return  Long.valueOf(0);*/
+
     }
 	
     public static Date addDays(Date date, int days)

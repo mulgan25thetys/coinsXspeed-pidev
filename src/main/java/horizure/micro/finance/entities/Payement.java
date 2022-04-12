@@ -35,7 +35,6 @@ public class Payement implements Serializable {
 	private Date creation_date ;
 	
 	@ManyToOne
-	//@JsonIgnore
 	FinancialService financialService ;
 
 	public Payement() {
@@ -69,7 +68,6 @@ public class Payement implements Serializable {
 	public void setId_Payement(long id_Payement) {
 		this.id_Payement = id_Payement;
 	}
-
 
 	public long getClient_id() {
 		return Client_id;
