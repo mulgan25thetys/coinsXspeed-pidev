@@ -15,26 +15,26 @@ import horizure.micro.finance.entities.Payement;
 import horizure.micro.finance.services.IPayementService;
 
 @RestController
-@RequestMapping("/Payement")
+@RequestMapping("payement")
 public class PayementController {
 	@Autowired
 	IPayementService iPayementService;
 	
-	@GetMapping("/getpayementmensuality/{idfinancial}")
+	@GetMapping("/get-payement-mensuality/{idfinancial}")
 	@ResponseBody
 	public List<Payement> getPayement_mensuality(@PathVariable("idfinancial") Long id_ServiceFinancial){
 		System.out.println(id_ServiceFinancial);
 		return iPayementService.getPayement_mensuality(id_ServiceFinancial);
 	}
 	
-	@GetMapping("/getpayementBlock/{idfinancial}")
+	@GetMapping("/get-payement-block/{idfinancial}")
 	@ResponseBody
 	public List<Payement> getPayement_Block(@PathVariable("idfinancial") Long id_ServiceFinancial){
 		System.out.println(id_ServiceFinancial);
 		return iPayementService.getPayement_Block(id_ServiceFinancial);
 	}
 	
-	@PostMapping("/addPayement/{idfinancial}")
+	@PostMapping("/add-payement/{idfinancial}")
 	@ResponseBody
 	public List<Payement> addPayement(@PathVariable("idfinancial") Long id_ServiceFinancial){
 		System.out.println(id_ServiceFinancial);
@@ -42,19 +42,19 @@ public class PayementController {
 	}
 	
 	
-	@GetMapping("/List-Payement")
+	@GetMapping("/list-payement")
 	@ResponseBody
 	public List<Payement> retrieveAllPayement(){
 		return iPayementService.retrieveAllPayement();
 	}
 	
-	@GetMapping("/Get-Payement/{id_Payement}")
+	@GetMapping("/get-payement/{id_Payement}")
 	@ResponseBody
 	public Payement retrievePayement(@PathVariable("id_Payement") Long id_Payement){
 		return iPayementService.retrievePayement(id_Payement);
 	}
 	
-	@PutMapping("/Modify-Payement")
+	@PutMapping("/modify-payement")
 	@ResponseBody
 	public Payement updateFinancialService(@PathVariable Payement P) {
 		return iPayementService.updatePayement(P);

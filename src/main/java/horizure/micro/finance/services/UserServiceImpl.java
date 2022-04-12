@@ -1,6 +1,8 @@
 package horizure.micro.finance.services;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
@@ -15,6 +17,7 @@ import horizure.micro.finance.entities.StLevel;
 import horizure.micro.finance.entities.Status;
 
 import horizure.micro.finance.entities.User;
+import horizure.micro.finance.repositories.AccountRepository;
 import horizure.micro.finance.repositories.UserRepository;
 
 
@@ -33,13 +36,9 @@ public class UserServiceImpl implements IUserService {
 	
 	@Autowired
 	AccountServiceImpl accountServiceImpl;
-	
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 
 
-    @PostConstruct
+   /* @PostConstruct
     public void initialize(){
         if(userRepository.findOneByuserName("admin") == null){
             save(new User(1L,"admin", "admin", "ADMIN"));
@@ -50,7 +49,8 @@ public class UserServiceImpl implements IUserService {
         if(userRepository.findOneByuserName("client") == null){
             save(new User(3L,"client", "client", "CLIENT"));
         }
-    }
+    }*/
+	
     @Transactional
     private User save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -71,8 +71,27 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User updateUser(User u) {
-	  userRepository.save(u);
-	  return u;
+		List<User> users = userRepository.checkIfUserExist(u.getUserName(), u.getEmail());
+		User user =null;
+		if(users.size() == 0) {
+			if(u.getPassword() != null) {
+				u.setPassword(passwordEncoder.encode(u.getPassword()));
+			}
+			if(u.getStatus() == null) {
+				u.setStatus(Status.PASCONFIRME);
+			}
+			if(u.getEgroup() == null) {
+				u.setEgroup(Egroup.WRONG);
+			}
+			
+			if(u.getLevel() == null) {
+				u.setLevel(StLevel.none);
+			}
+			u.setCreated_at(new Date());
+			u.setUpdated_at(new Date());
+			user = userRepository.save(u);
+		}	
+		return user;
 	}
  
 	@Override
@@ -85,25 +104,8 @@ public class UserServiceImpl implements IUserService {
 	public User getUser(Long userId) {
 		return userRepository.getById(userId);
 
-	public User saveUser(User newUser) {
-		List<User> users = userRepository.checkIfUserExist(newUser.getUserName(), newUser.getEmail());
-		User user =null;
-		if(users.size() == 0) {
-			if(newUser.getPassword() != null) {
-				newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-			}
-			newUser.setStatus(Status.PASCONFIRME);
-			newUser.setEgroup(Egroup.GOOD);
-			if(newUser.getLevel() == null) {
-				newUser.setLevel(StLevel.none);
-			}
-			newUser.setCreated_at(new Date());
-			newUser.setUpdated_at(new Date());
-			user = userRepository.save(newUser);
-		}	
-		return user;
-
 	}
+	
 	@Override
 	public float getSumAmountByEGroup(Egroup egroup) {
 		return userRepository.getSumAmountByEGroup(egroup);
@@ -138,6 +140,11 @@ public class UserServiceImpl implements IUserService {
 			accountServiceImpl.addAccount(user.getAccount(), user.getUserId());
 		}
 		return useracc;
+	}
+	@Override
+	public User updateUser(Long id, User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

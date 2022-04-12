@@ -18,13 +18,14 @@ import horizure.micro.finance.entities.Claim;
 import horizure.micro.finance.entities.Topic;
 import horizure.micro.finance.repositories.ClaimRepository;
 import horizure.micro.finance.services.ClaimService;
+import horizure.micro.finance.services.IClaimService;
 
 @RestController
-@RequestMapping("/Claim")
+@RequestMapping("claim")
 public class ClaimController {
 	
 	 	@Autowired
-	    ClaimService cs;
+	    IClaimService cs;
 	    @Autowired
 	    ClaimRepository repo;
 
@@ -44,7 +45,7 @@ public class ClaimController {
 	    @ResponseBody
 	    @PostMapping("/add-claim")
 	    public Claim add_complaint( @RequestBody Claim c){
-	        return repo.save(c);
+	        return cs.add_Claim(c);
 	    }
 
 

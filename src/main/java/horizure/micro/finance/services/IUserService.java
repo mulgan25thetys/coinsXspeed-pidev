@@ -7,16 +7,13 @@ import horizure.micro.finance.entities.Egroup;
 import horizure.micro.finance.entities.User;
 
 public interface IUserService {
-	
-   List<User> retrieveUsers ();     
+	    
    
     User getUser(Long userId);
 
-	List<User> retrieveUsers ();  
+	List<User> retrieveUsers();  
 	
-	public List<User> findAllUsers() ;
-	
-	User addUser(User user);     
+	public List<User> findAllUsers() ;     
 	
 	User addUserWithAccount(User user);   
 	

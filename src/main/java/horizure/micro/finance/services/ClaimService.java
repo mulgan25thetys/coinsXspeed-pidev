@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
 import horizure.micro.finance.entities.Claim;
 import horizure.micro.finance.entities.Topic;
 import horizure.micro.finance.entities.User;
@@ -30,6 +32,7 @@ public class ClaimService implements IClaimService {
 	
 	@Override
 	public Claim add_Claim(Claim c) {
+		c.setCreated_at(new Date());
 		return claimRepository.save(c);
 	}
 

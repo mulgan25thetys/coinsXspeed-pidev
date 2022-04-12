@@ -201,6 +201,8 @@ public class User implements Serializable{
 	@OneToOne(cascade = CascadeType.REFRESH)
 	private Account account;
 
+	@OneToMany
+	private List<Claim> claim;
 
 	public String getEmail() {
 		return email;
@@ -405,6 +407,14 @@ public class User implements Serializable{
 
 	public void setNotifications(List<Notification> notifications) {
 		this.notifications = notifications;
+	}
+
+	public List<Claim> getClaim() {
+		return claim;
+	}
+
+	public void setClaim(List<Claim> claim) {
+		this.claim = claim;
 	}	
 	
 	

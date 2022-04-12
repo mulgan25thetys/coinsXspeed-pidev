@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 import horizure.micro.finance.services.CommunicationService;
 import horizure.micro.finance.services.ICommunicationService;
 @RestController
-@RequestMapping("/Communication")
+@RequestMapping("communication")
 public class CommunicationController {
 	
     @Autowired
@@ -45,20 +45,20 @@ public class CommunicationController {
 	@Autowired
 	CommunicationService communicationService;
 	
-	@GetMapping("/Retreive-Communication/{communication-id}")
+	@GetMapping("/retreive-communication/{communication-id}")
 	@ResponseBody
 	public Optional<Communication> retrieveCommunication(@PathVariable("communication-id") String id) {
 	return iCommunicationService.retrieveCommunication(id);
 	}
 	
-	@GetMapping("/Retreive-All-Communication")
+	@GetMapping("/retreive-all-communication")
 	@ResponseBody
 	public List<Communication> getCommunication() {
 	List<Communication> list = iCommunicationService.retrieveAllCommunication();
 	return list;
 	}
 	
-	@DeleteMapping("/Delete-Communication/{communication-id}")
+	@DeleteMapping("/delete-communication/{communication-id}")
 	@ResponseBody
 	public void removeConversation(@PathVariable("communication-id") String id) {
 		iCommunicationService.deleteCommunication(id);
@@ -93,6 +93,6 @@ public class CommunicationController {
 	  
 	  } catch (Exception e) { e.printStackTrace(); 
 	  			messageResponse = "Could not upload the conversation!"; 
-	  			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(messageResponse); } }
+	  			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(messageResponse); } }*/
 
 }

@@ -9,7 +9,7 @@ public class WelcomeController {
 
 	@GetMapping("/")
     public String index() {
-        return "Spring Boot POC Welcomes You!";
+        return "CoinsXspeed pidev application Welcomes You!";
     }
 
 }
