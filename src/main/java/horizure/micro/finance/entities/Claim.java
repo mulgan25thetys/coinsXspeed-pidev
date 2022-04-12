@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="Claim")
 public class Claim implements Serializable{
@@ -35,18 +37,12 @@ public class Claim implements Serializable{
 	private Long claimantId;
 	@Temporal(TemporalType.DATE)
 	private Date created_at;
-	private Long traitBy;
+	@Enumerated(EnumType.STRING)
+	private Topic topic;
 	
+	@JsonIgnore
 	@ManyToOne
-	private FinancialService financialService;
-
-	public Long getIdClaim() {
-		return idClaim;
-	}
-
-	public void setIdClaim(Long idClaim) {
-		this.idClaim = idClaim;
-	}
+	private User user ;
 
 	public TypeClaim getType() {
 		return type;
@@ -88,25 +84,27 @@ public class Claim implements Serializable{
 		this.created_at = created_at;
 	}
 
-	public Long getTraitBy() {
-		return traitBy;
+	public Topic getTopic() {
+		return topic;
 	}
 
-	public void setTraitBy(Long traitBy) {
-		this.traitBy = traitBy;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 
-	public FinancialService getFinancialService() {
-		return financialService;
+	public User getUser() {
+		return user;
 	}
 
-	public void setFinancialService(FinancialService financialService) {
-		this.financialService = financialService;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	
 	
 	
 }
