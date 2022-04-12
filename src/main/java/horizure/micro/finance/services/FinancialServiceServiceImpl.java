@@ -55,13 +55,12 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 	}
 	
 	
-	@Transactional
-	public FinancialService addFinancialServiceLoan(FinancialService FS, long idUser) {
-		
-		long id_ServiceFinancial = FS.getId_ServiceFinancial();		
-		
-		ArrayList<Payement> paymentList = new ArrayList<>();
-		paymentList = (ArrayList<Payement>) FS.getPayement();
+	@Override
+	public FinancialService addFinancialServiceLoan(long id_ServiceFinancial, long idUser) {
+		//long id_ServiceFinancial = FS.getId_ServiceFinancial();		
+		FinancialService FS = financialServiceRepository.findById(id_ServiceFinancial).orElse(null);
+		List<Payement> paymentList = new ArrayList<>();
+		paymentList =  FS.getPayement();
 		
 		FS.getCategory();
 		if((FS.getCategory().equals(CategoryFS.Loan) ) && (getIsAccepted(id_ServiceFinancial,idUser)) )
@@ -73,8 +72,8 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		financialServiceRepository.save(FS) ;
 		
 		return FS;
-				
 	}
+	
 	
 
 	@Transactional
@@ -120,6 +119,7 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		
 		return isAccepted ;
 	}
+	
 
 	@Transactional
 	public double getCeilings(FinancialService FS, long id_user) {
@@ -152,6 +152,9 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		financialServiceRepository.save(FS) ;
 		return ceilings ;
 	}
+	
+
+	
 	
 
 }

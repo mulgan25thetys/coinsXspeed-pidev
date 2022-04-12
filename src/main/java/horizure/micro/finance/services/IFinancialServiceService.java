@@ -15,7 +15,7 @@ public interface IFinancialServiceService {
 	
 	FinancialService addFinancialService (FinancialService FS);
 	
-	FinancialService addFinancialServiceLoan (FinancialService FS, long idUser);
+	FinancialService addFinancialServiceLoan(long id_ServiceFinancial, long idUser) ;
 	
 	FinancialService addFinancialServiceToUserAccount(Long idUser,FinancialService FS);
 	

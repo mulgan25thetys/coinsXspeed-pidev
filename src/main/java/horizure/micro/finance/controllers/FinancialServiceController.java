@@ -16,7 +16,7 @@ import horizure.micro.finance.entities.FinancialService;
 import horizure.micro.finance.services.IFinancialServiceService;
 
 @RestController
-@RequestMapping("financial-service")
+@RequestMapping("/financial-service")
 public class FinancialServiceController {
 	
 	@Autowired
@@ -24,19 +24,19 @@ public class FinancialServiceController {
 	
 	@PostMapping("/add-financial-service")
 	@ResponseBody
-	public FinancialService addFinancialServic(@RequestBody FinancialService FS) {
+	public FinancialService addFinancialService(@RequestBody FinancialService FS) {
 		return ifinancialServiceService.addFinancialService(FS);
 	}
 	
 	
-	@PostMapping("/add-financial-service-loan/{idUser}")
+	@PostMapping("/add-financial-service-loan/{id_ServiceFinancial}/{idUser}")
 	@ResponseBody
-	public FinancialService addFinancialServiceLoan(@RequestBody FinancialService FS, @PathVariable("idUser") long id) {
-		return ifinancialServiceService.addFinancialServiceLoan(FS,id);
+	public FinancialService addFinancialServiceLoan(@PathVariable("id_ServiceFinancial") long id_ServiceFinancial, @PathVariable("idUser") long id) {
+		return ifinancialServiceService.addFinancialServiceLoan(id_ServiceFinancial,id);
 	}
 	
 	
-	@PostMapping("/add-financial-service-to-account/{iduser}")
+	@PostMapping("/add-financial-service-to-User/{iduser}")
 	@ResponseBody
 	public FinancialService addFinancialServiceToUserAccount(@PathVariable("iduser") Long id,@RequestBody FinancialService fs) {
 		return ifinancialServiceService.addFinancialServiceToUserAccount(id, fs);
@@ -59,4 +59,5 @@ public class FinancialServiceController {
 	public FinancialService updateFinancialService(@RequestBody FinancialService FS) {
 		return ifinancialServiceService.updateFinancialService(FS);
 	}
+	
 }

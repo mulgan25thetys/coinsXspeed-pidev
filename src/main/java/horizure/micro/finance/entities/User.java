@@ -48,109 +48,14 @@ public class User implements Serializable{
 	
 	@Enumerated(EnumType.STRING)
 	private SocialSituation situation;
-		
-	public User(Long userId, String userName, String password, String role) {
-		super();
-		this.userId = userId;
-		this.userName = userName;
-		this.password = password;
-		this.role = role;
-	}
-
-	public User() {
-		super();
-	}
-
-
-	public User( Long userId,String userName, String password) {
-		super();
 	
-		this.userName = userName;
-		this.password = password;
-		this.userId=userId;
-		
-	}
-	
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	
-
-	public Gender getGender() {
-		return gender;
-	}
-
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
-
-	public StLevel getLevel() {
-		return level;
-	}
-
-	public void setLevel(StLevel level) {
-		this.level = level;
-	}
-
-	public SocialSituation getSituation() {
-		return situation;
-	}
-
-	public void setSituation(SocialSituation situation) {
-		this.situation = situation;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-
-	public String getUserName() {
-		return userName;
-	}
-
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		
-		
-		if(obj==null || !(obj instanceof User) )
-			return false;
-		return this.userId==((User)obj).getUserId();
-	}
-
-
 	private String email;
 	 private String city;
 	 private String country;
 	 private String address;
 	 private int phone;
 	 
-     @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
 	 private Date date_of_birth;
 	 private int age;
 	 private double salary;
@@ -196,13 +101,101 @@ public class User implements Serializable{
 	private ScoreForm scoreform;
 	
 	@ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
-	private List<Communication> communications;
+	private List<Communication> communication;
 	
 	@ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Notification> notifications;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Claim> claim ;
+		
+	public User(Long userId, String userName, String password, String role) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
+	}
+
+	public User() {
+		super();
+	}
 
 
+	public User( Long userId,String userName, String password) {
+		super();
+	
+		this.userName = userName;
+		this.password = password;
+		this.userId=userId;
+		
+	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		
+		if(obj==null || !(obj instanceof User) )
+			return false;
+		return this.userId==((User)obj).getUserId();
+	}
 
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public StLevel getLevel() {
+		return level;
+	}
+
+	public void setLevel(StLevel level) {
+		this.level = level;
+	}
+
+	public SocialSituation getSituation() {
+		return situation;
+	}
+
+	public void setSituation(SocialSituation situation) {
+		this.situation = situation;
+	}
 
 	public String getEmail() {
 		return email;
@@ -316,13 +309,20 @@ public class User implements Serializable{
 		this.session_per_user = session_per_user;
 	}
 
-	
 	public Egroup getEgroup() {
 		return egroup;
 	}
 
 	public void setEgroup(Egroup egroup) {
 		this.egroup = egroup;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public Date getJoin_groupe() {
@@ -347,18 +347,6 @@ public class User implements Serializable{
 
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
 	}
 
 	public List<Privilege> getPrivileges() {
@@ -393,12 +381,12 @@ public class User implements Serializable{
 		this.scoreform = scoreform;
 	}
 
-	public List<Communication> getCommunications() {
-		return communications;
+	public List<Communication> getCommunication() {
+		return communication;
 	}
 
-	public void setCommunications(List<Communication> communications) {
-		this.communications = communications;
+	public void setCommunication(List<Communication> communication) {
+		this.communication = communication;
 	}
 
 	public List<Notification> getNotifications() {
@@ -407,7 +395,29 @@ public class User implements Serializable{
 
 	public void setNotifications(List<Notification> notifications) {
 		this.notifications = notifications;
-	}	
+	}
+
+	public List<Claim> getClaim() {
+		return claim;
+	}
+
+	public void setClaim(List<Claim> claim) {
+		this.claim = claim;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
+
+	
+	
+	
+
+
+
+	
 	
 	
 }

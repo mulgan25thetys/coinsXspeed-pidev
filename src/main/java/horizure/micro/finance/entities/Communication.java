@@ -1,121 +1,92 @@
 package horizure.micro.finance.entities;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 @Entity
-@Table(name="Communication")
+@Table(name = "Communication")
 public class Communication implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idCommunication")
-	private Long idCommunication;
-	@Enumerated(EnumType.STRING)
-	private TypeComun type;
-	private String email;
-	private String object;
-	private String message;
-	private String question;
-	private String answer;
-	@Temporal(TemporalType.DATE)
-	private Date date_creation;
+	@GeneratedValue ( strategy = GenerationType.IDENTITY)
+	private long id;
 
-	@ManyToMany
-	private List<User> users;
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="communication")
+    private Set<Message> messages = new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable( name = "user_communication", joinColumns = @JoinColumn(name = "communication_id"),
+	inverseJoinColumns = @JoinColumn(name = "user_id")) 
+	private Set<User> users = new HashSet<>();
+	
+	
+	
+	public Communication() {
 
-	public Long getIdCommunication() {
-		return idCommunication;
 	}
 
-	public void setIdCommunication(Long idCommunication) {
-		this.idCommunication = idCommunication;
-	}
 
-	public List<User> getUsers() {
-		return users;
-	}
+	
+	
 
-	public void setUsers(List<User> users) {
+	public Communication(Set<User> users) {
+		super();
 		this.users = users;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+
+
+
+
+	public Communication(Set<Message> messages, Set<User> users) {
+		super();
+		this.messages = messages;
+		this.users = users;
+	}
+	
+	
+
+
+
+	public long getId() {
+		return id;
 	}
 
-	public TypeComun getType() {
-		return type;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public void setType(TypeComun type) {
-		this.type = type;
+	public Set<Message> getMessages() {
+		return messages;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setMessages(Set<Message> messages) {
+		this.messages = messages;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public String getObject() {
-		return object;
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
-	public void setObject(String object) {
-		this.object = object;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-
-	public Date getDate_creation() {
-		return date_creation;
-	}
-
-	public void setDate_creation(Date date_creation) {
-		this.date_creation = date_creation;
-	}
+	
 	
 	
 }
