@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,12 @@ import horizure.micro.finance.entities.Claim;
 import horizure.micro.finance.entities.Topic;
 import horizure.micro.finance.repositories.ClaimRepository;
 import horizure.micro.finance.services.ClaimService;
+<<<<<<< HEAD
+@CrossOrigin("*")
+=======
 import horizure.micro.finance.services.IClaimService;
 
+>>>>>>> 11208f435557d50baba2046c3444ed42ade26693
 @RestController
 @RequestMapping("claim")
 public class ClaimController {

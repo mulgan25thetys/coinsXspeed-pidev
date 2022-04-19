@@ -197,6 +197,31 @@ public class User implements Serializable{
 	
 	@ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Notification> notifications;
+<<<<<<< HEAD
+	
+	@OneToMany(mappedBy = "user")
+	private List<Claim> claim ;
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	private List<Post> posts;
+	
+	@OneToMany(mappedBy="user1",cascade=CascadeType.ALL)
+	private List<Reaction> reactions1;
+	
+	
+	
+	@OneToMany(mappedBy="user2", cascade=CascadeType.ALL )
+	private List<CommentPost> commentsPost1;
+	
+		
+	public User(Long userId, String userName, String password, String role) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
+	}
+=======
+>>>>>>> 11208f435557d50baba2046c3444ed42ade26693
 
 	@OneToOne(cascade = CascadeType.REFRESH)
 	private Account account;
