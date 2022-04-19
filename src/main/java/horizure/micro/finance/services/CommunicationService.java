@@ -13,6 +13,7 @@ import horizure.micro.finance.entities.Message;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.CommunicationRepository;
 import horizure.micro.finance.repositories.MessageRepository;
+import horizure.micro.finance.repositories.UserRepository;
 
 @Service
 public class CommunicationService implements ICommunicationService {
@@ -24,7 +25,7 @@ public class CommunicationService implements ICommunicationService {
 	MessageRepository messageRepository ;
 	
 	@Autowired
-	private UserServiceImpl userService ;
+    UserRepository userService ;
 	
 	
 	@Override
@@ -63,7 +64,7 @@ public class CommunicationService implements ICommunicationService {
 	public void store(Long userId, Message text) {
 		Communication conv = null;
 		  
-		  User user = userService.findUserById(userId).orElse(null); 
+		  User user = userService.findById(userId).orElse(null); 
 		  Set<Message> messages = new HashSet<>();
 		  Set<User> users = new HashSet<>();
 		  users.add(user);

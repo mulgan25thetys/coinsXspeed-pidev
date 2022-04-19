@@ -1,9 +1,13 @@
 package horizure.micro.finance.controllers;
 
+import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import horizure.micro.finance.apis.AccountExcelExporter;
 import horizure.micro.finance.entities.Account;
 import horizure.micro.finance.services.IAccountService;
 
@@ -45,10 +50,10 @@ public class AccountController {
 		return iAccountService.updateAccount(id,a);
 	}
 	
-	@PutMapping("change-account-status/{idacc}/{value}")
+	@PutMapping("/change-account-status/{idacc}/{value}")
 	@ResponseBody
 	public ResponseEntity<String> deleteAccount(@PathVariable("idacc") Long idacc,@PathVariable("value") String value) {
-		String message=iAccountService.changeAccountStatus(idacc,value) == -1? "Account's status has not been changed!" :"Account's has been changed!";
+		String message=iAccountService.changeAccountStatus(idacc,value) == -1? "Account's status has not been changed to "+value :"Account's has been changed!";
 		return new ResponseEntity<String> (message,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
@@ -95,5 +100,22 @@ public class AccountController {
 	@ResponseBody
 	public List<String> getStatistic(){
 		return iAccountService.statisticAccount(null,null);
+	}
+	
+	@GetMapping("/export/excel")
+	public void exportToExcel(HttpServletResponse response) throws IOException {
+	    response.setContentType("application/octet-stream");
+	    DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+	    String currentDateTime = dateFormatter.format(new Date());
+	         
+	    String headerKey = "Content-Disposition";
+	    String headerValue = "attachment; filename=accounts_" + currentDateTime + ".xlsx";
+	    response.setHeader(headerKey, headerValue);
+	         
+	    List<Account> listAccounts = iAccountService.retrieveAccounts();
+	         
+	    AccountExcelExporter excelExporter = new AccountExcelExporter(listAccounts);
+	         
+	    excelExporter.export(response);    
 	}
 }

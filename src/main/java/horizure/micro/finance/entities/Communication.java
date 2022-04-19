@@ -26,7 +26,9 @@ public class Communication implements Serializable{
 	private long id;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="communication")
+
     private Set<Message> messages;
+
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable( name = "user_communication", joinColumns = @JoinColumn(name = "communication_id"),

@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class FinancialService implements Serializable {
 	/**
@@ -35,10 +37,10 @@ public class FinancialService implements Serializable {
 	private long createdBy_id ;
 	@Temporal(TemporalType.DATE)
 	private Date date_of_creation ;
+	@Temporal(TemporalType.DATE)
+	private Date date_of_updating ;
 	private Boolean isAccepted ;
-	
-	
-	
+
 	public FinancialService() {
 		super();
 	}
@@ -102,8 +104,8 @@ public class FinancialService implements Serializable {
 
 	public double getCeiling() {
 		return ceiling;
-	}
-
+  }
+  
 	public void setCeiling(double ceiling) {
 		this.ceiling = ceiling;
 	}
@@ -148,9 +150,16 @@ public class FinancialService implements Serializable {
 		this.accounts = accounts;
 	}
 
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Date getDate_of_updating() {
+		return date_of_updating;
+	}
+
+	public void setDate_of_updating(Date date_of_updating) {
+		this.date_of_updating = date_of_updating;
 	}
 
 

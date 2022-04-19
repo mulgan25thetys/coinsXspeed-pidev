@@ -149,16 +149,18 @@ public class PayementServiceImpl implements IPayementService {
 		FinancialService FS = FSRepository.findById(id_ServiceFinancial).orElse(null);
 		List<Payement> paymentList = new ArrayList<>();
 		
-		if(FS.getReimbment_method() == MethodRB.Mensuality )
-		{
-			paymentList = getPayement_mensuality(id_ServiceFinancial);
+		if(FS != null && FS.getAccounts().size() > 0) {
+			if(FS.getReimbment_method() == MethodRB.Mensuality )
+			{
+				paymentList = getPayement_mensuality(id_ServiceFinancial);
+			}
+			else if(FS.getReimbment_method() == MethodRB.Block)
+			{
+				paymentList = getPayement_Block(id_ServiceFinancial);
+			}
+			
+			PRepository.saveAll((List<Payement>) paymentList);
 		}
-		else if(FS.getReimbment_method() == MethodRB.Block)
-		{
-			paymentList = getPayement_Block(id_ServiceFinancial);
-		}
-		
-		PRepository.saveAll((List<Payement>) paymentList);
 		
 		return paymentList;
 	}

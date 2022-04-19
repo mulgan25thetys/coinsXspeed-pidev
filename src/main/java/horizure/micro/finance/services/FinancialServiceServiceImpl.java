@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import horizure.micro.finance.entities.Account;
 import horizure.micro.finance.entities.CategoryFS;
 import horizure.micro.finance.entities.FinancialService;
 import horizure.micro.finance.entities.Payement;
@@ -51,26 +52,35 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 	
 	@Override
 	public FinancialService addFinancialService(FinancialService FS) {
+		FS.setDate_of_creation(new Date());
 		return financialServiceRepository.save(FS);
 	}
 	
 	
-	@Override
+	@Transactional
 	public FinancialService addFinancialServiceLoan(long id_ServiceFinancial, long idUser) {
-		//long id_ServiceFinancial = FS.getId_ServiceFinancial();		
+		//long id_ServiceFinancial = FS.getId_ServiceFinancial();	
+		User user = userRepository.findById(idUser).orElse(null);
 		FinancialService FS = financialServiceRepository.findById(id_ServiceFinancial).orElse(null);
-		List<Payement> paymentList = new ArrayList<>();
-		paymentList =  FS.getPayement();
 		
-		FS.getCategory();
-		if((FS.getCategory().equals(CategoryFS.Loan) ) && (getIsAccepted(id_ServiceFinancial,idUser)) )
-		{
-			FS.setDate_of_creation(new Date());
-			FS.setPayement(paymentList);
+		if(user != null && user.getAccount() != null && FS != null) {
+			
+			List<Payement> paymentList = new ArrayList<>();
+			paymentList =  FS.getPayement();
+			
+			if(FS.getCategory() == CategoryFS.Loan && user.getAccount().getIsApproved())
+			{
+				if(!user.getAccount().getFinancialServices().contains(FS)) {
+					user.getAccount().getFinancialServices().add(FS);
+					FS.setDate_of_creation(new Date());
+					FS.setPayement(paymentList);
+					FS.getAccounts().add(user.getAccount());
+					FS.setDate_of_updating(new Date());
+					financialServiceRepository.save(FS) ;
+				}
+			}
+			
 		}
-		
-		financialServiceRepository.save(FS) ;
-		
 		return FS;
 	}
 	
@@ -82,12 +92,13 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		User user = userRepository.findById(idUser).orElse(null);
 		
 		if(user != null) {
-			if(user.getAccount().getIsApproved() && (int)user.getAccount().getF_services().size() <=2) {
+			if(user.getAccount().getIsApproved() && (int)user.getAccount().getFinancialServices().size() <=2) {
 				
 					user.getAccount().setCapital(user.getAccount().getCapital()+FS.getAmount());
 					user.getAccount().setUpdated_at(new Date());
-					user.getAccount().getF_services().add(FS);
+					user.getAccount().getFinancialServices().add(FS);
 					
+					FS.getAccounts().add(user.getAccount());
 					FS.setDate_of_creation(new Date());
 					financialServiceRepository.save(FS);
 			}	
@@ -126,20 +137,22 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		//Account AC = ACRepository.findById(id_account).orElse(null);
 		User u = userRepository.findById(id_user).orElse(null);
 		double ceilings ;
-		int tot_score = scoreQuestionRepository.getTotalScore(u.getScoreform().getId_scoreForm());
-		System.out.println("score" + tot_score);
-		float pourcentage_score = ((float)(u.getAccount().getScore()/ (float)tot_score )) * 100 ;
-		//double amount = FS.getAmount();
 		
-		if((pourcentage_score <= 60) && (pourcentage_score > 50))
+		//int tot_score = scoreQuestionRepository.getTotalScore(u.getScoreform().getId_scoreForm());
+		System.out.println("score" + u.getAccount().getScore());
+		//float pourcentage_score = ((float)(u.getAccount().getScore()/ (float)tot_score )) * 100 ;
+		//double amount = FS.getAmount();
+		int score = u.getAccount().getScore();
+		
+		if((score <= 600) && (score > 300))
 		{
 			ceilings = 3000 ;
 		}
-		else if((pourcentage_score <= 80) && (pourcentage_score > 60))
+		else if((score < 900) && (score > 600))
 		{
 			ceilings = 6000 ;
 		}
-		else if((pourcentage_score <= 100) && (pourcentage_score > 80))
+		else if((score == 900))
 		{
 			ceilings = 10000 ;
 		}
@@ -149,6 +162,7 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		}
 		
 		FS.setCeiling(ceilings);
+		FS.setDate_of_updating(new Date());
 		financialServiceRepository.save(FS) ;
 		return ceilings ;
 	}

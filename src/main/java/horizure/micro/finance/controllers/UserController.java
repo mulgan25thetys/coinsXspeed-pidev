@@ -1,9 +1,7 @@
 package horizure.micro.finance.controllers;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,8 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import horizure.micro.finance.entities.User;
 import horizure.micro.finance.services.IUserService;
+import java.util.List;
+
+import horizure.micro.finance.entities.Egroup;
+import horizure.micro.finance.entities.User;
+
+
+
 
 @RestController
 @RequestMapping("user")
@@ -23,29 +27,45 @@ public class UserController {
 	
 	@Autowired
 	IUserService iUserService;
-	
-	@GetMapping("/list-user")
+	@GetMapping("/list-users")
 	@ResponseBody
-	public ResponseEntity<List<User>> getAllUsers(){
-		return ResponseEntity.ok().body(iUserService.findAllUsers());
+	public List<User> getAllUsers(){
+		return iUserService.retrieveUsers();
 	}
-
-	@PostMapping("/add-user")
+	
+	@PostMapping("/add-users")
 	@ResponseBody
-	public ResponseEntity<User> addUser(@RequestBody User user){
-		return ResponseEntity.ok().body(iUserService.saveUser(user));
+	public User addUser(@RequestBody User u) {
+		return iUserService.addUser(u);
 	}
 	
 	@PutMapping("/edit-user/{id}")
 	@ResponseBody
-	public ResponseEntity<User> editUser(@RequestBody User user,@PathVariable("id") Long id){
-		return ResponseEntity.ok().body(iUserService.updateUser(id,user));
+	public User editUser(@PathVariable("id") Long id,@RequestBody User u) {
+		return iUserService.updateUser(u);
 	}
 	
-	@DeleteMapping("delete-user/{id}")
+
+	@GetMapping("/get-user/{id}")
 	@ResponseBody
-	public ResponseEntity<User> deleteUser(@PathVariable("id") Long id){
-		return ResponseEntity.ok().body(iUserService.deleteUser(id));
+	public User getUser(@PathVariable("id") Long id){
+		return iUserService.getUser(id);
 	}
 	
-}
+	
+	@DeleteMapping("/delete-user/{id}")
+	@ResponseBody
+	public void deleteComment(@PathVariable("id") Long userId) {
+		iUserService.removeUser(userId);
+	}
+	
+	@GetMapping("/get-sumamountbyegroup/{egroup}")
+	@ResponseBody
+	public float getSumAmountByEGroup(Egroup egroup) {
+
+		return iUserService.getSumAmountByEGroup(egroup);
+	}
+	
+	
+	}
+

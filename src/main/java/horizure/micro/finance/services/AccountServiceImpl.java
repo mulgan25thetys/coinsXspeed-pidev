@@ -8,17 +8,23 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import horizure.micro.finance.entities.Account;
 import horizure.micro.finance.entities.AccountStatus;
+import horizure.micro.finance.entities.AccountType;
+import horizure.micro.finance.entities.StLevel;
+import horizure.micro.finance.entities.Status;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.AccountRepository;
 import horizure.micro.finance.repositories.ScoreQuestionRepository;
 import horizure.micro.finance.repositories.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class AccountServiceImpl implements IAccountService{
 
 	@Autowired
@@ -28,16 +34,17 @@ public class AccountServiceImpl implements IAccountService{
 	@Autowired
 	ScoreQuestionRepository scoreQuestionRepository;
 	
+	private Random rand =new Random();
 	@Override
 	public List<Account> retrieveAccounts() {
-		return (List<Account>)accountRepository.findAll();
+		return (List<Account>)accountRepository.findAllDESC();
 	}
 	
 
 	@Transactional
 	public Account addAccount(Account acc,Long iduser) {
 		User user = userRepository.findById(iduser).orElse(null); //récupérer l'utilisateur
-		Random rand =new Random();
+		
 		Long accNumber = Math.abs(rand.nextLong());
 		List<Account> accounts = accountRepository.checkAccount(accNumber, iduser); //verifier si le compte existe ou pas
 		
@@ -56,34 +63,29 @@ public class AccountServiceImpl implements IAccountService{
 				user.setUpdated_at(new Date());
 				accountRepository.save(acc);
 		}
-		return acc;
+		log.trace("Creation de compte : Numero ="+acc.getAccount_number());
+		return acc.getId_account() == null ? null:acc;
 	}
 
 	@Transactional
 	public Account updateAccount(Long id,Account newAccount) {
 		Account account = accountRepository.findById(id).orElse(null);
 		if(account != null) {
-			if(newAccount.getAccount_number() != null) {
-				account.setAccount_number(newAccount.getAccount_number());
-			}else if(newAccount.getType() != null) {
+			if(newAccount.getType() != null ) {
 				account.setType(newAccount.getType());
-			}else if(newAccount.getState() !=null) {
-				account.setState(newAccount.getState());
-			}else if(newAccount.getCapital() !=null) {
-					 account.setCapital(newAccount.getCapital());
 			}
+			if(newAccount.getState() !=null) {
+				account.setState(newAccount.getState());
+			}	
 			account.setUpdated_at(new Date());
 			accountRepository.save(account);
-		
 		}	
-		
 		return account;
 	}
 
 	@Override
 	public Account retrieveAccount(Long id) {
-		Account acc = accountRepository.findById(id).orElse(null);
-		return acc;
+		return  accountRepository.findById(id).orElse(null);
 	}
 
 	@Override
@@ -110,17 +112,13 @@ public class AccountServiceImpl implements IAccountService{
 		return result;
 	}
 
-
 	@Override
 	public Account getAccountByUser(Long idUser) {
-		// TODO Auto-generated method stub
 		return accountRepository.getAccountByUser(idUser);
 	}
 
-
 	@Override
 	public List<Account> sortAccount(String order) {
-		// TODO Auto-generated method stub
 		List<Account> list;
 		switch (order) {
 		case "asc":
@@ -136,32 +134,26 @@ public class AccountServiceImpl implements IAccountService{
 		return list;
 	}
 
-
 	@Override
 	public List<Account> searchAccount(String value) {
-		// TODO Auto-generated method stub
 		return accountRepository.searchAccount(value);
 	}
-
 
 	@Override
 	public List<String> statisticAccount(Date dd,Date df) {
 		List<String> statistics = new ArrayList<>();
-		
 		
 		if(dd ==null && df == null) {
 			try {
 				dd = new SimpleDateFormat("yyyy-MM-dd").parse("1970-01-01");
 				df = new Date();
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 			statistics = setMessage(statistics, dd, df);
 		}else {
 			statistics = setMessage(statistics, dd, df);
-		}
-		
+		}	
 		return statistics;
 	}
 	
@@ -188,6 +180,83 @@ public class AccountServiceImpl implements IAccountService{
 		statistic.add(firstStatisticMessage);
 		statistic.add(secondtStatisticMessage);
 		statistic.add(thirdtStatisticMessage);
+		log.info("Account statistic");
 		return statistic;
+	}
+	
+	//@Scheduled(fixedDelay = 5000)
+	@Scheduled(cron = "0 0 0 * * *")
+	@Transactional
+	public void classifyAccounts() {
+		log.debug("Starting for mining in Account entity!");
+		List<Account> accounts = accountRepository.getAccountForMining();
+		
+		for (Account account : accounts) {//parcourir les comptes
+			if(account.getUser().getAge() >=22 && account.getUser().getAge()<=28) {
+					account = this.classTheAccount(account); //classer le compte pour la tranche d'age 22 - 28
+			}
+			else if(account.getUser().getAge() >=28 && account.getUser().getAge()<=34) {
+					account = this.classTheAccount(account);//classer le compte pour la tranche d'age 28 - 34
+			}
+			else if(account.getUser().getAge() >=34 && account.getUser().getAge()<=40) {
+					account = this.classTheAccount(account);//classer le compte pour la tranche d'age 34 - 40
+			}
+			account.setUpdated_at(new Date());
+			if(account.getAccount_number() == null) {
+				account.setAccount_number(Math.abs(rand.nextLong()));
+			}
+			accountRepository.save(account);
+			System.out.println(account);
+		}
+	}
+	
+	public Account classTheAccount(Account account) { //retourne le compte classé apres traitement
+		if (account.getUser().getLevel() == StLevel.student) {
+			account = this.studentClass(account);
+		}
+		else if(account.getUser().getLevel() == StLevel.professionnal) {
+			account = this.professionnalClass(account);
+		}
+		else if(account.getUser().getLevel() == StLevel.none) {
+			account = this.noneClass(account);
+		}
+		else {
+			account.setScore(900);
+			account.setIsApproved(true);
+		}
+		return account;
+	}
+	
+	public Account professionnalClass(Account account) { //traitement pour le compte professionnel
+		if(account.getUser().getSalary() >=0 && account.getUser().getSalary()<=500) {
+			account.setScore(900);
+			account.setIsApproved(true);
+		}else if (account.getUser().getSalary() >=500 && account.getUser().getSalary()<=1000) {
+			account.setScore(600);
+			account.setIsApproved(true);
+		}
+		return account;
+	}
+	
+	public Account studentClass(Account account) {//traitement pour le compte etudiant
+		if(account.getUser().getStatus() ==Status.CONFIRME) {
+			account.setScore(900);
+			account.setIsApproved(true);
+		}else if (account.getUser().getStatus() ==Status.PASCONFIRME) {
+			account.setScore(300);
+			account.setIsApproved(false);
+		}
+		return account;
+	}
+	
+	public Account noneClass(Account account) { //traitement pour le compte non professionnel
+		if(account.getUser().getStatus() ==Status.CONFIRME && account.getType() == AccountType.CURRENT) {
+			account.setScore(600);
+			account.setIsApproved(true);
+		}else if (account.getUser().getStatus() ==Status.PASCONFIRME) {
+			account.setScore(300);
+			account.setIsApproved(false);
+		}
+		return account;
 	}
 }

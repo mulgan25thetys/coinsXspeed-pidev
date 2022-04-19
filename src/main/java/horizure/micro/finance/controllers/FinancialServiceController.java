@@ -16,7 +16,7 @@ import horizure.micro.finance.entities.FinancialService;
 import horizure.micro.finance.services.IFinancialServiceService;
 
 @RestController
-@RequestMapping("/financial-service")
+@RequestMapping("financial-service")
 public class FinancialServiceController {
 	
 	@Autowired
@@ -29,7 +29,7 @@ public class FinancialServiceController {
 	}
 	
 	
-	@PostMapping("/add-financial-service-loan/{id_ServiceFinancial}/{idUser}")
+	@PutMapping("/add-financial-service-loan/{id_ServiceFinancial}/{idUser}")
 	@ResponseBody
 	public FinancialService addFinancialServiceLoan(@PathVariable("id_ServiceFinancial") long id_ServiceFinancial, @PathVariable("idUser") long id) {
 		return ifinancialServiceService.addFinancialServiceLoan(id_ServiceFinancial,id);
@@ -42,13 +42,13 @@ public class FinancialServiceController {
 		return ifinancialServiceService.addFinancialServiceToUserAccount(id, fs);
 	}
 	
-	@GetMapping("/List-FinancialService")
+	@GetMapping("/list-financial-service")
 	@ResponseBody
 	public List<FinancialService> retrieveAllFinancialService(){
 		return ifinancialServiceService.retrieveAllFinancialService();
 	}
 	
-	@GetMapping("/Get-FinancialService/{id_ServiceFinancial}")
+	@GetMapping("/get-financial-service/{id_ServiceFinancial}")
 	@ResponseBody
 	public FinancialService retrieveFinancialService(@PathVariable("id_ServiceFinancial") Long id_ServiceFinancial){
 		return ifinancialServiceService.retrieveFinancialService(id_ServiceFinancial);

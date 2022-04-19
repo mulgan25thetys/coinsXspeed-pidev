@@ -1,0 +1,437 @@
+2022-04-12 19:59:01 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 19:59:01 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 19:59:01 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 19:59:01 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 20:00:07 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 12004 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 20:00:07 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 20:00:07 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 20:00:07 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 20:00:07 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 20:00:07 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 63 ms. Found 13 JPA repository interfaces. 
+2022-04-12 20:00:08 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 20:00:08 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 20:00:08 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 20:00:08 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 20:00:08 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1120 ms 
+2022-04-12 20:00:08 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 20:00:08 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 20:00:08 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 20:00:08 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 20:00:08 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 20:00:08 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 20:00:10 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 20:00:10 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:00:10 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 20:00:11 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@100f156c, org.springframework.security.web.context.SecurityContextPersistenceFilter@9017d28, org.springframework.security.web.header.HeaderWriterFilter@7844a53d, org.springframework.security.web.authentication.logout.LogoutFilter@74aa3ecd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45f8c5d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ffa9f92, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@15deccbb, org.springframework.security.web.session.SessionManagementFilter@25c77995, org.springframework.security.web.access.ExceptionTranslationFilter@6821d907, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@43179596] 
+2022-04-12 20:00:11 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 20:00:11 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 20:00:11 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 4.612 seconds (JVM running for 5.196) 
+2022-04-12 20:01:36 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 20:01:36 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:01:36 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 20:01:36 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 20:01:40 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 52460 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 20:01:40 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 20:01:40 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 20:01:40 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 20:01:40 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 20:01:41 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 13 JPA repository interfaces. 
+2022-04-12 20:01:41 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 20:01:41 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 20:01:41 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 20:01:41 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 20:01:41 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1181 ms 
+2022-04-12 20:01:41 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 20:01:41 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 20:01:42 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 20:01:42 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 20:01:42 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 20:01:42 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 20:01:43 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 20:01:43 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:01:43 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 20:01:44 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@9c3f005, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f14e1d6, org.springframework.security.web.header.HeaderWriterFilter@5287df2d, org.springframework.security.web.authentication.logout.LogoutFilter@5da4404, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47bb1737, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7055aeed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@442c5cb6, org.springframework.security.web.session.SessionManagementFilter@75bfe867, org.springframework.security.web.access.ExceptionTranslationFilter@64b8cb46, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6abfd259] 
+2022-04-12 20:01:44 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 20:01:44 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 20:01:44 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 4.47 seconds (JVM running for 5.046) 
+2022-04-12 20:01:59 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-04-12 20:01:59 - INFO- o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2022-04-12 20:01:59 - INFO- o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms 
+2022-04-12 20:23:16 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 20:23:16 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:23:16 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 20:23:16 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 20:24:25 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 6244 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 20:24:25 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 20:24:25 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 20:24:25 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 20:24:26 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 20:24:26 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 63 ms. Found 13 JPA repository interfaces. 
+2022-04-12 20:24:27 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 20:24:27 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 20:24:27 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 20:24:27 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 20:24:27 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1383 ms 
+2022-04-12 20:24:27 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 20:24:27 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 20:24:27 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 20:24:27 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 20:24:27 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 20:24:27 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 20:24:28 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 20:24:28 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:24:29 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 20:24:29 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@67412307, org.springframework.security.web.context.SecurityContextPersistenceFilter@4532c7cc, org.springframework.security.web.header.HeaderWriterFilter@66a23f33, org.springframework.security.web.authentication.logout.LogoutFilter@6c3801b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6e89705d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d6f8f3c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2d6265c0, org.springframework.security.web.session.SessionManagementFilter@3135200a, org.springframework.security.web.access.ExceptionTranslationFilter@414e1633, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@aeaa720] 
+2022-04-12 20:24:30 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 20:24:30 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 20:24:30 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 4.904 seconds (JVM running for 5.479) 
+2022-04-12 20:25:55 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-04-12 20:25:55 - INFO- o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2022-04-12 20:25:55 - INFO- o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms 
+2022-04-12 20:30:03 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 20:30:03 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:30:03 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 20:30:03 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 20:31:13 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 45592 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 20:31:13 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 20:31:13 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 20:31:13 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 20:31:13 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 20:31:14 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80 ms. Found 13 JPA repository interfaces. 
+2022-04-12 20:31:14 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 20:31:14 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 20:31:14 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 20:31:14 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 20:31:14 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1378 ms 
+2022-04-12 20:31:14 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 20:31:15 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 20:31:15 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 20:31:15 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 20:31:15 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 20:31:15 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 20:31:17 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 20:31:17 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:31:17 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 20:31:18 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4c9d39f2, org.springframework.security.web.context.SecurityContextPersistenceFilter@24673156, org.springframework.security.web.header.HeaderWriterFilter@19b7945a, org.springframework.security.web.authentication.logout.LogoutFilter@28ad9da8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8e21b68, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ce9e0da, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22fda839, org.springframework.security.web.session.SessionManagementFilter@78e9baaf, org.springframework.security.web.access.ExceptionTranslationFilter@7362b114, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@32972a72] 
+2022-04-12 20:31:18 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 20:31:18 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 20:31:18 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 5.672 seconds (JVM running for 6.318) 
+2022-04-12 20:31:43 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-04-12 20:31:43 - INFO- o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2022-04-12 20:31:43 - INFO- o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms 
+2022-04-12 20:40:44 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 20:40:44 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:40:44 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 20:40:44 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 20:46:13 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 54848 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 20:46:13 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 20:46:13 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 20:46:13 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 20:46:14 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 20:46:14 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 83 ms. Found 13 JPA repository interfaces. 
+2022-04-12 20:46:15 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 20:46:15 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 20:46:15 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 20:46:15 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 20:46:15 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1345 ms 
+2022-04-12 20:46:15 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 20:46:15 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 20:46:15 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 20:46:15 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 20:46:15 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 20:46:15 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 20:46:17 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 20:46:17 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:46:17 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 20:46:18 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7291d208, org.springframework.security.web.context.SecurityContextPersistenceFilter@751e3659, org.springframework.security.web.header.HeaderWriterFilter@7e09e356, org.springframework.security.web.authentication.logout.LogoutFilter@14643182, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@ca62af8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@291bfa0a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1a6b6ce4, org.springframework.security.web.session.SessionManagementFilter@5371060b, org.springframework.security.web.access.ExceptionTranslationFilter@25f6639d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d8f0bd5] 
+2022-04-12 20:46:18 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 20:46:18 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 20:46:18 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 5.05 seconds (JVM running for 5.664) 
+2022-04-12 20:46:30 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-04-12 20:46:30 - INFO- o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2022-04-12 20:46:30 - INFO- o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms 
+2022-04-12 20:52:28 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 20:52:28 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:52:28 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 20:52:28 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 20:53:28 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 49968 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 20:53:28 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 20:53:28 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 20:53:28 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 20:53:30 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 20:53:30 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 102 ms. Found 13 JPA repository interfaces. 
+2022-04-12 20:53:30 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 20:53:30 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 20:53:30 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 20:53:31 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 20:53:31 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2106 ms 
+2022-04-12 20:53:31 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 20:53:31 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 20:53:31 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 20:53:31 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 20:53:31 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 20:53:31 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 20:53:33 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 20:53:33 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 20:53:33 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 20:53:34 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13022dd7, org.springframework.security.web.context.SecurityContextPersistenceFilter@26c296f5, org.springframework.security.web.header.HeaderWriterFilter@4fb12ea0, org.springframework.security.web.authentication.logout.LogoutFilter@3e10df63, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@369ef326, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d12ff32, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b83bed4, org.springframework.security.web.session.SessionManagementFilter@176dadee, org.springframework.security.web.access.ExceptionTranslationFilter@2b2bd575, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@28c54413] 
+2022-04-12 20:53:34 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 20:53:34 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 20:53:34 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 6.087 seconds (JVM running for 7.121) 
+2022-04-12 21:02:43 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-04-12 21:02:43 - INFO- o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2022-04-12 21:02:43 - INFO- o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms 
+2022-04-12 21:04:01 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 21:04:02 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 21:04:02 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 21:04:02 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 21:04:42 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 32720 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 21:04:42 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 21:04:42 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 21:04:42 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 21:04:43 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 21:04:43 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 81 ms. Found 13 JPA repository interfaces. 
+2022-04-12 21:04:43 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 21:04:43 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 21:04:43 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 21:04:43 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 21:04:43 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1187 ms 
+2022-04-12 21:04:43 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 21:04:44 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 21:04:44 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 21:04:44 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 21:04:44 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 21:04:44 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 21:04:45 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 21:04:45 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 21:04:45 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 21:04:46 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d28e7f3, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f14e1d6, org.springframework.security.web.header.HeaderWriterFilter@5287df2d, org.springframework.security.web.authentication.logout.LogoutFilter@5da4404, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47bb1737, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7055aeed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@62413aff, org.springframework.security.web.session.SessionManagementFilter@75bfe867, org.springframework.security.web.access.ExceptionTranslationFilter@64b8cb46, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2b8f39c0] 
+2022-04-12 21:04:47 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 21:04:47 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 21:04:47 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 5.022 seconds (JVM running for 5.631) 
+2022-04-12 21:04:58 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-04-12 21:04:58 - INFO- o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2022-04-12 21:04:58 - INFO- o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms 
+2022-04-12 21:13:37 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 21:13:37 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 21:13:37 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 21:13:37 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 21:13:52 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 53936 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 21:13:52 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 21:13:52 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 21:13:52 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 21:13:52 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 21:13:52 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 97 ms. Found 13 JPA repository interfaces. 
+2022-04-12 21:13:53 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 21:13:53 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 21:13:53 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 21:13:53 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 21:13:53 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1476 ms 
+2022-04-12 21:13:53 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 21:13:53 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 21:13:53 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 21:13:54 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 21:13:54 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 21:13:54 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 21:13:55 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 21:13:55 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 21:13:55 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 21:13:56 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@503ba2ae, org.springframework.security.web.context.SecurityContextPersistenceFilter@4adc89d, org.springframework.security.web.header.HeaderWriterFilter@48a492f2, org.springframework.security.web.authentication.logout.LogoutFilter@3663c599, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4a86912c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ca90b6a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d40f7ce, org.springframework.security.web.session.SessionManagementFilter@2bc5b473, org.springframework.security.web.access.ExceptionTranslationFilter@7082d3e1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@27c6329f] 
+2022-04-12 21:13:56 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 21:13:56 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 21:13:56 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 4.945 seconds (JVM running for 5.618) 
+2022-04-12 21:15:08 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-04-12 21:15:08 - INFO- o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2022-04-12 21:15:08 - INFO- o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms 
+2022-04-12 21:15:19 - WARN- o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1406, SQLState: 22001 
+2022-04-12 21:15:19 - ERROR- o.h.e.jdbc.spi.SqlExceptionHelper - Data truncation: Data too long for column 'message' at row 1 
+2022-04-12 21:15:19 - ERROR- o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [/Coinsxspeed] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; nested exception is org.hibernate.exception.DataException: could not execute statement] with root cause 
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'message' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1098)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1046)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1371)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1031)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.dialect.identity.GetGeneratedKeysDelegate.executeAndExtract(GetGeneratedKeysDelegate.java:58)
+	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:43)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3279)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3885)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:84)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:330)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:287)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:193)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:123)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:185)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:128)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:55)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:107)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:760)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:746)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:362)
+	at com.sun.proxy.$Proxy116.persist(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:311)
+	at com.sun.proxy.$Proxy116.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:630)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:289)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:529)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:639)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:163)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:174)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy134.save(Unknown Source)
+	at horizure.micro.finance.services.ClaimService.add_Claim(ClaimService.java:36)
+	at horizure.micro.finance.controllers.ClaimController.add_complaint(ClaimController.java:48)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+2022-04-12 21:17:58 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 21:17:58 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 21:17:58 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 21:17:58 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2022-04-12 21:20:29 - INFO- h.m.f.CoinsXspeedProjectApplication - Starting CoinsXspeedProjectApplication using Java 1.8.0_60 on HP-thetys-silver with PID 50292 (E:\PIDEV\coinsXspeed-pidev\target\classes started by thety in E:\PIDEV\coinsXspeed-pidev) 
+2022-04-12 21:20:29 - INFO- h.m.f.CoinsXspeedProjectApplication - No active profile set, falling back to default profiles: default 
+2022-04-12 21:20:29 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-04-12 21:20:29 - INFO- o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-04-12 21:20:30 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-04-12 21:20:30 - INFO- o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 91 ms. Found 13 JPA repository interfaces. 
+2022-04-12 21:20:31 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http) 
+2022-04-12 21:20:31 - INFO- o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2022-04-12 21:20:31 - INFO- o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56] 
+2022-04-12 21:20:31 - INFO- o.a.c.c.C.[.[.[/Coinsxspeed] - Initializing Spring embedded WebApplicationContext 
+2022-04-12 21:20:31 - INFO- o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1467 ms 
+2022-04-12 21:20:31 - INFO- o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-04-12 21:20:31 - INFO- org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final 
+2022-04-12 21:20:31 - INFO- o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-04-12 21:20:31 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-04-12 21:20:31 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-04-12 21:20:31 - INFO- org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+2022-04-12 21:20:33 - INFO- o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-04-12 21:20:33 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 21:20:33 - WARN- o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-04-12 21:20:34 - INFO- o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@16a6a730, org.springframework.security.web.context.SecurityContextPersistenceFilter@74630f10, org.springframework.security.web.header.HeaderWriterFilter@6f93b3e6, org.springframework.security.web.authentication.logout.LogoutFilter@5fa4a5dd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@757f67db, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@364d2fa7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@69375f6d, org.springframework.security.web.session.SessionManagementFilter@1aed867c, org.springframework.security.web.access.ExceptionTranslationFilter@24acf7a4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2de5d7c1] 
+2022-04-12 21:20:34 - INFO- o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2022-04-12 21:20:34 - INFO- o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/Coinsxspeed' 
+2022-04-12 21:20:34 - INFO- h.m.f.CoinsXspeedProjectApplication - Started CoinsXspeedProjectApplication in 4.925 seconds (JVM running for 5.525) 
+2022-04-12 21:29:38 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-12 21:29:38 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-12 21:29:38 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-12 21:29:38 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 

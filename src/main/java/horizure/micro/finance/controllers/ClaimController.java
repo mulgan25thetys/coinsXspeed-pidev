@@ -19,13 +19,18 @@ import horizure.micro.finance.entities.Claim;
 import horizure.micro.finance.entities.Topic;
 import horizure.micro.finance.repositories.ClaimRepository;
 import horizure.micro.finance.services.ClaimService;
+<<<<<<< HEAD
 @CrossOrigin("*")
+=======
+import horizure.micro.finance.services.IClaimService;
+
+>>>>>>> 11208f435557d50baba2046c3444ed42ade26693
 @RestController
-@RequestMapping("/Claim")
+@RequestMapping("claim")
 public class ClaimController {
 	
 	 	@Autowired
-	    ClaimService cs;
+	    IClaimService cs;
 	    @Autowired
 	    ClaimRepository repo;
 
@@ -45,7 +50,7 @@ public class ClaimController {
 	    @ResponseBody
 	    @PostMapping("/add-claim")
 	    public Claim add_complaint( @RequestBody Claim c){
-	        return repo.save(c);
+	        return cs.add_Claim(c);
 	    }
 
 

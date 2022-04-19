@@ -1,28 +1,30 @@
 package horizure.micro.finance.services;
 
 import java.util.List;
-import java.util.Optional;
 
+
+import horizure.micro.finance.entities.Egroup;
 import horizure.micro.finance.entities.User;
 
 public interface IUserService {
+	    
+   
+    User getUser(Long userId);
+
+	List<User> retrieveUsers();  
 	
+	public List<User> findAllUsers() ;     
 	
-	List<User> retrieveUsers ();  
-	
-	public List<User> findAllUsers() ;
-	
-	User addUser(User user);            
+	User addUserWithAccount(User user);   
 	
 	public User updateUser(Long id,User user) ;
 
-	public Optional <User> findUserById(Long id);
+	User addUser(User u);            
 	
-	public User findByUserName(String userName);
-
-	public User deleteUser(Long userId);
+	User updateUser(User u);         
 	
-	public User saveUser(User newUser);
+	void removeUser(Long userId);
 	
+	public float getSumAmountByEGroup( Egroup egroup);
 	
 }
