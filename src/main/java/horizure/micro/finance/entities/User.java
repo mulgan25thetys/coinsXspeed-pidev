@@ -108,6 +108,17 @@ public class User implements Serializable{
 	
 	@OneToMany(mappedBy = "user")
 	private List<Claim> claim ;
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	private List<Post> posts;
+	
+	@OneToMany(mappedBy="user1",cascade=CascadeType.ALL)
+	private List<Reaction> reactions1;
+	
+	
+	
+	@OneToMany(mappedBy="user2", cascade=CascadeType.ALL )
+	private List<CommentPost> commentsPost1;
+	
 		
 	public User(Long userId, String userName, String password, String role) {
 		super();
