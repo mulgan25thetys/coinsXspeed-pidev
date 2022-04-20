@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="user")
 
@@ -189,6 +191,7 @@ public class User implements Serializable{
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<NoFinancialService> usernoservice;
 	
+	@JsonIgnore
 	@ManyToOne
 	private ScoreForm scoreform;
 	
@@ -197,7 +200,6 @@ public class User implements Serializable{
 	
 	@ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Notification> notifications;
-<<<<<<< HEAD
 	
 	@OneToMany(mappedBy = "user")
 	private List<Claim> claim ;
@@ -212,22 +214,9 @@ public class User implements Serializable{
 	@OneToMany(mappedBy="user2", cascade=CascadeType.ALL )
 	private List<CommentPost> commentsPost1;
 	
-		
-	public User(Long userId, String userName, String password, String role) {
-		super();
-		this.userId = userId;
-		this.userName = userName;
-		this.password = password;
-		this.role = role;
-	}
-=======
->>>>>>> 11208f435557d50baba2046c3444ed42ade26693
 
-	@OneToOne(cascade = CascadeType.REFRESH)
+	@OneToOne(cascade = CascadeType.REFRESH,mappedBy = "user")
 	private Account account;
-
-	@OneToMany
-	private List<Claim> claim;
 
 	public String getEmail() {
 		return email;

@@ -43,15 +43,14 @@ public class AccountExcelExporter {
         createCell(row, 1, "Email", style);
         createCell(row, 2, "Role", style);       
         createCell(row, 3, "Phone", style);    
-        createCell(row, 4, "Status", style);
-        createCell(row, 5, "Level", style);
-        createCell(row, 6, "Account Number", style);    
-        createCell(row, 7, "Type", style);
-        createCell(row, 8, "State", style);
-        createCell(row, 9, "Capital", style);    
-        createCell(row, 10, "Score", style);
-        createCell(row, 11, "Date of creation", style);
-        createCell(row, 12, "Approved", style);
+        createCell(row, 4, "Level", style);
+        createCell(row, 5, "Account Number", style);    
+        createCell(row, 6, "Type", style);
+        createCell(row, 7, "State", style);
+        createCell(row, 8, "Capital", style);    
+        createCell(row, 9, "Score", style);
+        createCell(row, 10, "Date of creation", style);
+        createCell(row, 11, "Approved", style);
          
     }
      
@@ -90,7 +89,7 @@ public class AccountExcelExporter {
             createCell(row, columnCount++, account.getUser().getEmail(), style);
             createCell(row, columnCount++, account.getUser().getRole(), style);
             createCell(row, columnCount++, account.getUser().getPhone(), style);
-            createCell(row, columnCount++, account.getUser().getStatus().name(), style);
+            //createCell(row, columnCount++, account.getUser().getStatus().name(), style);
             createCell(row, columnCount++, account.getUser().getLevel().name(), style);
             createCell(row, columnCount++, account.getAccount_number(), style);
             createCell(row, columnCount++, account.getType().name(), style);

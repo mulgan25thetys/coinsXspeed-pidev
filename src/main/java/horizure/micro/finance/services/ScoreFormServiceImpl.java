@@ -11,8 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import horizure.micro.finance.entities.ScoreForm;
 import horizure.micro.finance.entities.ScoreProposition;
 import horizure.micro.finance.entities.ScoreQuestion;
+import horizure.micro.finance.entities.ScoreResponse;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.AccountRepository;
+import horizure.micro.finance.repositories.ResponseRepository;
 import horizure.micro.finance.repositories.ScoreFormRepository;
 import horizure.micro.finance.repositories.ScorePropositionRepository;
 import horizure.micro.finance.repositories.ScoreQuestionRepository;
@@ -35,6 +37,9 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 	
 	@Autowired
 	ScorePropositionRepository scorePropositionRepository;
+	
+	@Autowired
+	ResponseRepository responseRepository;
 	
 	@Override
 	public List<ScoreForm> retrieveForms() {
@@ -96,7 +101,8 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 	}
 
 	@Transactional
-	public String completeScoreForm(Long idUser ,ScoreForm forms) {
+	public ScoreResponse completeScoreForm(Long idUser ,ScoreForm forms) {
+		ScoreResponse response = new ScoreResponse();
 		String result ="";
 		User user = userRepository.findById(idUser).orElse(null);//recupere le user
 		boolean verifForm = scoreFormRepository.existsById(forms.getId_scoreForm());//verifier si le formulaire existe
@@ -116,20 +122,33 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 								score += baseQuestions.get(i).getPoints(); //affecter le score
 							}else {
 								result = "Veuillez vérifier les réponses!";
+								response.setResult(result);
 							}
-						}else { result = "Veuillez bien répondre aux questions! ou ces questions sont inexistantes!"; }
+						}else { result = "Veuillez bien répondre aux questions! ou ces questions sont inexistantes!"; response.setResult(result);}
 				}
-			}else { result = "Ce formulaire est vide!"; }
-		}else { result = "Ce formulaire est inexistant! ou bien vous devez avoir un compte pour pousuivre cette opération!"; }
+			}else { result = "Ce formulaire est vide!"; response.setResult(result);}
+		}else { result = "Ce formulaire est inexistant! ou bien vous devez avoir un compte pour pousuivre cette opération!"; response.setResult(result);}
 		
 		if(score !=0) {
-			result = "Vous avez obtenu : "+score+"/"+totalPoints;
+			response.setScore(score);
+			response.setTotal(totalPoints);
+			response.setResult("Vous avez obtenu : "+score+"/"+totalPoints);
 		    user.setScoreform(forms);//affecter le formulaire à user
 		    scoreFormRepository.updateForm(forms.getId_scoreForm(), new Date());//mettre à jour le formulaire
 		    Boolean isApproved = (float)((float)score / (float)totalPoints) >= 0.65 ? true :false;//approuver le compte
+		    response.setApproved(isApproved);
 			accountRepository.assynScoreToAccount(user.getAccount().getId_account(), score,isApproved);//affecter le score au compte de user
+			response.setUser(user);
+			response.setForm(forms);
+			saveResponse(response);
 		}
-		return result; //retourner le score
+	
+		return response; //retourner le score
+	}
+ 
+	private ScoreResponse saveResponse(ScoreResponse res) {
+		res.setResponse_date(new Date());
+		return  responseRepository.save(res);
 	}
 
 	@Transactional
@@ -142,6 +161,7 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 				user.setScoreform(null); 
 				user.getAccount().setScore(0);
 			} 
+			responseRepository.DeleteAllResponse(idForm);
 			scoreFormRepository.delete(form);
 			result = 1;
 		}else {
@@ -187,6 +207,12 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 			messageStatistic.add(message);
 		}
 		return messageStatistic;
+	}
+	
+	@Override
+	public List<ScoreResponse> getAllReponsesForm() {
+		// TODO Auto-generated method stub
+		return (List<ScoreResponse>)responseRepository.findAll();
 	}
 
 }
