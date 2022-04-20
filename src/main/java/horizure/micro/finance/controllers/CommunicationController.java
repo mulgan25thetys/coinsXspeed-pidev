@@ -1,11 +1,13 @@
 package horizure.micro.finance.controllers;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import horizure.micro.finance.services.CommunicationService;
 import horizure.micro.finance.services.ICommunicationService;
+@CrossOrigin("*")
 @RestController
 @RequestMapping("communication")
 public class CommunicationController {
@@ -72,12 +75,11 @@ public class CommunicationController {
     }
 	
 	
-	/*
-	@PostMapping(value = "/Communication-upload/{userId}/{message}") 
-	  public ResponseEntity uploadMessage(@PathVariable("userId") Long userId, @PathVariable("message") String text) {
+	
+	
 
-	/*@PostMapping(value = "/Communication-upload/{userId}/{message}") 
-	  public ResponseEntity uploadMessage(@RequestParam("userId") Long userId, @RequestParam("message") String text) {
+	@PostMapping(value = "/communication-upload/{userId}/{message}") 
+	  public ResponseEntity uploadMessage(@PathVariable("userId") Long userId, @PathVariable("message") String text) {
 
 		  String messageResponse = ""; 
 		  Message message = new Message();
@@ -93,6 +95,6 @@ public class CommunicationController {
 	  
 	  } catch (Exception e) { e.printStackTrace(); 
 	  			messageResponse = "Could not upload the conversation!"; 
-	  			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(messageResponse); } }*/
+	  			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(messageResponse); } }
 
 }
