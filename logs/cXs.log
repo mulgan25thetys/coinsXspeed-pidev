@@ -191,3 +191,7 @@ java.lang.NullPointerException: null
 2022-04-20 10:45:54 - WARN- com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m21s725ms774µs900ns). 
 2022-04-20 11:18:27 - WARN- com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m32s238ms483µs100ns). 
 2022-04-20 11:38:59 - WARN- com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m1s926ms900µs500ns). 
+2022-04-20 11:41:37 - INFO- o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested. 
+2022-04-20 11:41:37 - INFO- o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-04-20 11:41:37 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-04-20 11:41:37 - INFO- com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 

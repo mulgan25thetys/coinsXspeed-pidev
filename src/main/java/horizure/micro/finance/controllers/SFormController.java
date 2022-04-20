@@ -60,7 +60,16 @@ public class SFormController {
 	@DeleteMapping("delete-form/{id}")
 	@ResponseBody
 	public ResponseEntity<String>  deleteForm(@PathVariable("id") Long id){
+		//ResponseEntity<String> responses = ResponseEntity<String>();
 		String message = iscoreFormService.deleteForm(id) == 1 ? "Form has been deleted successfully!" :"Form has not been deleted!";
+		return new ResponseEntity<String> (message,HttpStatus.OK) ;
+	}
+	
+	@DeleteMapping("delete-reponse/{id}")
+	@ResponseBody
+	public ResponseEntity<String>  deleteResponse(@PathVariable("id") Long id){
+		//ResponseEntity<String> responses = ResponseEntity<String>();
+		//String message = iscoreFormService.deleteResponse(id) == 1 ? "Form has been deleted successfully!" :"Form has not been deleted!";
 		return new ResponseEntity<String> (message,HttpStatus.OK) ;
 	}
 	
