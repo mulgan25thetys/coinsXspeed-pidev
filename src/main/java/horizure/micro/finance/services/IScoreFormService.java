@@ -3,6 +3,7 @@ package horizure.micro.finance.services;
 import java.util.List;
 
 import horizure.micro.finance.entities.ScoreForm;
+import horizure.micro.finance.entities.ScoreResponse;
 
 public interface IScoreFormService {
 	
@@ -14,7 +15,7 @@ public interface IScoreFormService {
 	
 	ScoreForm retrieveScoreForm(Long id); // get un account
 	
-	String completeScoreForm(Long idUser,ScoreForm forms); //repondre au questionnement
+	ScoreResponse completeScoreForm(Long idUser,ScoreForm forms); //repondre au questionnement
 	
 	int deleteForm(Long idForm);
 	
@@ -23,4 +24,6 @@ public interface IScoreFormService {
 	List<ScoreForm> searchAnyForm(String searchValue); //rechercher un formulaire pour n'importe quelle valueur du champs
 	
 	List<String> getStatistics();
+	
+	List<ScoreResponse> getAllReponsesForm();
 }
