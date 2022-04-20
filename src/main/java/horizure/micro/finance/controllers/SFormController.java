@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import horizure.micro.finance.entities.ScoreForm;
+import horizure.micro.finance.entities.ScoreResponse;
 import horizure.micro.finance.services.IScoreFormService;
 
 @RestController
@@ -40,8 +41,14 @@ public class SFormController {
 	
 	@PutMapping("/answer-form/{iduser}")
 	@ResponseBody
-	public ResponseEntity<String>  CompleteForms(@RequestBody ScoreForm sf,@PathVariable("iduser") Long iduser){
-		return new ResponseEntity<String> (iscoreFormService.completeScoreForm(iduser, sf),HttpStatus.INTERNAL_SERVER_ERROR) ;
+	public ScoreResponse CompleteForms(@RequestBody ScoreForm sf,@PathVariable("iduser") Long iduser){
+		return iscoreFormService.completeScoreForm(iduser, sf) ;
+	}
+	
+	@GetMapping("/get-responses-form")
+	@ResponseBody
+	public List<ScoreResponse> getResponseForms(){
+		return iscoreFormService.getAllReponsesForm() ;
 	}
 	
 	@GetMapping("/get-form/{idform}")
@@ -54,7 +61,7 @@ public class SFormController {
 	@ResponseBody
 	public ResponseEntity<String>  deleteForm(@PathVariable("id") Long id){
 		String message = iscoreFormService.deleteForm(id) == 1 ? "Form has been deleted successfully!" :"Form has not been deleted!";
-		return new ResponseEntity<String> (message,HttpStatus.INTERNAL_SERVER_ERROR) ;
+		return new ResponseEntity<String> (message,HttpStatus.OK) ;
 	}
 	
 	@PutMapping("/edit-form")

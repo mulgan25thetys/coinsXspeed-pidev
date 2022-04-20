@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import horizure.micro.finance.apis.AccountExcelExporter;
 import horizure.micro.finance.entities.Account;
+import horizure.micro.finance.entities.User;
 import horizure.micro.finance.services.IAccountService;
 
 @RestController
@@ -117,5 +118,24 @@ public class AccountController {
 	    AccountExcelExporter excelExporter = new AccountExcelExporter(listAccounts);
 	         
 	    excelExporter.export(response);    
+	}
+	@GetMapping("/get-all-clients")
+	@ResponseBody
+	public List<User> getClient(){
+		return iAccountService.getClient();
+	}
+	
+	@GetMapping("/get-user-by-account/{id_acc}")
+	@ResponseBody
+	public User getUserByAccount(@PathVariable("id_acc") Long id)
+	{
+		return iAccountService.getUserByAccount(id);
+	}
+	
+	@GetMapping("/get-account-by-user/{id_us}")
+	@ResponseBody
+	public Account getAccountByUser(@PathVariable("id_us") Long id)
+	{
+		return iAccountService.getAccountByUser(id);
 	}
 }

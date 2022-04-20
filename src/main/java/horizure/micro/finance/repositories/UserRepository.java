@@ -28,4 +28,11 @@ public interface UserRepository extends JpaRepository<User,Long> {
     
     @Query(value = "SELECT *from user WHERE user_name = :username AND email =:email OR email=:email",nativeQuery = true)
     List<User> checkIfUserExist(@Param("username") String username,@Param("email") String email);
+    
+    @Query(value = "SELECT *FROM User WHERE role ='CLIENT' AND user_id NOT IN (SELECT user_user_id FROM account)",nativeQuery = true)
+	List<User> getAllClients();
+
+    @Query(value = "SELECT *FROM User u inner join account a on u.user_id = a.user_user_id ",nativeQuery = true)
+	User getUserByAccount(@Param("id") Long id);
 }
+

@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
 
 import horizure.micro.finance.services.AuthenticationService;
 
@@ -40,6 +41,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
     public void configure(HttpSecurity http) throws Exception {
 		
+		http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+		
 		http.authorizeRequests().antMatchers(HttpMethod.GET,"/comment/list-comments").permitAll()
         .antMatchers(HttpMethod.POST,"/comment/add-comment").permitAll()
         .antMatchers(HttpMethod.DELETE,"/comment/delete-comment/*").permitAll()
@@ -57,7 +60,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		   http.headers().frameOptions().disable();
 		
 	
-	       http.csrf().disable().authorizeRequests()
+		   http.csrf().disable().cors().disable().authorizeRequests()
 	        .antMatchers("/").permitAll()
 	        .antMatchers(HttpMethod.POST,"/account/add-account/*").permitAll()
 	        .antMatchers(HttpMethod.PUT,"/account/edit-account/*").permitAll()
@@ -66,13 +69,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	        .antMatchers(HttpMethod.GET,"/account/search-accounts/*").permitAll()
 	        .antMatchers(HttpMethod.GET,"/account/get-account/*").permitAll()
 	        .antMatchers(HttpMethod.GET,"/account/get-user-account/*").permitAll()
+	        .antMatchers(HttpMethod.GET,"/account/get-user-by-account/*").permitAll()
+	        .antMatchers(HttpMethod.GET,"/account/get-account-by-user/*").permitAll()
 	        .antMatchers(HttpMethod.GET,"/account/get-statistic").permitAll()
 	        .antMatchers(HttpMethod.PUT,"/account/change-account-status/*/*").permitAll()
 	        .antMatchers(HttpMethod.GET,"/account/get-statistic-by-date/*/*").permitAll()
 	        .antMatchers(HttpMethod.GET,"/account/get-statistic").permitAll()
 	        .antMatchers(HttpMethod.GET,"/account/export/excel").permitAll()
+	        .antMatchers(HttpMethod.GET,"/account/get-all-clients").permitAll()
 	        .antMatchers(HttpMethod.POST,"/scoreform/add-score-form").permitAll()
 	        .antMatchers(HttpMethod.PUT,"/scoreform/answer-form/*").permitAll()
+	        .antMatchers(HttpMethod.GET,"/scoreform/get-responses-form").permitAll()
 	        .antMatchers(HttpMethod.GET,"/scoreform/list-form").permitAll()
 	        .antMatchers(HttpMethod.GET,"/scoreform/get-form/*").permitAll()
 	        .antMatchers(HttpMethod.GET,"/scoreform/sort-form/").permitAll()
@@ -96,6 +103,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	        .antMatchers(HttpMethod.POST,"/claim/add-claim").permitAll()
 	        .antMatchers(HttpMethod.GET,"/communication/retreive-communication/*").permitAll() ///
 	        .antMatchers(HttpMethod.POST,"/communication/add-communication").permitAll()
+	        .antMatchers(HttpMethod.POST,"/communication/communication-upload/*/*").permitAll()
 	        .antMatchers(HttpMethod.GET,"/communication/retreive-all-communication").permitAll()
 	        .antMatchers(HttpMethod.DELETE,"/comment/delete-comment/*").permitAll()
 	        .anyRequest().authenticated(); 

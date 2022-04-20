@@ -75,12 +75,11 @@ public class CommunicationController {
     }
 	
 	
-	/*
-	@PostMapping(value = "/Communication-upload/{userId}/{message}") 
-	  public ResponseEntity uploadMessage(@PathVariable("userId") Long userId, @PathVariable("message") String text) {
+	
+	
 
-	/*@PostMapping(value = "/Communication-upload/{userId}/{message}") 
-	  public ResponseEntity uploadMessage(@RequestParam("userId") Long userId, @RequestParam("message") String text) {
+	@PostMapping(value = "/communication-upload/{userId}/{message}") 
+	  public ResponseEntity uploadMessage(@PathVariable("userId") Long userId, @PathVariable("message") String text) {
 
 		  String messageResponse = ""; 
 		  Message message = new Message();
@@ -96,6 +95,6 @@ public class CommunicationController {
 	  
 	  } catch (Exception e) { e.printStackTrace(); 
 	  			messageResponse = "Could not upload the conversation!"; 
-	  			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(messageResponse); } }*/
+	  			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(messageResponse); } }
 
 }

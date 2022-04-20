@@ -19,12 +19,11 @@ import horizure.micro.finance.entities.Claim;
 import horizure.micro.finance.entities.Topic;
 import horizure.micro.finance.repositories.ClaimRepository;
 import horizure.micro.finance.services.ClaimService;
-<<<<<<< HEAD
-@CrossOrigin("*")
-=======
+
+
 import horizure.micro.finance.services.IClaimService;
 
->>>>>>> 11208f435557d50baba2046c3444ed42ade26693
+@CrossOrigin("*")
 @RestController
 @RequestMapping("claim")
 public class ClaimController {

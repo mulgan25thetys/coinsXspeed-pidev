@@ -259,4 +259,16 @@ public class AccountServiceImpl implements IAccountService{
 		}
 		return account;
 	}
+	
+	@Override
+	public List<User> getClient() {
+		// TODO Auto-generated method stub
+		return (List<User>)userRepository.getAllClients();
+	}
+	
+	@Override
+	public User getUserByAccount(Long id) {
+		// TODO Auto-generated method stub
+		return userRepository.getUserByAccount(id);
+	}
 }

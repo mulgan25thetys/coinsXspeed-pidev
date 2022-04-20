@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import horizure.micro.finance.entities.Account;
+import horizure.micro.finance.entities.User;
 
 
 public interface IAccountService {
@@ -25,4 +26,8 @@ public interface IAccountService {
 	List<Account> searchAccount(String value);
 	
 	List<String> statisticAccount(Date dd,Date df); 
+	
+	List<User> getClient();
+
+	User getUserByAccount(Long id); 
 }
