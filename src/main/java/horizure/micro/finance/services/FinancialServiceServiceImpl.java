@@ -15,6 +15,7 @@ import horizure.micro.finance.entities.Payement;
 import horizure.micro.finance.entities.User;
 import horizure.micro.finance.repositories.AccountRepository;
 import horizure.micro.finance.repositories.FinancialServiceRepository;
+import horizure.micro.finance.repositories.PayementRepository;
 import horizure.micro.finance.repositories.ScoreQuestionRepository;
 import horizure.micro.finance.repositories.UserRepository;
 
@@ -33,6 +34,14 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 	@Autowired
 	AccountRepository accountRepository;
 	
+	@Autowired
+	IPayementService ipayementService;
+	
+	@Autowired
+	PayementRepository payementRepository;
+	
+	@Autowired
+	EmailService emailService;
 	
 	@Override
 	public List<FinancialService> retrieveAllFinancialService() {
@@ -66,17 +75,40 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		if(user != null && user.getAccount() != null && FS != null) {
 			
 			List<Payement> paymentList = new ArrayList<>();
-			paymentList =  FS.getPayement();
+			//paymentList =  FS.getPayement();
 			
 			if(FS.getCategory() == CategoryFS.Loan && user.getAccount().getIsApproved())
 			{
-				if(!user.getAccount().getFinancialServices().contains(FS)) {
-					user.getAccount().getFinancialServices().add(FS);
-					FS.setDate_of_creation(new Date());
-					FS.setPayement(paymentList);
-					FS.getAccounts().add(user.getAccount());
+				List<FinancialService> lis_fs_acc = financialServiceRepository.getFinancialServiceAccount(user.getAccount().getId_account(), FS.getId_ServiceFinancial());
+				if(lis_fs_acc.size() <= 0) {
+					user.getAccount().setCapital(user.getAccount().getCapital() + FS.getAmount());
 					FS.setDate_of_updating(new Date());
-					financialServiceRepository.save(FS) ;
+					
+					switch (FS.getReimbment_method()) {
+					case Mensuality:
+						paymentList = ipayementService.getPayement_mensuality(FS.getAmount(), FS.getInterest_pr(), FS.getDuration(), FS.getDate_of_creation());
+						for (Payement payement_db : paymentList) {
+							payement_db.setFinancialService(FS);
+							payement_db.setAccount(user.getAccount());
+							FS.getPayement().add(payement_db);
+							user.getAccount().getPayments().add(payement_db);
+						}
+						break;
+
+					default:
+						paymentList = ipayementService.getPayement_Block(FS.getAmount(), FS.getInterest_pr(), FS.getDuration(), FS.getDate_of_creation());
+						for (Payement payement_db : paymentList) {
+							payement_db.setFinancialService(FS);
+							payement_db.setAccount(user.getAccount());
+							FS.getPayement().add(payement_db);
+							user.getAccount().getPayments().add(payement_db);
+						}
+						break;
+					}
+					payementRepository.saveAll(paymentList);
+					FinancialService fs_return = financialServiceRepository.save(FS);
+					accountRepository.save(user.getAccount());
+					this.sendEmailAfterLoan(user,fs_return);
 				}
 			}
 			
@@ -84,11 +116,14 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		return FS;
 	}
 	
+	private void sendEmailAfterLoan(User user,FinancialService fs) {
+		String message ="You have souscribe to a loan for "+fs.getAmount()+"DT paid in "+fs.getReimbment_method()+" For more information go to your client space by the link below";
+		emailService.sendSimpleMessage(user.getUserName(),user.getEmail(), "Loan Subscription", message, "http://localhost:4200/client-space/payments");
+	}
 	
-
 	@Transactional
 	public FinancialService addFinancialServiceToUserAccount(Long idUser, FinancialService FS) {
-
+/*
 		User user = userRepository.findById(idUser).orElse(null);
 		
 		if(user != null) {
@@ -97,13 +132,14 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 					user.getAccount().setCapital(user.getAccount().getCapital()+FS.getAmount());
 					user.getAccount().setUpdated_at(new Date());
 					user.getAccount().getFinancialServices().add(FS);
-					
-					FS.getAccounts().add(user.getAccount());
+					List<Account> list_acc = new ArrayList<Account>();
+					list_acc.add(user.getAccount());
+					FS.setAccounts(list_acc);
 					FS.setDate_of_creation(new Date());
 					financialServiceRepository.save(FS);
 			}	
-		}
-		return FS;
+		}*/
+		return null;
 	}
 
 
@@ -124,7 +160,7 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 			isAccepted = false;
 		}
 		
-		FS.setIsAccepted(isAccepted);
+		///FS.setIsAccepted(isAccepted);
 		
 		financialServiceRepository.save(FS);
 		
@@ -165,6 +201,18 @@ public class FinancialServiceServiceImpl implements IFinancialServiceService{
 		FS.setDate_of_updating(new Date());
 		financialServiceRepository.save(FS) ;
 		return ceilings ;
+	}
+
+	@Override
+	public List<FinancialService> retrieveAccountFinancialService(Long id_account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<FinancialService> retrieveAllFinancialServiceAccount(Long id) {
+		// TODO Auto-generated method stub
+		return (List<FinancialService>)financialServiceRepository.getFinancialServicesForAccount(id);
 	}
 	
 

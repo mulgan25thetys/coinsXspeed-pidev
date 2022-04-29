@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import horizure.micro.finance.apis.AccountExcelExporter;
 import horizure.micro.finance.entities.Account;
 import horizure.micro.finance.entities.User;
+import horizure.micro.finance.services.EmailService;
 import horizure.micro.finance.services.IAccountService;
 
 @RestController
@@ -33,10 +34,19 @@ public class AccountController {
 	@Autowired
 	IAccountService iAccountService;
 	
+	@Autowired
+	EmailService emailService;
+	
 	@GetMapping("/list-accounts")
 	@ResponseBody
 	public List<Account> getAllAccounts(){
 		return iAccountService.retrieveAccounts();
+	}
+	
+	@GetMapping("/send-email")
+	@ResponseBody
+	public void sendEmail(){
+		//emailService.sendSimpleMessage("mulganthetys.ngougbiamayele@esprit.tn","","");
 	}
 	
 	@PostMapping("/add-account/{iduser}")
@@ -55,7 +65,7 @@ public class AccountController {
 	@ResponseBody
 	public ResponseEntity<String> deleteAccount(@PathVariable("idacc") Long idacc,@PathVariable("value") String value) {
 		String message=iAccountService.changeAccountStatus(idacc,value) == -1? "Account's status has not been changed to "+value :"Account's has been changed!";
-		return new ResponseEntity<String> (message,HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<String> (message,HttpStatus.OK);
 	}
 	
 	@GetMapping("/get-account/{idacc}")
