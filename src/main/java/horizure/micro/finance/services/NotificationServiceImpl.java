@@ -49,17 +49,17 @@ public class NotificationServiceImpl implements INotificationService{
 	@Transactional
 	public Notification addContact(Notification n) {
 		// TODO Auto-generated method stub
-		List<User> admins = repos.findAll().stream()
+		/*List<User> admins = repos.findAll().stream()
     	        .filter(u ->  u.getRole() != "CLIENT")
-    	        .collect(Collectors.toList());
+    	        .collect(Collectors.toList());*/
 		
 		n.setCreated_at(new Date());
 		n.setSended(true);
 		n.setSent_on(EsentOn.INTERNAL);
-		for (User user : admins) {
+		/*for (User user : admins) {
 			user.getNotifications().add(n);
-		}
-		repos.saveAll(admins);
+		}*
+		repos.saveAll(admins);*/
 		return notificationRepository.save(n);
 	}
 
