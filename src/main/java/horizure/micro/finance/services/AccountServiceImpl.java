@@ -40,7 +40,6 @@ public class AccountServiceImpl implements IAccountService{
 		return (List<Account>)accountRepository.findAllDESC();
 	}
 	
-
 	@Transactional
 	public Account addAccount(Account acc,Long iduser) {
 		User user = userRepository.findById(iduser).orElse(null); //récupérer l'utilisateur
@@ -50,23 +49,31 @@ public class AccountServiceImpl implements IAccountService{
 		
 		if(accounts.size() == 0 && user != null ) {
 				acc.setUser(user);
-		
-				acc.setAccount_number(accNumber);
-				acc.setCapital(0.0);
-				acc.setScore(0);
-				acc.setIsApproved(false);
-				acc.setState(AccountStatus.OPENED);
-				acc.setCreated_at(new Date());
-				acc.setUpdated_at(new Date());
+				
+				acc = this.getAccountDetails(acc,accNumber);
 				
 				user.setAccount(acc);
 				user.setUpdated_at(new Date());
 				accountRepository.save(acc);
 		}
-		log.trace("Creation de compte : Numero ="+acc.getAccount_number());
+		//log.trace("Creation de compte : Numero ="+acc.getAccount_number());
 		return acc.getId_account() == null ? null:acc;
 	}
-
+	
+	
+    public Account getAccountDetails(Account acc,Long accNumber) {
+    	
+    	acc.setAccount_number(accNumber);
+		acc.setCapital(0.0);
+		acc.setScore(0);
+		acc.setIsApproved(false);
+		acc.setState(AccountStatus.OPENED);
+		acc.setCreated_at(new Date());
+		acc.setUpdated_at(new Date());
+		
+		return acc;
+    }
+    
 	@Transactional
 	public Account updateAccount(Long id,Account newAccount) {
 		Account account = accountRepository.findById(id).orElse(null);
@@ -180,15 +187,15 @@ public class AccountServiceImpl implements IAccountService{
 		statistic.add(firstStatisticMessage);
 		statistic.add(secondtStatisticMessage);
 		statistic.add(thirdtStatisticMessage);
-		log.info("Account statistic");
+		//log.info("Account statistic");
 		return statistic;
 	}
 	
 	//@Scheduled(fixedDelay = 5000)
-	@Scheduled(cron = "0 0 0 * * *")
+	//@Scheduled(cron = "0 0 0 * * *")
 	@Transactional
 	public void classifyAccounts() {
-		log.debug("Starting for mining in Account entity!");
+		//log.debug("Starting for mining in Account entity!");
 		List<Account> accounts = accountRepository.getAccountForMining();
 		
 		for (Account account : accounts) {//parcourir les comptes
@@ -269,6 +276,7 @@ public class AccountServiceImpl implements IAccountService{
 	@Override
 	public User getUserByAccount(Long id) {
 		// TODO Auto-generated method stub
-		return userRepository.getUserByAccount(id);
+		return userRepository.findById(id).orElse(null);
 	}
+
 }

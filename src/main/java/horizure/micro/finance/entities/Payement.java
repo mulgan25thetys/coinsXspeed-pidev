@@ -22,8 +22,6 @@ public class Payement implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_Payement;
-	private long Client_id ;
-	private long sevice_id ;
 	private double remaining_amount ;
 	private double interest ;
 	private double amortization ;
@@ -33,9 +31,16 @@ public class Payement implements Serializable {
 	private LocalDate dateLimit ;
 	@Temporal(TemporalType.DATE)
 	private Date creation_date ;
+	@Temporal(TemporalType.DATE)
+	private Date paid_at ;
 	
+	//@JsonIgnore
 	@ManyToOne
 	FinancialService financialService ;
+	
+	//@JsonIgnore
+	@ManyToOne
+	Account account ;
 
 	public Payement() {
 		// TODO Auto-generated constructor stub
@@ -47,8 +52,6 @@ public class Payement implements Serializable {
 			FinancialService financialService) {
 		super();
 		this.id_Payement = id_Payement;
-		Client_id = client_id;
-		this.sevice_id = sevice_id;
 		this.remaining_amount = remaining_amount;
 		this.interest = interest;
 		this.amortization = amortization;
@@ -67,22 +70,6 @@ public class Payement implements Serializable {
 
 	public void setId_Payement(long id_Payement) {
 		this.id_Payement = id_Payement;
-	}
-
-	public long getClient_id() {
-		return Client_id;
-	}
-
-	public void setClient_id(long client_id) {
-		Client_id = client_id;
-	}
-
-	public long getSevice_id() {
-		return sevice_id;
-	}
-
-	public void setSevice_id(long sevice_id) {
-		this.sevice_id = sevice_id;
 	}
 
 	public double getRemaining_amount() {
@@ -132,15 +119,6 @@ public class Payement implements Serializable {
 	public void setDateLimit(LocalDate dateLimit2) {
 		this.dateLimit = dateLimit2;
 	}
-
-	public Date getcreation_date() {
-		return creation_date;
-	}
-
-	public void setcreation_date(Date creation_date) {
-		this.creation_date = creation_date;
-	}
-
 	public FinancialService getFinancialService() {
 		return financialService;
 	}
@@ -151,6 +129,35 @@ public class Payement implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+
+	public Date getCreation_date() {
+		return creation_date;
+	}
+
+
+	public void setCreation_date(Date creation_date) {
+		this.creation_date = creation_date;
+	}
+
+
+	public Date getPaid_at() {
+		return paid_at;
+	}
+
+
+	public void setPaid_at(Date paid_at) {
+		this.paid_at = paid_at;
 	}
 	
 	

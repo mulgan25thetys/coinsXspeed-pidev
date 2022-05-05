@@ -53,6 +53,74 @@ public class ScoreResponse implements Serializable{
 	
 	@Temporal(TemporalType.DATE)
 	Date response_date;
+
+	public Long getId_response() {
+		return id_response;
+	}
+
+	public void setId_response(Long id_response) {
+		this.id_response = id_response;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public boolean isApproved() {
+		return isApproved;
+	}
+
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public ScoreForm getForm() {
+		return form;
+	}
+
+	public void setForm(ScoreForm form) {
+		this.form = form;
+	}
+
+	public Date getResponse_date() {
+		return response_date;
+	}
+
+	public void setResponse_date(Date response_date) {
+		this.response_date = response_date;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 	
 }

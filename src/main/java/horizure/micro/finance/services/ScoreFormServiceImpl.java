@@ -94,9 +94,20 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 	}
 
 	@Override
-	public ScoreForm retrieveScoreForm(Long id) {
+	public ScoreForm retrieveScoreForm(String type) {
 		// TODO Auto-generated method stub
-		ScoreForm sf = scoreFormRepository.findById(id).orElse(null);
+		ScoreForm sf = null;
+		switch (type) {
+		case "check-book":
+			sf = scoreFormRepository.getScoreFormByType("checkBook");
+			break;
+		case "card-credit":
+			sf = scoreFormRepository.getScoreFormByType("bankCard");
+			break;
+		default:
+			sf = scoreFormRepository.getScoreFormByType("loan");
+			break;
+		}
 		return sf;
 	}
 
@@ -132,7 +143,7 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 		if(score !=0) {
 			response.setScore(score);
 			response.setTotal(totalPoints);
-			response.setResult("Vous avez obtenu : "+score+"/"+totalPoints);
+			response.setResult("You obtained : "+score+"/"+totalPoints);
 		    user.setScoreform(forms);//affecter le formulaire à user
 		    scoreFormRepository.updateForm(forms.getId_scoreForm(), new Date());//mettre à jour le formulaire
 		    Boolean isApproved = (float)((float)score / (float)totalPoints) >= 0.65 ? true :false;//approuver le compte
@@ -161,7 +172,7 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 				user.setScoreform(null); 
 				user.getAccount().setScore(0);
 			} 
-			responseRepository.DeleteAllResponse(idForm);
+			if(responseRepository.getResponses(idForm).size() > 0) { responseRepository.DeleteAllResponse(idForm);}//suppression des reponses
 			scoreFormRepository.delete(form);
 			result = 1;
 		}else {
@@ -213,6 +224,12 @@ public class ScoreFormServiceImpl implements IScoreFormService{
 	public List<ScoreResponse> getAllReponsesForm() {
 		// TODO Auto-generated method stub
 		return (List<ScoreResponse>)responseRepository.findAll();
+	}
+
+	@Override
+	public void deleteResponse(Long id) {
+		// TODO Auto-generated method stub
+		responseRepository.deleteById(id);
 	}
 
 }

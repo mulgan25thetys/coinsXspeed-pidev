@@ -3,6 +3,7 @@ package horizure.micro.finance.services;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
@@ -11,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import horizure.micro.finance.entities.Account;
+import horizure.micro.finance.entities.AccountStatus;
 import horizure.micro.finance.entities.Egroup;
 
 import horizure.micro.finance.entities.StLevel;
@@ -36,7 +39,7 @@ public class UserServiceImpl implements IUserService {
 	
 	@Autowired
 	AccountServiceImpl accountServiceImpl;
-
+	private Random rand =new Random();
 
    /* @PostConstruct
     public void initialize(){
@@ -62,10 +65,25 @@ public class UserServiceImpl implements IUserService {
 		 return (List<User>) userRepository.findAll();
 		
 	}
-	@Override
-	public User addUser(User u) {
-	   userRepository.save(u);
-	   return u;
+	@Transactional
+	public User registerUser(User u) {
+		
+			Account account = u.getAccount();
+			Long accNumber = Math.abs(rand.nextLong());
+			for (Long number : accountRepository.getAccountNumber()) {
+				while (accNumber == number) {
+					
+					accNumber = Math.abs(rand.nextLong());
+				}
+			}
+		    account =  accountServiceImpl.getAccountDetails(account, accNumber);
+
+			account.setUser(u);
+			u.setCreated_at(new Date());
+		    u.setAccount(account);
+		    accountRepository.save(account);
+	    User user = userRepository.save(u);
+		return user;
 		
 	}
 
@@ -145,6 +163,14 @@ public class UserServiceImpl implements IUserService {
 	public User updateUser(Long id, User user) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public User addUser(User u) {
+		// TODO Auto-generated method stub
+		u.setCreated_at(new Date());
+	    User user = userRepository.save(u);
+		return user;
 	}
 
 }

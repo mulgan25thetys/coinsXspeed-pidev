@@ -19,7 +19,9 @@ public interface IUserService {
 	
 	public User updateUser(Long id,User user) ;
 
-	User addUser(User u);            
+	User addUser(User u);           
+	
+	User registerUser(User u);
 	
 	User updateUser(User u);         
 	
