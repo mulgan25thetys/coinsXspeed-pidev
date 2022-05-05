@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -31,7 +33,10 @@ public class ScoreForm implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_scoreFrom")
 	private Long id_scoreForm;
-	private String title;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(unique = true)
+	private CategoryFS title;
 	private String description;
 	@Temporal(TemporalType.DATE)
 	private Date created_at;
@@ -52,11 +57,13 @@ public class ScoreForm implements Serializable{
 		this.id_scoreForm = id_scoreForm;
 	}
 
-	public String getTitle() {
+	
+
+	public CategoryFS getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(CategoryFS title) {
 		this.title = title;
 	}
 

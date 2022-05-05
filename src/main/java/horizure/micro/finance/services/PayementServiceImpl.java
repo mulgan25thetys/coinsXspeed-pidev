@@ -9,15 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import horizure.micro.finance.entities.Account;
 import horizure.micro.finance.entities.FinancialService;
 import horizure.micro.finance.entities.MethodRB;
 import horizure.micro.finance.entities.Payement;
+import horizure.micro.finance.repositories.AccountRepository;
 import horizure.micro.finance.repositories.FinancialServiceRepository;
 import horizure.micro.finance.repositories.PayementRepository;
 import horizure.micro.finance.repositories.UserRepository;
 
 @Service
 public class PayementServiceImpl implements IPayementService {
+	
 	
 	double m ;
 	Payement payement = new Payement();
@@ -31,11 +34,14 @@ public class PayementServiceImpl implements IPayementService {
 	@Autowired
 	UserRepository URepository ;
 	
+	@Autowired
+	AccountRepository accountRepository;
+	
 	@Transactional
-	public double getMensuality(FinancialService FS) {
-		double E = FS.getAmount();
-		float I = FS.getInterest_pr();
-		long n = FS.getDuration();
+	public double getMensuality(double amount,float interest_fs,long duration) {
+		double E = amount;
+		float I = interest_fs;
+		long n = duration;
 		float i = (I/12)/100 ;
 		m = (E*i) /(1 - Math.pow((1+i),-n)); 
 		payement.setMensuality(m);
@@ -43,12 +49,12 @@ public class PayementServiceImpl implements IPayementService {
 	}
 	
 	@Transactional
-	public List<Payement> getPayement_mensuality(Long id_ServiceFinancial){
-		FinancialService FS = FSRepository.findById(id_ServiceFinancial).orElse(null);
+	public List<Payement> getPayement_mensuality(double amount,float interest_fs,long duration,Date date_fs){
+		//FinancialService FS = FSRepository.findById(id_ServiceFinancial).orElse(null);
 		ArrayList<Payement> paymentList = new ArrayList<>();
 		Payement payement = new Payement();
 		//Date creation_date = new Date() ;
-		Date creation_date = FS.getDate_of_creation() ;
+		Date creation_date = date_fs ;
 
 		//LocalDate DateLimit = creation_date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate() ;		
 		LocalDate DateLimit = LocalDate.now();
@@ -56,12 +62,12 @@ public class PayementServiceImpl implements IPayementService {
 		double CRD = 0;
 		double A = 0;
 		double A_int = 0;
-		double E = FS.getAmount();
-		float I = FS.getInterest_pr();
-		long n = FS.getDuration();
+		double E = amount;
+		float I = interest_fs;
+		long n = duration;
 		float i = (I/12)/100 ;
 		double interest = E * i ;
-		double m=getMensuality(FS);
+		double m=getMensuality(amount,interest_fs,duration);
 		A_int = m - interest;
 		
 		for(int k=0; k<n; k++) {
@@ -85,31 +91,30 @@ public class PayementServiceImpl implements IPayementService {
 			 payement.setInterest(interest);
 			 //payement.setFinancialService(FS) ;
 			 payement.setDateLimit(DateLimit);
-			 payement.setcreation_date(creation_date) ;
-			 payement.setSevice_id(id_ServiceFinancial);
+			 payement.setCreation_date(creation_date);
+			 //payement.setFinancialService(FS);
+			 //FS.getPayement().add(payement);
 			 paymentList.add(payement);
 		 }
 		 
 		return paymentList;
 	}
-	
 
-	@Transactional
-	public List<Payement> getPayement_Block(Long id_ServiceFinancial) {
+	
+	@Override
+    public List<Payement> getPayement_Block(double amount,float interest_fs,long duration,Date date_fs) {
 		
-		FinancialService FS = FSRepository.findById(id_ServiceFinancial).orElse(null);
-		//User u = URepository.findById(idUser).orElse(null);
 		ArrayList<Payement> paymentList = new ArrayList<>();
 		Payement payement = new Payement();
 		//long client_id = u.getUserId();
-		Date creation_date = FS.getDate_of_creation() ;
+		Date creation_date = date_fs;
 		LocalDate DateLimit = LocalDate.now();
 		
 		double CRD = 0;
 		double A = 0;
-		double E = FS.getAmount();
-		float I = FS.getInterest_pr();
-		long n = FS.getDuration();
+		double E = amount;
+		float I = interest_fs;
+		long n = duration;
 		float i = (I/12)/100 ;
 		double interest = E * i ;
 		
@@ -135,8 +140,7 @@ public class PayementServiceImpl implements IPayementService {
 			 payement.setInterest(interest);
 			 //payement.setFinancialService(FS) ;
 			 payement.setDateLimit(DateLimit);
-			 payement.setcreation_date(creation_date) ;
-			 payement.setSevice_id(id_ServiceFinancial);
+			 payement.setCreation_date(creation_date);
 			 //payement.setClient_id();
 			 paymentList.add(payement);
 		 }
@@ -144,7 +148,7 @@ public class PayementServiceImpl implements IPayementService {
 		return paymentList;
 	}
 
-	@Transactional
+	/*@Transactional
 	public List<Payement> addPayement(long id_ServiceFinancial) {
 		FinancialService FS = FSRepository.findById(id_ServiceFinancial).orElse(null);
 		List<Payement> paymentList = new ArrayList<>();
@@ -163,7 +167,7 @@ public class PayementServiceImpl implements IPayementService {
 		}
 		
 		return paymentList;
-	}
+	}*/
 
 	@Override
 	public List<Payement> retrieveAllPayement() {
@@ -178,6 +182,48 @@ public class PayementServiceImpl implements IPayementService {
 	@Override
 	public Payement updatePayement(Payement P) {
 		return PRepository.save(P);
+	}
+
+	@Override
+	public List<Payement> retrievePayementFinancialService(Long id_fs) {
+		// TODO Auto-generated method stub
+		return (List<Payement>)PRepository.getPaymentForFinancialService(id_fs);
+	}
+
+	@Override
+	public List<Payement> retrievePayementAccount(Long id_account) {
+		// TODO Auto-generated method stub
+		return (List<Payement>)PRepository.getPaymentForAccount(id_account);
+	}
+
+	@Override
+	public List<Payement> retrievePayementFinancialServiceAccount(Long id_fs, Long id_acc) {
+		// TODO Auto-generated method stub
+		return (List<Payement>)PRepository.getPaymentForFinancialServiceAccount(id_fs,id_acc);
+	}
+
+	@Override
+	public List<Payement> proceedToPayment(Long id_fs, Long id_acc,Payement payment) {
+		// TODO Auto-generated method stub
+		
+		FinancialService fs = FSRepository.findById(id_fs).orElse(null);
+		Account account = accountRepository.findById(id_acc).orElse(null);
+		
+		if(account !=null && fs!= null) {
+			List<Payement> paymentList = PRepository.getPaymentForFinancialServiceAccount(id_fs,id_acc);
+			switch (fs.getReimbment_method()) {
+			case Mensuality:
+				/*if(payment.getPaid_amount() == )
+				payment.setPaid_at(new Date());
+				PRepository.sa*/
+				break;
+
+			default:
+				break;
+			}
+			
+		}
+		return null;
 	}
 
 

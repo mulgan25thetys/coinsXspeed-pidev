@@ -1,8 +1,11 @@
 package horizure.micro.finance.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,12 +13,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class FinancialService implements Serializable {
@@ -34,25 +38,21 @@ public class FinancialService implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private MethodRB reimbment_method ;
 	private double ceiling ;
-	private long createdBy_id ;
+	//private long createdBy_id ;
 	@Temporal(TemporalType.DATE)
 	private Date date_of_creation ;
 	@Temporal(TemporalType.DATE)
 	private Date date_of_updating ;
-	private Boolean isAccepted ;
+	//private Boolean isAccepted ;
 
+	//@JsonBackReference
+	@JsonIgnore
+	@OneToMany(mappedBy = "financialService",cascade = CascadeType.REFRESH)
+	private List<Payement> payement = new ArrayList<Payement>();
+	
 	public FinancialService() {
 		super();
 	}
-
-	@OneToMany(mappedBy = "financialService",cascade = CascadeType.REFRESH)
-	private List<Payement> payement ;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-    private List<Account> accounts;
-	
-
-
 
 	public long getId_ServiceFinancial() {
 		return id_ServiceFinancial;
@@ -110,14 +110,6 @@ public class FinancialService implements Serializable {
 		this.ceiling = ceiling;
 	}
 
-	public long getCreatedBy_id() {
-		return createdBy_id;
-	}
-
-	public void setCreatedBy_id(long createdBy_id) {
-		this.createdBy_id = createdBy_id;
-	}
-
 	public Date getDate_of_creation() {
 		return date_of_creation;
 	}
@@ -126,28 +118,12 @@ public class FinancialService implements Serializable {
 		this.date_of_creation = date_of_creation;
 	}
 
-	public Boolean getIsAccepted() {
-		return isAccepted;
-	}
-
-	public void setIsAccepted(Boolean isAccepted) {
-		this.isAccepted = isAccepted;
-	}
-
 	public List<Payement> getPayement() {
 		return payement;
 	}
 
 	public void setPayement(List<Payement> payement) {
 		this.payement = payement;
-	}
-
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
 	}
 
 	public static long getSerialversionuid() {
@@ -162,9 +138,22 @@ public class FinancialService implements Serializable {
 		this.date_of_updating = date_of_updating;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount, category, date_of_creation, duration);
+	}
 
-
-	
-
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FinancialService other = (FinancialService) obj;
+		return Double.doubleToLongBits(amount) == Double.doubleToLongBits(other.amount) && category == other.category
+				&& Objects.equals(date_of_creation, other.date_of_creation) && duration == other.duration;
+	}
 
 }

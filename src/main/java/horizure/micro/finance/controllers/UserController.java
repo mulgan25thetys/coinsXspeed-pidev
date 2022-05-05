@@ -39,6 +39,12 @@ public class UserController {
 		return iUserService.addUser(u);
 	}
 	
+	@PostMapping("/register-customer")
+	@ResponseBody
+	public User registerUser(@RequestBody User u) {
+		return iUserService.registerUser(u);
+	}
+	
 	@PutMapping("/edit-user/{id}")
 	@ResponseBody
 	public User editUser(@PathVariable("id") Long id,@RequestBody User u) {
