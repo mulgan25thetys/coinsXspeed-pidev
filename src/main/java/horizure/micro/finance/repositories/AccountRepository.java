@@ -64,6 +64,7 @@ public interface AccountRepository extends CrudRepository<Account, Long>{
 			+ "WHERE u.status != 'bannit' AND u.role = 'client' ",nativeQuery = true)
 	List<Account> getAccountForMining();
 	
-	 
+	@Query(value = "SELECT account_number FROM account WHERE 1",nativeQuery = true)
+	List<Long> getAccountNumber();
 }
 

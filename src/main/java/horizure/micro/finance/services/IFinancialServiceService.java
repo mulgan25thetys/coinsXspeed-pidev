@@ -21,5 +21,9 @@ public interface IFinancialServiceService {
 	
 	boolean getIsAccepted(long id_ServiceFinancial,Long idUser) ;
 	
-	double getCeilings(FinancialService FS, long id_user); 
+	double getCeilings(FinancialService FS, long id_user);
+
+	List<FinancialService> retrieveAccountFinancialService(Long id_account);
+
+	List<FinancialService> retrieveAllFinancialServiceAccount(Long id); 
 }

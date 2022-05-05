@@ -24,21 +24,21 @@ public class PayementController {
 	@ResponseBody
 	public List<Payement> getPayement_mensuality(@PathVariable("idfinancial") Long id_ServiceFinancial){
 		System.out.println(id_ServiceFinancial);
-		return iPayementService.getPayement_mensuality(id_ServiceFinancial);
+		return null;
 	}
 	
 	@GetMapping("/get-payement-block/{idfinancial}")
 	@ResponseBody
 	public List<Payement> getPayement_Block(@PathVariable("idfinancial") Long id_ServiceFinancial){
 		System.out.println(id_ServiceFinancial);
-		return iPayementService.getPayement_Block(id_ServiceFinancial);
+		return null;
 	}
 	
 	@PostMapping("/add-payement/{idfinancial}")
 	@ResponseBody
 	public List<Payement> addPayement(@PathVariable("idfinancial") Long id_ServiceFinancial){
 		System.out.println(id_ServiceFinancial);
-		return iPayementService.addPayement(id_ServiceFinancial);
+		return null;
 	}
 	
 	
@@ -46,6 +46,24 @@ public class PayementController {
 	@ResponseBody
 	public List<Payement> retrieveAllPayement(){
 		return iPayementService.retrieveAllPayement();
+	}
+	
+	@GetMapping("/get-payement-financial-service/{id_fs}")
+	@ResponseBody
+	public List<Payement> retrievePayementFS(@PathVariable("id_fs") Long id_fs){
+		return iPayementService.retrievePayementFinancialService(id_fs);
+	}
+	
+	@GetMapping("/get-payement-account/{id_acc}")
+	@ResponseBody
+	public List<Payement> retrievePayementAccount(@PathVariable("id_acc") Long id_account){
+		return iPayementService.retrievePayementAccount(id_account);
+	}
+	
+	@GetMapping("/get-payement-financial-service-account/{id_fs}/{id_acc}")
+	@ResponseBody
+	public List<Payement> retrievePayementFSAccount(@PathVariable("id_fs") Long id_fs,@PathVariable("id_acc") Long id_account){
+		return iPayementService.retrievePayementFinancialServiceAccount(id_fs, id_account);
 	}
 	
 	@GetMapping("/get-payement/{id_Payement}")

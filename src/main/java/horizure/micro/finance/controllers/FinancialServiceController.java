@@ -48,10 +48,22 @@ public class FinancialServiceController {
 		return ifinancialServiceService.retrieveAllFinancialService();
 	}
 	
+	@GetMapping("/list-financial-service-account/{id_acc}")
+	@ResponseBody
+	public List<FinancialService> retrieveAllFinancialServiceAccount(@PathVariable("id_acc") Long id){
+		return ifinancialServiceService.retrieveAllFinancialServiceAccount(id);
+	}
+	
 	@GetMapping("/get-financial-service/{id_ServiceFinancial}")
 	@ResponseBody
 	public FinancialService retrieveFinancialService(@PathVariable("id_ServiceFinancial") Long id_ServiceFinancial){
 		return ifinancialServiceService.retrieveFinancialService(id_ServiceFinancial);
+	}
+	
+	@GetMapping("/get-account-financial-service/{id_account}")
+	@ResponseBody
+	public List<FinancialService> retrieveAccountFinancialService(@PathVariable("id_account") Long id_account){
+		return ifinancialServiceService.retrieveAccountFinancialService(id_account);
 	}
 	
 	@PutMapping("/Modify-FinancialService")
