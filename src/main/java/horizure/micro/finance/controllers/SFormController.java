@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import horizure.micro.finance.entities.CategoryFS;
 import horizure.micro.finance.entities.ScoreForm;
 import horizure.micro.finance.entities.ScoreResponse;
 import horizure.micro.finance.services.IScoreFormService;
@@ -51,10 +52,10 @@ public class SFormController {
 		return iscoreFormService.getAllReponsesForm() ;
 	}
 	
-	@GetMapping("/get-form/{idform}")
+	@GetMapping("/get-form/{typeform}")
 	@ResponseBody
-	public ScoreForm getForm(@PathVariable("idform") Long idform){
-		return iscoreFormService.retrieveScoreForm(idform);
+	public ScoreForm getForm(@PathVariable("typeform") String type){
+		return iscoreFormService.retrieveScoreForm(type);
 	}
 	
 	@DeleteMapping("delete-form/{id}")
@@ -65,13 +66,11 @@ public class SFormController {
 		return new ResponseEntity<String> (message,HttpStatus.OK) ;
 	}
 	
-	@DeleteMapping("delete-reponse/{id}")
+	@DeleteMapping("delete-response/{id}")
 	@ResponseBody
-	public ResponseEntity<String>  deleteResponse(@PathVariable("id") Long id){
-		//ResponseEntity<String> responses = ResponseEntity<String>();
-		//String message = iscoreFormService.deleteResponse(id) == 1 ? "Form has been deleted successfully!" :"Form has not been deleted!";
-		return new ResponseEntity<String> (message,HttpStatus.OK) ;
-	}
+	public void deleteResponse(@PathVariable("id") Long id){
+		iscoreFormService.deleteResponse(id);
+	}	
 	
 	@PutMapping("/edit-form")
 	@ResponseBody

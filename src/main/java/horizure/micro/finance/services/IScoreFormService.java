@@ -13,7 +13,7 @@ public interface IScoreFormService {
 	
 	ScoreForm updateScoreForm(ScoreForm form); // modification
 	
-	ScoreForm retrieveScoreForm(Long id); // get un account
+	ScoreForm retrieveScoreForm(String type); // get un account
 	
 	ScoreResponse completeScoreForm(Long idUser,ScoreForm forms); //repondre au questionnement
 	
@@ -26,4 +26,6 @@ public interface IScoreFormService {
 	List<String> getStatistics();
 	
 	List<ScoreResponse> getAllReponsesForm();
+
+	void deleteResponse(Long id);
 }
